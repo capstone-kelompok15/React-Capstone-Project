@@ -1,13 +1,11 @@
 import React from 'react'
 
-const Harga = () => {
+const Fitur = () => {
   return (
-    <>
     <div>
-
+        Fitur
     </div>
-    </>
   )
 }
 
-export default Harga
+export default Fitur

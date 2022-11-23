@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CobaGratis from "./CobaGratis";
-import logo from '../assets/logo.png';
+import CobaGratis from '../../pages/CobaGratis';
 
 
 function Navbar() {
@@ -11,7 +10,8 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg bg-white py-2 shadow-sm">
         <div className="container">
           <Link className="navbar-brand fs-2"  to="/">
-            <img style={{width: 150, height: 60}} src={logo} className="App-logo" alt="logo"/>
+          {/* <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" />
+      Bootstrap */}
           </Link>
           <button
             className="navbar-toggler"
