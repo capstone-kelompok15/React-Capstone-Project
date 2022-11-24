@@ -1,10 +1,5 @@
-import Home from './Home';
-import Fitur from './Fitur';
-import Testimoni from './Testimoni';
-import Harga from './Harga';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from "./Navbar";
+import Home from "./Home";
+import Fitur from "./Fitur";
 
-export {
-    Home, Fitur, Testimoni, Harga, Navbar, Footer
-}
+export { Navbar, Home, Fitur };

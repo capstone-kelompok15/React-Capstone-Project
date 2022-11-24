@@ -1,5 +1,6 @@
 import React from "react";
 import Image1 from "../assets/image/Image1.png";
+import Image2 from "../assets/image/Image2.png";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         </div>
         <div class="col-md-5">
           <img class="my-image" src={Image1} alt="Logo" />
+          <img class="my-image" src={Image2} alt="Logo" />
         </div>
       </div>
     </div>
