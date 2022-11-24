@@ -4,7 +4,7 @@ import Image2 from "../assets/image/Image2.png";
 
 const Home = () => {
   return (
-    <div class="container">
+    <div class="container py-5">
       <div class="row">
         <div class="col-md-auto">
           <p class="text1">Kirim invoice lebih cepat dan mudah</p>
@@ -18,10 +18,14 @@ const Home = () => {
           <button class="button-lg-primary">Coba Gratis</button>
         </div>
         <div class="col-md-5">
-          <img class="my-image" src={Image1} alt="Logo" />
-          <img class="my-image" src={Image2} alt="Logo" />
+          <img class="my-image2 ms-5 ps-2" src={Image2} alt="Logo" />
+          <img class="my-image1 ms-5 ps-2" src={Image1} alt="Logo" />
         </div>
       </div>
+
+      <div class="section-title1 text-center pt-5">
+        <h1 class="font1">Ratusan bisnis telah menggunakan MyINVOICE </h1>
+          </div>
     </div>
   );
 };
