@@ -18,7 +18,6 @@ const Home = () => {
         </div>
         <div class="col-md-5">
           <div class="box1"></div>
-          
           <img class="my-image1 ms-5 ps-2" src={Image1} alt="Logo" />
         </div>
 
