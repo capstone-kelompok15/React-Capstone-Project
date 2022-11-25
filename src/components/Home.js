@@ -1,5 +1,7 @@
 import React from "react";
 
+import Image1 from '../assets/image/image1.png'
+
 const Home = () => {
   return (
     <div class="container py-5">
@@ -15,7 +17,8 @@ const Home = () => {
           <button class="button-lg-primary">Coba Gratis</button>
         </div>
         <div class="col-md-5">
-          <img class="my-image2 ms-5 ps-2" src={Image2} alt="Logo" />
+          <div class="box1"></div>
+          
           <img class="my-image1 ms-5 ps-2" src={Image1} alt="Logo" />
         </div>
 

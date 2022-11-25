@@ -88,17 +88,30 @@
 .my-image1{
   position: absolute;
   width: 490px;
-  height: 400px;
-  left: 700px;
+  height: 340px;
+  left: 670px;
   top: 145px;
 }
 
 .my-image2{
   position: absolute;
-  width: 400px;
-  height: 380px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(55deg, rgba(255,255,255,1)0%, rgba(31,69,138,1)49%, rgba(31,69,138,1)94% );
+  width: 450px;
+  height: 400px;
   right: 115px;
+  border-radius: 20px;
 
+}
+
+.box1{
+  position: absolute;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(30deg, rgba(255,255,255,1)0%, rgba(31,69,138,1)60%, rgba(31,69,138,1)94% );
+  width: 450px;
+  height: 400px;
+  right: 115px;
+  border-radius: 10px;
 }
 
 .section-title1 {
