@@ -1,5 +1,5 @@
 import React from "react";
-import Symbol1 from "../assets/image/Symbol1.png";
+import Symbol1 from "../../assets/image/Symbol1.png";
 
 const Footer = () => {
   return (

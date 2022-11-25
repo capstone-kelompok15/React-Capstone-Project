@@ -1,10 +1,10 @@
 import React from "react";
-import fleksibel from "../assets/image/fleksibel.png";
-import kirim from "../assets/image/kirim.png";
-import terpusat from "../assets/image/terpusat.png";
-import myproject from "../assets/image/myproject.png";
-import checkbox from "../assets/image/checkbox.png";
-import hp from "../assets/image/hp.png";
+import fleksibel from "../../assets/image/fleksibel.png";
+import kirim from "../../assets/image/kirim.png";
+import terpusat from "../../assets/image/terpusat.png";
+import myproject from "../../assets/image/myproject.png";
+import checkbox from "../../assets/image/checkbox.png";
+import hp from "../../assets/image/hp.png";
 
 const Fitur = () => {
   return (

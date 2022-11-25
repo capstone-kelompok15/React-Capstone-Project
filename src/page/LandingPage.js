@@ -1,8 +1,8 @@
 import React from 'react'
-import Navbar from "../components/Navbar";
-import Home from "../components/Home";
-import Fitur from "../components/Fitur";
-import Footer from '../components/Footer'
+import Navbar from "../components/landingpage_components/Navbar";
+import Home from "../components/landingpage_components/Home";
+import Fitur from "../components/landingpage_components/Fitur";
+import Footer from '../components/landingpage_components/Footer';
 
 const LandingPage = () => {
   return (
