@@ -1,8 +1,10 @@
 import React from "react";
 
+import Image1 from '../assets/image/image1.png'
+
 const Home = () => {
   return (
-    <div class="container">
+    <div class="container py-5">
       <div class="row">
         <div class="col-md-6">
           <p class="text1">Kirim invoice lebih cepat dan mudah</p>
@@ -14,7 +16,17 @@ const Home = () => {
           </p>
           <button class="button-lg-primary">Coba Gratis</button>
         </div>
+        <div class="col-md-5">
+          <div class="box1"></div>
+          
+          <img class="my-image1 ms-5 ps-2" src={Image1} alt="Logo" />
+        </div>
+
       </div>
+
+      <div class="section-title1 text-center pt-5">
+        <h1 class="font1">Ratusan bisnis telah menggunakan MyINVOICE </h1>
+          </div>
     </div>
   );
 };
