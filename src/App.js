@@ -2,15 +2,13 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./App.css";
-import { Navbar, Home, Footer } from "./components";
+import Router from "./router/Router";
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Home />
-      <Footer />
+      <Router/>
     </div>
   );
 }
