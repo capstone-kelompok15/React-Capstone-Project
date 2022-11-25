@@ -73,20 +73,37 @@ const Fitur = () => {
           <div class="col-lg-6 md-6">
             <h1 class="text5">Praktis dengan berbagai fitur untuk penagihan</h1>
             <ul class="list-group">
-              <li class="list-item ms-3">
-              <img class="check me-3" src={checkbox} alt="img" />
-                Penagihan praktis dari satu dasbor dengan fitur email atau link
-                faktur. Lengkap dengan pesan yang bisa dimodifikasi.
+              <li class="list-item ms-3 mb-3">
+                <div class="row">
+                  <div class="col-sm-1">
+                    <img class="check me-3" src={checkbox} alt="img" />
+                  </div>
+                  <div class="col-sm">
+                    Penagihan praktis dari satu dasbor dengan fitur email atau
+                    link faktur. Lengkap dengan pesan yang bisa dimodifikasi.
+                  </div>
+                </div>
               </li>
-              <li class="list-item ms-3">
-              <img class="check me-3" src={checkbox} alt="img" />
-                Kirim tepat waktu dengan menjadwalkan pengiriman invoice secara
-                otomatis maupun berulang.
+              <li class="list-item ms-3 mb-3">
+                <div class="row">
+                  <div class="col-sm-1">
+                    <img class="check me-3" src={checkbox} alt="img" />
+                  </div>
+                  <div class="col-sm">
+                    Kirim tepat waktu dengan menjadwalkan pengiriman invoice
+                    secara otomatis maupun berulang.
+                  </div>
+                </div>
               </li>
-              <li class="list-item ms-3">
-              <img class="check me-3" src={checkbox} alt="img" />
-                Fleksibel dengan opsi pembayaran menggunakan berbagai platform
-                hingga payment gateway
+              <li class="list-item ms-3 mb-3">
+                <div class="row">
+                  <div class="col-sm-1">
+                    <img class="check me-3" src={checkbox} alt="img" />
+                  </div>
+                  <div class="col-sm">
+                  Fleksibel dengan opsi pembayaran menggunakan berbagai platform hingga payment gateway.
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -98,28 +115,47 @@ const Fitur = () => {
 
       <div class="container py-5">
         <div class="row">
-        <div class="col-lg-6 md-5">
+          <div class="col-lg-6 md-5">
             <img class="my-image4 ms-5 mt-5" src={hp} alt="project" />
           </div>
           <div class="col-lg-6 md-6">
             <h1 class="text6">Terima invoie mudah dengan MyINVOICE mobile</h1>
             <ul class="list-group">
-              <li class="list-item ms-3">
-              <img class="check me-3" src={checkbox} alt="img" />
-              Penerimaan invoice praktis dengan satu aplikasi mobile. Lengkap dengan detail dari invoice yang dapat disimpan
+              <li class="list-item ms-3 mb-3">
+                <div class="row">
+                  <div class="col-sm-1">
+                    <img class="check me-3" src={checkbox} alt="img" />
+                  </div>
+                  <div class="col-sm">
+                  Penerimaan invoice praktis dengan satu aplikasi mobile. Lengkap dengan detail dari invoice yang dapat disimpan.
+                  </div>
+                </div>
               </li>
-              <li class="list-item ms-3">
-              <img class="check me-3" src={checkbox} alt="img" />
-              Notifikasi pembayaran sehingga tidak ada lagi pembayaran invoice yang terlewat ataupun menunggak
+              <li class="list-item ms-3 mb-3">
+                <div class="row">
+                  <div class="col-sm-1">
+                    <img class="check me-3" src={checkbox} alt="img" />
+                  </div>
+                  <div class="col-sm">
+                  Notifikasi pembayaran sehingga tidak ada lagi pembayaran invoice yang terlewat ataupun menunggak.
+                  </div>
+                </div>
               </li>
-              <li class="list-item ms-3">
-              <img class="check me-3" src={checkbox} alt="img" />
-              Fleksibel dengan opsi pembayaran menggunakan berbagai platform hingga payment gateway
+              <li class="list-item ms-3 mb-3">
+                <div class="row">
+                  <div class="col-sm-1">
+                    <img class="check me-3" src={checkbox} alt="img" />
+                  </div>
+                  <div class="col-sm">
+                  Fleksibel dengan opsi pembayaran menggunakan berbagai platform hingga payment gateway.
+                  </div>
+                </div>
               </li>
             </ul>
-            <button class="download button-lg-primary">Download Sekarang</button>
+            <button class="download button-lg-primary">
+              Download Sekarang
+            </button>
           </div>
-          
         </div>
       </div>
 
