@@ -1,6 +1,6 @@
 import React from "react";
 
-import Image1 from '../../assets/image/image1.png'
+import Image1 from "../../assets/image/image1.png";
 
 const Home = () => {
   return (
@@ -17,15 +17,14 @@ const Home = () => {
           <button class="button-lg-primary">Coba Gratis</button>
         </div>
         <div class="col-md-5">
-          <div class="box1"></div>
-          <img class="my-image1 ms-5 ps-2" src={Image1} alt="Logo" />
+          <div class="box1">
+            <img class="my-image1 ms-5 ps-2" src={Image1} alt="Logo" />
+          </div>
         </div>
-
       </div>
-
       <div class="section-title1 text-center pt-5">
         <h1 class="font1">Ratusan bisnis telah menggunakan MyINVOICE </h1>
-          </div>
+      </div>
     </div>
   );
 };

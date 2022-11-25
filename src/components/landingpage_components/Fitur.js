@@ -13,7 +13,10 @@ const Fitur = () => {
       <div className="fitur">
         <div className="container" data-aos="fade-up">
           <div className="section-title text-center pt-5">
-            <h1 className="font2"> Lebih efisien dengan menggunakan MyINVOICE </h1>
+            <h1 className="font2">
+              {" "}
+              Lebih efisien dengan menggunakan MyINVOICE{" "}
+            </h1>
             <p className="separator">
               {" "}
               MyINVOICE menyediakan fitur-fitur komprehensif yang memudahkan
@@ -71,16 +74,18 @@ const Fitur = () => {
       <div className="container py-5">
         <div className="row">
           <div className="col-lg-6 md-6">
-            <h1 className="text5">Praktis dengan berbagai fitur untuk penagihan</h1>
+            <h1 className="text5">
+              Praktis dengan berbagai fitur untuk penagihan
+            </h1>
             <ul className="list-group">
               <li className="list-item ms-3 mb-3">
                 <div className="row">
                   <div className="col-sm-1">
                     <img className="check me-3" src={checkbox} alt="img" />
                   </div>
-                  <div className="col-sm">
-                    Penagihan praktis dari satu dasbor dengan fitur email atau link
-                    faktur. Lengkap dengan pesan yang bisa dimodifikasi.
+                  <div className="item-text col-sm">
+                    Penagihan praktis dari satu dasbor dengan fitur email atau
+                    link faktur. Lengkap dengan pesan yang bisa dimodifikasi.
                   </div>
                 </div>
               </li>
@@ -89,9 +94,9 @@ const Fitur = () => {
                   <div className="col-sm-1">
                     <img className="check me-3" src={checkbox} alt="img" />
                   </div>
-                  <div className="col-sm">
-                    Kirim tepat waktu dengan menjadwalkan pengiriman invoice secara
-                    otomatis maupun berulang.
+                  <div className="item-text col-sm">
+                    Kirim tepat waktu dengan menjadwalkan pengiriman invoice
+                    secara otomatis maupun berulang.
                   </div>
                 </div>
               </li>
@@ -100,9 +105,9 @@ const Fitur = () => {
                   <div className="col-sm-1">
                     <img className="check me-3" src={checkbox} alt="img" />
                   </div>
-                  <div className="col-sm">
-                  Fleksibel dengan opsi pembayaran menggunakan berbagai platform
-                hingga payment gateway
+                  <div className="item-text col-sm">
+                    Fleksibel dengan opsi pembayaran menggunakan berbagai
+                    platform hingga payment gateway
                   </div>
                 </div>
               </li>
@@ -116,28 +121,52 @@ const Fitur = () => {
 
       <div className="container py-5">
         <div className="row">
-        <div className="col-lg-6 md-5">
+          <div className="col-lg-6 md-5">
             <img className="my-image4 ms-5 mt-5" src={hp} alt="project" />
           </div>
           <div className="col-lg-6 md-6">
-            <h1 className="text6">Terima invoie mudah dengan MyINVOICE mobile</h1>
+            <h1 className="text6">
+              Terima invoie mudah dengan MyINVOICE mobile
+            </h1>
             <ul className="list-group">
-              <li className="list-item ms-3">
-              <img className="check me-3" src={checkbox} alt="img" />
-              Penerimaan invoice praktis dengan satu aplikasi mobile. Lengkap dengan detail dari invoice yang dapat disimpan
+              <li className="list-item ms-3 mb-3">
+                <div className="row">
+                  <div className="col-sm-1">
+                    <img className="check me-3" src={checkbox} alt="img" />
+                  </div>
+                  <div className="item-text col-sm">
+                    Penerimaan invoice praktis dengan satu aplikasi mobile.
+                    Lengkap dengan detail dari invoice yang dapat disimpan
+                  </div>
+                </div>
               </li>
-              <li className="list-item ms-3">
-              <img className="check me-3" src={checkbox} alt="img" />
-              Notifikasi pembayaran sehingga tidak ada lagi pembayaran invoice yang terlewat ataupun menunggak
+              <li className="list-item ms-3 mb-3">
+                <div className="row">
+                  <div className="col-sm-1">
+                    <img className="check me-3" src={checkbox} alt="img" />
+                  </div>
+                  <div className="item-text col-sm">
+                    Notifikasi pembayaran sehingga tidak ada lagi pembayaran
+                    invoice yang terlewat ataupun menunggak
+                  </div>
+                </div>
               </li>
-              <li className="list-item ms-3">
-              <img className="check me-3" src={checkbox} alt="img" />
-              Fleksibel dengan opsi pembayaran menggunakan berbagai platform hingga payment gateway
+              <li className="list-item ms-3 mb-3">
+                <div className="row">
+                  <div className="col-sm-1">
+                    <img className="check me-3" src={checkbox} alt="img" />
+                  </div>
+                  <div className="item-text col-sm">
+                    Fleksibel dengan opsi pembayaran menggunakan berbagai
+                    platform hingga payment gateway
+                  </div>
+                </div>
               </li>
             </ul>
-            <button className="download button-lg-primary">Download Sekarang</button>
+            <button className="download button-lg-primary">
+              Download Sekarang
+            </button>
           </div>
-          
         </div>
       </div>
 

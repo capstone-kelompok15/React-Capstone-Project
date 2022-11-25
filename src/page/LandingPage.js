@@ -1,18 +1,20 @@
-import React from 'react'
-import Navbar from "../components/landingpage_components/Navbar";
-import Home from "../components/landingpage_components/Home";
-import Fitur from "../components/landingpage_components/Fitur";
-import Footer from '../components/landingpage_components/Footer';
+import React from "react";
+import {
+  Navbar,
+  Home,
+  Fitur,
+  Footer,
+} from "../components/landingpage_components";
 
 const LandingPage = () => {
   return (
-    <div>
-        <Navbar />
-        <Home />
-        <Fitur />
-        <Footer/>
-    </div>
-  )
-}
+    <>
+      <Navbar />
+      <Home />
+      <Fitur />
+      <Footer />
+    </>
+  );
+};
 
-export default LandingPage
+export default LandingPage;
