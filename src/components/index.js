@@ -1,5 +1,5 @@
 import Navbar from "./Navbar";
 import Home from "./Home";
-import Fitur from "./Fitur";
+import Footer from "./Footer";
 
-export { Navbar, Home, Fitur };
+export { Navbar, Home, Footer };

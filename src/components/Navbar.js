@@ -9,9 +9,9 @@ const Navbar = () => {
           <img
             src={Symbol}
             alt="Logo"
-            width="33"
-            height="33"
-            class="d-inline-block align-text-top me-2"
+            width="32"
+            height="32"
+            class="img-fluid me-2"
           />
           My<span class="span-invoice">INVOICE</span>
         </a>
