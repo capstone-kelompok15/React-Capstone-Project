@@ -22,7 +22,7 @@ const Fitur = () => {
           </div>
         </div>
 
-        <div class="container pb-5">
+        <div class="container pb-5 d-flex justify-content-center">
           <div class="row">
             <div
               class="col-md-6 col-lg-4"
