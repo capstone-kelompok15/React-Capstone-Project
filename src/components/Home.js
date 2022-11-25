@@ -1,26 +1,24 @@
 import React from "react";
-import Image1 from "../assets/image/Image1.png";
-import Image2 from "../assets/image/Image2.png";
 
 const Home = () => {
   return (
     <div class="container py-5">
       <div class="row">
-        <div class="col-md-auto">
+        <div class="col-md-6">
           <p class="text1">Kirim invoice lebih cepat dan mudah</p>
           <h1 class="text2">Software Invoice Untuk Semua Jenis Bisnis</h1>
-          <p class="text3"> 
+          <p class="text3">
             MyINVOICE merupakan software online yang berguna untuk membantu
             usahamu untuk membuat invoice, mengirim notifikasi pembayaran, serta
             menerima pembayaran dengan lebih cepat dan mudah!
           </p>
-
           <button class="button-lg-primary">Coba Gratis</button>
         </div>
         <div class="col-md-5">
           <img class="my-image2 ms-5 ps-2" src={Image2} alt="Logo" />
           <img class="my-image1 ms-5 ps-2" src={Image1} alt="Logo" />
         </div>
+
       </div>
 
       <div class="section-title1 text-center pt-5">
