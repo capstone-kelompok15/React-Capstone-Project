@@ -1,5 +1,7 @@
 import React from 'react'
-import { Navbar, Home, Fitur } from "../components";
+import Navbar from "../components/Navbar";
+import Home from "../components/Home";
+import Fitur from "../components/Fitur";
 
 const LandingPage = () => {
   return (

@@ -9,7 +9,7 @@ import hp from "../assets/image/hp.png";
 const Fitur = () => {
   return (
     <div>
-      <section id="get-started" class="padd-section text-center" />
+      <section id="fiturr" class="padd-section text-center" />
       <div class="fitur">
         <div class="container" data-aos="fade-up">
           <div class="section-title text-center pt-5">

@@ -3,7 +3,7 @@ import Symbol from "../assets/image/Symbol.png";
 
 const Navbar = () => {
   return (
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar sticky-top navbar-expand-lg bg-light">
       <div class="container">
         <a class="navbar-brand" href="/">
           <img
@@ -34,7 +34,7 @@ const Navbar = () => {
               </a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="#fiturr">
                 Fitur
               </a>
             </li>
