@@ -2,7 +2,7 @@ import React from 'react'
 
 const Harga = () => {
   return (
-    <div>Harga</div>
+    <div>Harga 1</div>
   )
 }
 
