@@ -3,20 +3,20 @@ import Symbol from "../../assets/image/Symbol.png";
 
 const Navbar = () => {
   return (
-    <nav class="navbar sticky-top navbar-expand-lg bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="/">
+    <nav className="navbar sticky-top navbar-expand-lg bg-light">
+      <div className="container">
+        <a className="navbar-brand" href="/">
           <img
             src={Symbol}
             alt="Logo"
             width="32"
             height="32"
-            class="img-fluid me-2"
+            className="img-fluid me-2"
           />
-          My<span class="span-invoice">INVOICE</span>
+          My<span className="span-invoice">INVOICE</span>
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -24,32 +24,32 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item mx-3">
-              <a class="nav-link active" aria-current="page" href="/">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav mx-auto">
+            <li className="nav-item mx-3">
+              <a className="nav-link active" aria-current="page" href="/">
                 Home
               </a>
             </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#fitur">
+            <li className="nav-item mx-3">
+              <a className="nav-link" href="#fitur">
                 Fitur
               </a>
             </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="/">
+            <li className="nav-item mx-3">
+              <a className="nav-link" href="/">
                 Testimoni
               </a>
             </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="/">
+            <li className="nav-item mx-3">
+              <a className="nav-link" href="/">
                 Harga
               </a>
             </li>
           </ul>
-          <button class="button-primary">Coba Gratis</button>
+          <button className="button-primary">Coba Gratis</button>
         </div>
       </div>
     </nav>

@@ -3,6 +3,7 @@ import {
   Navbar,
   Home,
   Fitur,
+  Testimoni,
   Footer,
 } from "../components/landingpage_components";
 
@@ -12,6 +13,7 @@ const LandingPage = () => {
       <Navbar />
       <Home />
       <Fitur />
+      <Testimoni />
       <Footer />
     </>
   );
