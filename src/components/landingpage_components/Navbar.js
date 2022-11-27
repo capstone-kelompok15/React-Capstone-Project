@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Symbol from "../../assets/image/Symbol.png";
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
+  const cobaGratisOnClick = () => {
+    navigate('/login');
+  }
+
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-light">
       <div className="container">
@@ -49,7 +57,7 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <button className="button-primary">Coba Gratis</button>
+          <button class="button-primary" onClick={cobaGratisOnClick}>Coba Gratis</button>
         </div>
       </div>
     </nav>
