@@ -5,7 +5,7 @@ import {
   Fitur,
   Testimoni,
   Footer,
-} from "../components/landingpage_components";
+} from "../components/landingPage";
 
 const LandingPage = () => {
   return (

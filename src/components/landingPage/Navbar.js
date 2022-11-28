@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const cobaGratisOnClick = () => {
-    navigate('/login');
+    navigate('/register');
   }
 
   return (
