@@ -71,7 +71,7 @@ const Fitur = () => {
         </div>
       </div>
 
-      <div className="container py-5">
+      <div className="container py-5 pb-5">
         <div className="row">
           <div className="col-lg-6 md-6">
             <h1 className="text5">
@@ -119,7 +119,7 @@ const Fitur = () => {
         </div>
       </div>
 
-      <div className="container py-5">
+      <div className="container py-5 mb-5">
         <div className="row">
           <div className="col-lg-6 md-5">
             <img className="my-image4 ms-5 mt-5" src={hp} alt="project" />

@@ -6,7 +6,7 @@ import {
   Testimoni,
   Harga,
   Footer,
-} from "../components/landingpage_components";
+} from "../components/landingPage";
 
 const LandingPage = () => {
   return (
