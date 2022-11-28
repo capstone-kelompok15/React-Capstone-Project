@@ -2,6 +2,7 @@ import React from "react";
 import checkbox from "../../assets/image/checkboxfix.png";
 import crossbox from "../../assets/image/crossboxfix.png";
 
+
 const Hargaa = () => {
   return (
     <div id="harga">

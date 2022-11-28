@@ -13,7 +13,7 @@ const Testimoni = () => {
         </div>
       </div>
       <div className="row">
-        <div className="testi pt-5 pb-5">
+        <div className="testi pt-5 pb-5 ms-5">
         <div className="text-testimoni col-6 offset-1">
         <div className="person">
           <img src={Person} alt="Person" className="img-fluid img-testimoni" />
