@@ -132,13 +132,38 @@
 }
 
 .font1 {
+  font-weight: 600;
   font-size: 32px;
+  line-height: 54px;
+  color: #404040;
 }
+
+.logo2 {
+  position: relative;
+  width: 50px;
+  height: 40px;
+}
+
+.logo3 {
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+.bisnis {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* fitur */
 
 .font2 {
   margin-left: 300px;
   margin-right: 300px;
+  font-weight: 600;
   font-size: 32px;
+  line-height: 54px;
+  color: #404040;
 }
 
 .separator {
@@ -256,7 +281,7 @@
 
 .img-testimoni {
   filter: drop-shadow(0px 4px 8px rgba(14, 31, 53, 0.16));
-  border-radius: 8px;
+  border-radius: 10px;
   flex: none;
   order: 2;
   flex-grow: 0;
@@ -272,7 +297,7 @@
   margin-left: 200px;
   margin-right: 200px;
   font-weight: 600;
-  font-size: 36px;
+  font-size: 32px;
   line-height: 54px;
   color: #404040;
 }
@@ -322,6 +347,126 @@
   padding-left: 130px;
   margin-bottom: 100px;
 }
+
+
+/* harga */
+
+.font2 {
+  margin-left: 300px;
+  margin-right: 300px;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 54px;
+  color: #404040;
+}
+
+.separator {
+  font-size: 13px;
+  margin-top: 20px;
+  margin-left: 350px;
+  margin-right: 350px;
+  margin-bottom: 50px;
+  color: #404040;
+}
+
+.price-block {
+  text-align: center;
+  font-size: small;
+  padding: 10px;
+  height: 550px;
+  width: 350px;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 3px 3px 3px #8a8989;
+}
+
+.fitur {
+  background-color: #eaf0fa !important;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.item-text {
+  font-weight: 600;
+  font-size: 20px;
+  color: #404040;
+}
+.text13 {
+  padding-top: 20px;
+  font-size: 20px;
+  color: #5887da;
+  font-size: 18px;
+}
+
+.text15 {
+  font-size: 14px;
+}
+
+.text16 {
+  font-size: 18px;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.bgcolor {
+  position: relative;
+  background-color: #5887da;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 30px;
+  border-radius: 8px;
+  left: 120px;
+}
+
+.text17 {
+  color: #f7f7f7;
+  font-size: 16px;
+}
+
+.check2 {
+  height: 25px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+.check3 {
+  height: 25px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+.paket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 60px;
+}
+
+.price-block {
+  transition: all 0.3s ease;
+}
+
+.price-block:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.5);
+}
+
+.paket {
+  transition: all 0.3s ease;
+}
+
+.paket:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.5);
+}
+
 
 /* footer */
 

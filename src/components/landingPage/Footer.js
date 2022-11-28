@@ -11,6 +11,7 @@ const Footer = () => {
       <div className="container my-auto">
         <div className="row">
           <div className="img-footer col-12 text-center">
+          <a className="navbar-brand" href="/">
             <img
               src={Symbol1}
               alt="Logo"
@@ -19,6 +20,7 @@ const Footer = () => {
               className="img-fluid me-2"
             />
             My<span className="spanfooter">INVOICE</span>
+            </a>
           </div>
         </div>
         <div className="row my-5">

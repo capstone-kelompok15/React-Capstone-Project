@@ -11,7 +11,7 @@ const Fitur = () => {
     <div id="fitur">
       <section id="get-started" className="padd-section text-center" />
       <div className="fitur">
-        <div className="container" data-aos="fade-up">
+        <div className="container">
           <div className="section-title text-center pt-5">
             <h1 className="font2">
               {" "}

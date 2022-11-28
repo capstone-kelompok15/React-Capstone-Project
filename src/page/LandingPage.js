@@ -4,6 +4,7 @@ import {
   Home,
   Fitur,
   Testimoni,
+  Hargaa,
   Footer,
 } from "../components/landingPage";
 
@@ -14,6 +15,7 @@ const LandingPage = () => {
       <Home />
       <Fitur />
       <Testimoni />
+      <Hargaa />
       <Footer />
     </>
   );
