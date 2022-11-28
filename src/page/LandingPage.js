@@ -4,7 +4,7 @@ import {
   Home,
   Fitur,
   Footer,
-} from "../components/landingpage_components";
+} from "../components/landingPage";
 
 const LandingPage = () => {
   return (

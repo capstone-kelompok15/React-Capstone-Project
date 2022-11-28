@@ -354,3 +354,24 @@ border: 1px solid #CDCDCD;
 .not-registered span:hover{
   color: #2d60c0;
 }
+
+.login-carousel-title{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+  text-align: center;
+  color: white;
+  margin: 20px;
+  max-width: 400px;
+}
+
+.login-carousel-subtitle{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  max-width: 250px;
+}
