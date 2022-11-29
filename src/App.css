@@ -557,6 +557,16 @@
   color: #2d60c0;
 }
 
+.login-copyright{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #999999;
+}
+
 .login-carousel-title{
   font-style: normal;
   font-weight: 700;
