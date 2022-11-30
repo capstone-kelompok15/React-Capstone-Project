@@ -1,10 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Symbol from "../../assets/image/Symbol.png";
+import { activeNavItem } from "../../redux/reducers/navbarSlice";
 
 const Navbar = () => {
 
   const navigate = useNavigate();
+
+  const currentActiveNavItem = useSelector(activeNavItem);
 
   const cobaGratisOnClick = () => {
     navigate('/register');
@@ -37,22 +41,22 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item mx-3">
-              <a className="nav-link active" aria-current="page" href="/">
+              <a className={`nav-link ${currentActiveNavItem === 'home' ? 'active' : ''}`} aria-current="page" href="#home">
                 Home
               </a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" href="#fitur">
+              <a className={`nav-link ${currentActiveNavItem === 'fitur' ? 'active' : ''}`} href="#fitur">
                 Fitur
               </a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" href="#testimoni">
+              <a className={`nav-link ${currentActiveNavItem === 'testimoni' ? 'active' : ''}`} href="#testimoni">
                 Testimoni
               </a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" href="#harga">
+              <a className={`nav-link ${currentActiveNavItem === 'harga' ? 'active' : ''}`} href="#harga">
                 Harga
               </a>
             </li>
