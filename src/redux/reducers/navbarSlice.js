@@ -8,7 +8,7 @@ const navbarSlice = createSlice({
     reducers: {
         handleActivatedNavItem: (state, event) => {
             const scrollY = event.payload;
-            if(scrollY < 1200){
+            if(scrollY < 1150){
                 state.activeNavItem = 'home'
             }
             else if(scrollY < 3200){
