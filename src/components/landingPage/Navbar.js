@@ -14,6 +14,13 @@ const Navbar = () => {
     navigate('/register');
   }
 
+  const navItemOnClick = (px) => {
+    window.scrollTo({
+      top: px,
+      behavior: "auto"
+    })
+  }
+
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-light">
       <div className="container">
@@ -41,24 +48,24 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item mx-3">
-              <a className={`nav-link ${currentActiveNavItem === 'home' ? 'active' : ''}`} aria-current="page" href="#home">
+              <div className={`nav-link ${currentActiveNavItem === 'home' ? 'active' : ''}`} aria-current="page" onClick={() => navItemOnClick(0)}>
                 Home
-              </a>
+              </div>
             </li>
             <li className="nav-item mx-3">
-              <a className={`nav-link ${currentActiveNavItem === 'fitur' ? 'active' : ''}`} href="#fitur">
+              <div className={`nav-link ${currentActiveNavItem === 'fitur' ? 'active' : ''}`} onClick={() => navItemOnClick(1180)}>
                 Fitur
-              </a>
+              </div>
             </li>
             <li className="nav-item mx-3">
-              <a className={`nav-link ${currentActiveNavItem === 'testimoni' ? 'active' : ''}`} href="#testimoni">
+              <div className={`nav-link ${currentActiveNavItem === 'testimoni' ? 'active' : ''}`} onClick={() => navItemOnClick(3300)}>
                 Testimoni
-              </a>
+              </div>
             </li>
             <li className="nav-item mx-3">
-              <a className={`nav-link ${currentActiveNavItem === 'harga' ? 'active' : ''}`} href="#harga">
+              <div className={`nav-link ${currentActiveNavItem === 'harga' ? 'active' : ''}`} onClick={() => navItemOnClick(3950)}>
                 Harga
-              </a>
+              </div>
             </li>
           </ul>
           <button class="button-primary" onClick={cobaGratisOnClick}>Coba Gratis</button>
