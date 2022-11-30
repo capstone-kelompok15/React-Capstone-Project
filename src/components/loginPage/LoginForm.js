@@ -8,6 +8,10 @@ const LoginForm = () => {
         navigate('/register')
     }
 
+    const toDashboardOnClick = () => {
+      navigate('/dashboard');
+    }
+
     return(
         <>
             <Form>
@@ -25,7 +29,7 @@ const LoginForm = () => {
                     </div>
                 </div>
             </Form>
-            <div className="button-primary d-flex justify-content-center mt-5">Login</div>
+            <div className="button-primary d-flex justify-content-center mt-5"> <span onClick={toDashboardOnClick}></span> Login</div>
             <div className="mt-4 not-registered">Not registered yet? <span onClick={toRegisterOnClick}>Create an account</span></div>
         </>
     );
