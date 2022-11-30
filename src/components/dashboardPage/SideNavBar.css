@@ -72,9 +72,15 @@
   }
   
   .navbar-brand2{
+	  display: flex;
+	  flex-direction: row;
+	  align-items: center;
+	  justify-content: center;
 	  font-weight: 700;
 	  font-size: 24px;
 	  color: #404040;
+	  margin-top: 20px;
+	  margin-bottom: 60px;
   }
 
   .nav-item2 {
@@ -106,7 +112,7 @@
 	background-color: #173468;
   }
 
-  .nav-item2-name:hover {
+  .nav-item2:hover {
 	color: #FFFFFF;
 	background-color: #173468;
   }
