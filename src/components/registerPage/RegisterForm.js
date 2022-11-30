@@ -13,7 +13,19 @@ import { Form } from "react-bootstrap";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const REGISTER_FORM_BASE_DATA = {
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+    merchantName: '',
+    merchantAddress: '',
+    bankAccount: '',
+    bankAccountNumber: '',
+}
+
 const RegisterForm = () => {
+    const [registerFormData, setRegisterFormData] = useState(REGISTER_FORM_BASE_DATA);
     const [swiperState, setSwiperState] = useState();
     const [currentIndex, setCurrentIndex] = useState(0);
     const navigate = useNavigate();
@@ -24,6 +36,16 @@ const RegisterForm = () => {
 
     const toLoginOnClick = () => {
         navigate('/login');
+    }
+    
+    const onChange = e => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        setRegisterFormData(prev => ({
+            ...prev,
+            [name]: value
+        }))
     }
 
     return(
@@ -46,19 +68,19 @@ const RegisterForm = () => {
                     <Form>
                         <Form.Group className="mt-4" style={{width: '400px'}}>
                             <Form.Label>Email</Form.Label>
-                            <Form.Control name="email" type="email" placeholder="example@gmail.com" />
+                            <Form.Control name="email" type="email" placeholder="example@gmail.com" value={registerFormData.email} onChange={onChange} />
                         </Form.Group>
                         <Form.Group className="mt-4">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control name='username' type="text" placeholder="e.g Alvin Wiraprathama" />
+                            <Form.Control name='username' type="text" placeholder="e.g Alvin Wiraprathama" value={registerFormData.username} onChange={onChange} />
                         </Form.Group>
                         <Form.Group className="mt-4">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control name='password' type="password" placeholder="********" />
+                            <Form.Control name='password' type="password" placeholder="********" value={registerFormData.password} onChange={onChange} />
                         </Form.Group>
                         <Form.Group className="mt-4">
                             <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control name='confirmPassword' type="password" placeholder="********" />
+                            <Form.Control name='confirmPassword' type="password" placeholder="********" value={registerFormData.confirmPassword} onChange={onChange} />
                         </Form.Group>
                     </Form>
                 </SwiperSlide>
@@ -68,22 +90,22 @@ const RegisterForm = () => {
                     <Form>
                         <Form.Group className="mt-4" style={{width: '400px'}}>
                             <Form.Label>Merchant Name</Form.Label>
-                            <Form.Control name="merchantName" type="text" placeholder="e.g Toko Sejahtera" />
+                            <Form.Control name="merchantName" type="text" placeholder="e.g Toko Sejahtera" value={registerFormData.merchantName} onChange={onChange} />
                         </Form.Group>
                         <Form.Group className="mt-4">
                             <Form.Label>Merchant Address</Form.Label>
-                            <Form.Control name='merchantAddress' type="text" placeholder="e.g Jalan Sumatra no 2" />
+                            <Form.Control name='merchantAddress' type="text" placeholder="e.g Jalan Sumatra no 2" value={registerFormData.merchantAddress} onChange={onChange} />
                         </Form.Group>
                         <Form.Group className="mt-4">
                             <Form.Label>Choose bank account for your store</Form.Label>
-                            <Form.Select name='bankAccount'>
+                            <Form.Select name='bankAccount' value={registerFormData.bankAccount} onChange={onChange}>
                                 <option value={''}>Choose Bank</option>
                                 <option value={'bri'}>Bri</option>
                             </Form.Select>
                         </Form.Group>
                         <Form.Group className="mt-4">
                             <Form.Label>Bank Account Number</Form.Label>
-                            <Form.Control name='bankAccountNumber' type="text" placeholder="16721234122" />
+                            <Form.Control name='bankAccountNumber' type="text" placeholder="16721234122" value={registerFormData.bankAccountNumber} onChange={onChange} />
                         </Form.Group>
                     </Form>
                 </SwiperSlide>
