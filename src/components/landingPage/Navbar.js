@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-light">
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" href="#home">
           <img
             src={Symbol}
             alt="Logo"

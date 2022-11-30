@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container my-auto">
         <div className="row">
           <div className="img-footer col-12 text-center">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="#home">
             <img
               src={Symbol1}
               alt="Logo"
