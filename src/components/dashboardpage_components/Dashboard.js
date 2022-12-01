@@ -8,18 +8,13 @@ import customer from "../../assets/image/customer.png"
 import profile from "../../assets/image/profile.png"
 
 const Dashboard = () => {
-  const [show, setShow] = useState(false);
 
   return (
-	
-    <main className={show ? 'space-toggle' : null}>
-      <header className={`header ${show ? 'space-toggle' : null}`}>
-        <div className='header-toggle' onClick={() => setShow(!show)}>
-          <i className={`fas fa-bars ${show ? 'fa-solid fa-xmark' : null}`}></i>
-        </div>
+    <main className="main">
+      <header className='header'>
       </header>
 
-      <aside className={`sidebar ${show ? 'show' : null}`}>
+      <aside className="sidebar">
         <nav className='nav'>
           <div>
             <a href='/' className='navbar-brand2'>
@@ -34,37 +29,54 @@ const Dashboard = () => {
             </a>
 
             <div className='nav-list'>
+              <div className='nav-items'>
               <a href='#' className='nav-item2 active2'>
 			  <img className="logo4 ms-5 ps-2 me-2" src={dashboard} alt="Logo" />
                 <span className='nav-item2-name'>Dashboard</span>
               </a>
+              </div>
+
+              <div className='nav-items'>
               <a href='#' className='nav-item2'>
 			  <img className="logo4 ms-5 ps-2 me-2" src={invoice} alt="Logo" />
                 <span className='nav-item2-name'>Invoices</span>
               </a>
+              </div>
+
+              <div className='nav-items'>
               <a href='#' className='nav-item2'>
 			  <img className="logo4 ms-5 ps-2 me-2" src={payment} alt="Logo" />
                 <span className='nav-item2-name'>Payments</span>
               </a>
+              </div>
+
+              <div className='nav-items'>
               <a href='#' className='nav-item2'>
 			  <img className="logo4 ms-5 ps-2 me-2" src={customer} alt="Logo" />
                 <span className='nav-item2-name'>Customer</span>
               </a>
+              </div>
+
+              <div className='nav-items'>
 			  <a href='#' className='nav-item2'>
 			  <img className="logo4 ms-5 ps-2 me-2" src={profile} alt="Logo" />
                 <span className='nav-item2-name'>Profile</span>
               </a>
+              </div>
             </div>
           </div>
 
-          <a href='#' className='nav-item2'>
-            <span className='nav-item2-name'>Logout</span>
+          <div className='nav-item3'>
+          <a href='#' className='nav-item4'>
+            <span className='nav-item3-name'>Logout</span>
           </a>
+          </div>
         </nav>
       </aside>
 
-      <h1>Content</h1>
+      <h1 className='text19'>Dashboard</h1>
     </main>
+  
   );
 };
 

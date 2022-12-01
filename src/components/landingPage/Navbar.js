@@ -1,13 +1,24 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Symbol from "../../assets/image/Symbol.png";
+import { activeNavItem } from "../../redux/reducers/navbarSlice";
 
 const Navbar = () => {
 
   const navigate = useNavigate();
 
+  const currentActiveNavItem = useSelector(activeNavItem);
+
   const cobaGratisOnClick = () => {
     navigate('/register');
+  }
+
+  const navItemOnClick = (px) => {
+    window.scrollTo({
+      top: px,
+      behavior: "auto"
+    })
   }
 
   return (
@@ -37,24 +48,24 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item mx-3">
-              <a className="nav-link active" aria-current="page" href="/">
+              <div className={`nav-link ${currentActiveNavItem === 'home' ? 'active' : ''}`} aria-current="page" onClick={() => navItemOnClick(0)}>
                 Home
-              </a>
+              </div>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" href="#fitur">
+              <div className={`nav-link ${currentActiveNavItem === 'fitur' ? 'active' : ''}`} onClick={() => navItemOnClick(1180)}>
                 Fitur
-              </a>
+              </div>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" href="#testimoni">
+              <div className={`nav-link ${currentActiveNavItem === 'testimoni' ? 'active' : ''}`} onClick={() => navItemOnClick(3300)}>
                 Testimoni
-              </a>
+              </div>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" href="#harga">
+              <div className={`nav-link ${currentActiveNavItem === 'harga' ? 'active' : ''}`} onClick={() => navItemOnClick(3950)}>
                 Harga
-              </a>
+              </div>
             </li>
           </ul>
           <button class="button-primary" onClick={cobaGratisOnClick}>Coba Gratis</button>
