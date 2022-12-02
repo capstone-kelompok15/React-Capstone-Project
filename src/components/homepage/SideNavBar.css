@@ -111,18 +111,15 @@
 	margin: 0px 20px 10px;
 	cursor: pointer;
 	border-radius: 6px;
+	background-color: #173468;
+	color: white;
   }
 
   .nav-item2:hover{
 	background-color: #EAF0FA;
   }
 
-  .active2{
-	background-color: #173468;
-	color: white;
-  }
-
-  .active2 img{
+  .nav-item2-active img{
 	filter: brightness(0) invert(1);
   }
 

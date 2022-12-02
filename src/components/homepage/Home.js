@@ -32,32 +32,32 @@ const Dashboard = () => {
 
             <div className='nav-list'>
 
-              <NavLink to='/home/dashboard' className={`${location.pathname.includes('dashboard') ? 'nav-item2-active active2' : 'nav-item2'}`}>
-			          <img className="logo4 ms-3 ps-2 me-2" src={dashboard} alt="Logo" />
+              <NavLink to='/home/dashboard' className={`${location.pathname.includes('dashboard') ? 'nav-item2-active' : 'nav-item2'}`}>
+			          <img className="logo4 ms-3 ps-2 me-1" src={dashboard} alt="Logo" />
                 Dashboard
               </NavLink>
 
               
-              <NavLink to='/home/invoices' className={`${location.pathname.includes('invoices') ? 'nav-item2-active active2' : 'nav-item2'}`}>
-			          <img className="logo4 ms-3 ps-2 me-2" src={invoice} alt="Logo" />
+              <NavLink to='/home/invoices' className={`${location.pathname.includes('invoices') ? 'nav-item2-active' : 'nav-item2'}`}>
+			          <img className="logo4 ms-3 ps-2 me-1" src={invoice} alt="Logo" />
                 Invoices
               </NavLink>
 
               
-              <NavLink to='/home/payments' className={`${location.pathname.includes('payments') ? 'nav-item2-active active2' : 'nav-item2'}`}>
-			          <img className="logo4 ms-3 ps-2 me-2" src={payment} alt="Logo" />
+              <NavLink to='/home/payments' className={`${location.pathname.includes('payments') ? 'nav-item2-active' : 'nav-item2'}`}>
+			          <img className="logo4 ms-3 ps-2 me-1" src={payment} alt="Logo" />
                 Payments
               </NavLink>
 
               
-              <NavLink to='/home/costumer' className={`${location.pathname.includes('costumer') ? 'nav-item2-active active2' : 'nav-item2'}`}>
-			          <img className="logo4 ms-3 ps-2 me-2" src={customer} alt="Logo" />
+              <NavLink to='/home/costumer' className={`${location.pathname.includes('costumer') ? 'nav-item2-active' : 'nav-item2'}`}>
+			          <img className="logo4 ms-3 ps-2 me-1" src={customer} alt="Logo" />
                 Customer
               </NavLink>
 
               
-			        <NavLink to='/home/profile' className={`${location.pathname.includes('profile') ? 'nav-item2-active active2' : 'nav-item2'}`}>
-			          <img className="logo4 ms-3 ps-2 me-2" src={profile} alt="Logo" />
+			        <NavLink to='/home/profile' className={`${location.pathname.includes('profile') ? 'nav-item2-active' : 'nav-item2'}`}>
+			          <img className="logo4 ms-3 ps-2 me-1" src={profile} alt="Logo" />
                 Profile
               </NavLink>
             </div>
