@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import Symbol from "../../assets/image/Symbol.png";
 import './SideNavBar.css';
 import dashboard from "../../assets/image/dashboard.png"
