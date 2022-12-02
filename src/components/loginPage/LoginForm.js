@@ -27,7 +27,7 @@ const LoginForm = () => {
     }
 
     const toDashboardOnClick = () => {
-        navigate('/dashboard')
+        navigate('/home/dashboard')
     }
 
     return(
