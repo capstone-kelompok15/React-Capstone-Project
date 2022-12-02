@@ -97,6 +97,7 @@
 	margin: 0px 20px 10px;
 	color: #173468;
 	cursor: pointer;
+	border-radius: 6px;
   }
 
   .nav-item2-active{
@@ -109,6 +110,7 @@
 	transition: 0.5s;
 	margin: 0px 20px 10px;
 	cursor: pointer;
+	border-radius: 6px;
   }
 
   .nav-item2:hover{
