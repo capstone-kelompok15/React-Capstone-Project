@@ -99,6 +99,18 @@
 	cursor: pointer;
   }
 
+  .nav-item2-active{
+	display: grid;
+	grid-template-columns: max-content max-content;
+	column-gap: 0;
+	padding: 0.5rem;
+	display: flex;
+	position: relative;
+	transition: 0.5s;
+	margin: 0px 20px 10px;
+	cursor: pointer;
+  }
+
   .nav-item2:hover{
 	background-color: #EAF0FA;
   }

@@ -10,11 +10,6 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 const Dashboard = () => {
   const location = useLocation();
-  const [currentPath, setCurrentPath] = useState('');
-
-  useEffect(() => {
-    setCurrentPath(location.pathname)
-  }, [location]);
 
   return (
     <main className="main">
@@ -37,31 +32,31 @@ const Dashboard = () => {
 
             <div className='nav-list'>
 
-              <NavLink to='/home/dashboard' className={`nav-item2 ${currentPath.includes('dashboard') ? 'active2' : ''}`}>
+              <NavLink to='/home/dashboard' className={`${location.pathname.includes('dashboard') ? 'nav-item2-active active2' : 'nav-item2'}`}>
 			          <img className="logo4 ms-3 ps-2 me-2" src={dashboard} alt="Logo" />
                 Dashboard
               </NavLink>
 
               
-              <NavLink to='/home/invoices' className={`nav-item2 ${currentPath.includes('invoices') ? 'active2' : ''}`}>
+              <NavLink to='/home/invoices' className={`${location.pathname.includes('invoices') ? 'nav-item2-active active2' : 'nav-item2'}`}>
 			          <img className="logo4 ms-3 ps-2 me-2" src={invoice} alt="Logo" />
                 Invoices
               </NavLink>
 
               
-              <NavLink to='/home/payments' className={`nav-item2 ${currentPath.includes('payments') ? 'active2' : ''}`}>
+              <NavLink to='/home/payments' className={`${location.pathname.includes('payments') ? 'nav-item2-active active2' : 'nav-item2'}`}>
 			          <img className="logo4 ms-3 ps-2 me-2" src={payment} alt="Logo" />
                 Payments
               </NavLink>
 
               
-              <NavLink to='/home/costumer' className={`nav-item2 ${currentPath.includes('costumer') ? 'active2' : ''}`}>
+              <NavLink to='/home/costumer' className={`${location.pathname.includes('costumer') ? 'nav-item2-active active2' : 'nav-item2'}`}>
 			          <img className="logo4 ms-3 ps-2 me-2" src={customer} alt="Logo" />
                 Customer
               </NavLink>
 
               
-			        <NavLink to='/home/profile' className={`nav-item2 ${currentPath.includes('profile') ? 'active2' : ''}`}>
+			        <NavLink to='/home/profile' className={`${location.pathname.includes('profile') ? 'nav-item2-active active2' : 'nav-item2'}`}>
 			          <img className="logo4 ms-3 ps-2 me-2" src={profile} alt="Logo" />
                 Profile
               </NavLink>
