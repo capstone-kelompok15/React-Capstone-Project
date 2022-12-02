@@ -64,9 +64,9 @@ const Dashboard = () => {
           </div>
 
           <div className='nav-item3'>
-          <a href='#' className='nav-item4'>
+          <NavLink to='/' className='nav-item4'>
             <span className='nav-item3-name'>Logout</span>
-          </a>
+          </NavLink>
           </div>
         </nav>
       </aside>
