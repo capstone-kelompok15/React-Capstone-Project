@@ -19,9 +19,9 @@ const Dashboard = () => {
           <div className='headerLeft'></div>
           <div className='headerRight'>
             <div className='headerIcons'>
-              <a href='#' className='notif'>
+              <div className='notif'>
                 <i className="bell fa fa-bell" aria-hidden="true"></i>
-              </a>
+              </div>
             </div>
             <div className='headerProfile'>
             <img src={avatar} alt='' className='headerAvatar'/>
@@ -82,8 +82,8 @@ const Dashboard = () => {
           </div>
           
         
-            <NavLink to='/' className={`${location.pathname.includes('/') ? 'nav-item3-active active3' : 'nav-item3'}`}>
-            <img className="logo4 ms-3 ps-2 me-2" src={logout} alt="Logo" />
+          <NavLink to='/' className='nav-item3'>
+            <img className="logo4 ms-1 ps-2 me-1" src={logout} alt="Logo" />
             Logout
           </NavLink>
       
