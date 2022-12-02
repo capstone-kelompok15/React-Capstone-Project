@@ -161,9 +161,14 @@
 	background-color: #173468;
 	color: white;
   }
+  
+  .nav-item2-active:hover{
+	color: white;
+  }
 
   .nav-item2:hover{
 	background-color: #EAF0FA;
+	color: #173468;
   }
 
   .nav-item2-active img{
