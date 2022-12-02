@@ -1,10 +1,7 @@
-import Dashboard from "../components/dashboardpage_components/Dashboard";
-
 const DashboardPage = () => {
     return(
-        <Dashboard/>
-    );
-
+        <h1>Dashboard Page</h1>
+    )
 }
 
 export default DashboardPage;
