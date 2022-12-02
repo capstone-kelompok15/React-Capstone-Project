@@ -62,11 +62,9 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className='nav-item3'>
           <NavLink to='/' className='nav-item4'>
             Logout
           </NavLink>
-          </div>
         </nav>
       </aside>
 

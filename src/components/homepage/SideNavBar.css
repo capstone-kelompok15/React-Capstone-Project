@@ -140,16 +140,12 @@
 	color: #000;
   }
 
-  .nav-item3 {
-	margin: 0 10px 0 10px;
-  }
-
   .nav-item4 {
 	justify-content: center;
 	align-items: center;
 	position: relative;
 	transition: 0.5s;
-	margin-bottom: 1rem;
+	margin: 0 10px 20px 10px;
 	display: grid;
 	grid-template-columns: max-content max-content;
 	column-gap: 0;
