@@ -1,5 +1,6 @@
 :root {
-	--header-height: 3rem;
+	--main-height: 0;
+	--header-height: 1rem;
 	--nav-width: 260px;
 
 	
@@ -24,12 +25,12 @@
 
   main {
 	position: relative;
-	margin: var(--header-height) 0 0 0;
+	margin: 0 0 0 0;
 	padding: 0 1rem;
 	font-size: 1rem;
 	transition: 0.5s;
 	background-color: #EAF0FA;
-	height: calc(100vh - calc(var(--header-height) + 1rem));
+	height: calc(100vh - calc(var(--header-height)));
   }
 
   .bg {
@@ -37,18 +38,60 @@
   }
 
   .header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: var(--header-height);
 	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	height: var(--header-height);
 	background-color: var(--white-color);
-	padding: 0 1rem;
 	transition: 0.5s;
 	box-shadow: 0px 2px 4px rgba(14, 31, 53, 0.12);
+  }
+
+  .headerWrapper {
+	height: 100%;
+	padding: 0px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+  }
+
+  .headerRight {
+	display: flex;
+	align-items: center;
+  }
+
+  .bell {
+	background-color: #EAF0FA;
+	border-radius: 10px;
+	padding: 10px;
+	color: #173468;
+	margin-right: 0px;
+  }
+
+  .headerProfile {
+	cursor: pointer;
+	display: flex;
+	margin: 0 30px 0;
+  }
+
+  .headerAvatar {
+	width: 35px;
+	height: 35px;
+	border-radius: 10px;
+	margin-right: 10px;
+  }
+
+  .headerName {
+	align-items: center;
+	color: #173468;
+  }
+
+  .username {
+	font-size: 17px;
+	margin: 0;
+  }
+
+  .company {
+	font-size: 10px;
+	margin: 0;
   }
 
   .sidebar {
@@ -135,34 +178,58 @@
 	margin: 0 10px 0 10px;
   }
 
-  .nav-items:hover {
-	background-color: #EAF0FA;
-	color: #000;
+
+  .nav-item3 {
+	margin: 0 10px 0 10px;
   }
 
-  .nav-item4 {
+  .nav-item3 {
 	justify-content: center;
-	align-items: center;
-	position: relative;
-	transition: 0.5s;
-	margin: 0 10px 20px 10px;
 	display: grid;
 	grid-template-columns: max-content max-content;
 	column-gap: 0;
 	padding: 0.5rem;
-	color: #951D20;
+	display: flex;
+	position: relative;
+	transition: 0.5s;
+	margin: 0px 20px 10px;
+	color: #173468;
 	cursor: pointer;
+	border-radius: 6px;
   }
+
+  .nav-item3-active{
+	justify-content: center;
+	display: grid;
+	grid-template-columns: max-content max-content;
+	column-gap: 0;
+	padding: 0.5rem;
+	display: flex;
+	position: relative;
+	transition: 0.5s;
+	margin: 0px 20px 10px;
+	color: #173468;
+	cursor: pointer;
+	border-radius: 6px;
+  }
+
+  .nav-item3-active:hover {
+	background-color: #EAF0FA; 
+	color: #951D20;
+  }
+
+
+
 
 
   @media screen and (min-width: 768px) {
 	main {
-	  margin: calc(var(--header-height) + 1rem) 0 0 0;
+	  margin: calc(var(--main-height)) 0 0 0;
 	  padding: 0 0 0 var(--nav-width);
 	}
   
 	.header {
-	  height: calc(var(--header-height) + 1rem);
+	  height: calc(var(--header-height) + 3rem);
 	  padding-left: calc(var(--nav-width) + 2rem);
 	}
   
@@ -170,4 +237,4 @@
 	  left: 0;
 	  padding: 1rem 0 0 0;
 	}
-  }
+  } 

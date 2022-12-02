@@ -5,7 +5,9 @@ import invoice from "../../assets/image/invoice.png"
 import payment from "../../assets/image/payment.png"
 import customer from "../../assets/image/customer.png"
 import profile from "../../assets/image/profile.png"
+import logout from "../../assets/image/logout.png"
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import avatar from "../../assets/image/jisoo.jpg"
 
 const Dashboard = () => {
   const location = useLocation();
@@ -13,6 +15,23 @@ const Dashboard = () => {
   return (
     <main className="main">
       <header className='header'>
+        <div className='headerWrapper'>
+          <div className='headerLeft'></div>
+          <div className='headerRight'>
+            <div className='headerIcons'>
+              <a href='#' className='notif'>
+                <i className="bell fa fa-bell" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div className='headerProfile'>
+            <img src={avatar} alt='' className='headerAvatar'/>
+            <div className='headerName'>
+              <h1 className='username'>Kim Jisoo</h1>
+              <p className='company'>Black Pink</p>
+            </div>
+            </div>
+          </div>
+        </div>
       </header>
 
       <aside className="sidebar">
@@ -61,10 +80,13 @@ const Dashboard = () => {
               </NavLink>
             </div>
           </div>
-
-          <NavLink to='/' className='nav-item4'>
+          
+        
+            <NavLink to='/' className={`${location.pathname.includes('/') ? 'nav-item3-active active3' : 'nav-item3'}`}>
+            <img className="logo4 ms-3 ps-2 me-2" src={logout} alt="Logo" />
             Logout
           </NavLink>
+      
         </nav>
       </aside>
 
