@@ -100,6 +100,7 @@ const RegisterForm = () => {
                 ...prev,
                 passwordMsg: 'Password must be 8 - 16 characters'
             }))
+            passwordErr = true;
         } else {
             setErrMsgs(prev => ({
                 ...prev,
@@ -215,7 +216,7 @@ const RegisterForm = () => {
                             }
                             {errMsgs.passwordMsg === '' ? <></> : <div className='error-message'>{errMsgs.passwordMsg}</div>}
                         </Form.Group>
-                        <Form.Group className="mt-3 register-form position-relative">
+                        <Form.Group className="mt-3 mb-5 register-form position-relative">
                             <Form.Label>Confirm Password</Form.Label>
                             <Form.Control
                                 name='confirmPassword'
@@ -250,14 +251,14 @@ const RegisterForm = () => {
                                 <option value={'bri'}>Bri</option>
                             </Form.Select>
                         </Form.Group>
-                        <Form.Group className="mt-3 register-form">
+                        <Form.Group className="mt-3 mb-5 register-form">
                             <Form.Label>Bank Account Number</Form.Label>
                             <Form.Control name='bankAccountNumber' type="text" placeholder="16721234122" value={registerFormData.bankAccountNumber} onChange={onChange} />
                         </Form.Group>
                 </SwiperSlide>
             </Swiper>
             <div className="d-flex flex-column justify-content-center align-items-center">
-                <div className="button-primary d-flex justify-content-center mt-5" style={{width: '400px'}} onClick={nextOnClick}>{currentIndex === 1 ? 'SignUp' :'Next'}</div>
+                <div className="button-primary d-flex justify-content-center" style={{width: '400px'}} onClick={nextOnClick}>{currentIndex === 1 ? 'SignUp' :'Next'}</div>
                 <div className="mt-4 not-registered">Already have an account? <span onClick={toLoginOnClick}>Login</span></div>
             </div>
         </Form>
