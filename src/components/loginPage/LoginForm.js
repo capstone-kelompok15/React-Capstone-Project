@@ -36,21 +36,22 @@ const LoginForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let usernameMsg = false;
-        let passwordMsg = false;
+        let usernameErrorStatus = false;
+        let passwordErrorStatus = false;
+        const passwordLength = loginFormData.password.length;
 
         if(loginFormData.username === ''){
             setErrorMessages(prev => ({
                 ...prev,
                 usernameMsg: 'Please input your username'
             }));
-            usernameMsg = true;
+            usernameErrorStatus = true;
         } else {
             setErrorMessages(prev => ({
                 ...prev,
                 usernameMsg: ''
             }));
-            usernameMsg = false;
+            usernameErrorStatus = false;
         }
 
         if(loginFormData.password === ''){
@@ -58,21 +59,27 @@ const LoginForm = () => {
                 ...prev,
                 passwordMsg: 'Please input your password'
             }));
-            passwordMsg = true;
+            passwordErrorStatus = true;
+        } else if( passwordLength < 8 || passwordLength > 16 ) {
+            setErrorMessages(prev => ({
+                ...prev,
+                passwordMsg: 'The length of password should be 8-16 characters'
+            }))
+            passwordErrorStatus = true
         } else {
             setErrorMessages(prev => ({
                 ...prev,
                 passwordMsg: ''
             }));
-            passwordMsg = false;
+            passwordErrorStatus = false;
         }
 
-        login(usernameMsg, passwordMsg);
+        login(usernameErrorStatus, passwordErrorStatus);
 
     }
 
-    const login = (usernameMsg, passwordMsg) => {
-        if(usernameMsg || passwordMsg){
+    const login = (usernameErrorStatus, passwordErrorStatus) => {
+        if(usernameErrorStatus || passwordErrorStatus){
             return;
         }
         navigate('/home/dashboard');
