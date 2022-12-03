@@ -589,3 +589,18 @@
   color: #FFFFFF;
   max-width: 250px;
 }
+
+.password-form-group{
+  position: relative;
+}
+
+.password-icon{
+  position: absolute;
+  right: 10px;
+  margin-top: -31px;
+  cursor: pointer;
+}
+
+.error-message{
+  color: #D62D33;
+}
