@@ -51,11 +51,19 @@ const RegisterForm = () => {
         let usernameErr = false;
         let passwordErr = false;
         let confirmPasswordErr = false;
+        const passwordLength = registerFormData.password.length;
+        const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
         if(registerFormData.email === ''){
             setErrMsgs(prev => ({
                 ...prev,
                 emailMsg: 'Please input your email'
+            }))
+            emailErr = true;
+        } else if(!registerFormData.email.match(emailRegEx)) {
+            setErrMsgs(prev => ({
+                ...prev,
+                emailMsg: 'Please input a proper email'
             }))
             emailErr = true;
         } else {
@@ -86,6 +94,12 @@ const RegisterForm = () => {
                 passwordMsg: 'Please input your password'
             }))
             passwordErr = true;
+        } 
+        else if(passwordLength < 8 || passwordLength > 16) {
+            setErrMsgs(prev => ({
+                ...prev,
+                passwordMsg: 'Password must be 8 - 16 characters'
+            }))
         } else {
             setErrMsgs(prev => ({
                 ...prev,
@@ -103,7 +117,7 @@ const RegisterForm = () => {
         } else if(registerFormData.confirmPassword !== registerFormData.password){
             setErrMsgs(prev => ({
                 ...prev,
-                confirmPasswordMsg: 'Please input your the same password'
+                confirmPasswordMsg: 'Password doesn’t match'
             }))
             confirmPasswordErr = true;
         } else {
