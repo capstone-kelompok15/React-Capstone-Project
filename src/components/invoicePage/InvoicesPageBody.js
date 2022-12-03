@@ -12,7 +12,7 @@ const InvoicesPageBody = () => {
                             <div className='invoice-title'>All Invoices</div>
                             <div className='d-flex flex-row justify-content-center align-items-center gap-3'>
                                 <div className="new-invoice-button">
-                                    <AiFillPlusCircle />
+                                    <AiFillPlusCircle size={20}/>
                                     <div>New Invoices</div>
                                 </div>
                                 {<img className="filter-invoice" src={filterIcon} alt="Test"/>}
