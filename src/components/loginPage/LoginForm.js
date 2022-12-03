@@ -92,7 +92,7 @@ const LoginForm = () => {
     return(
         <>
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="mt-4" style={{width: '400px'}}>
+                <Form.Group className="mt-3" style={{width: '400px'}}>
                     <Form.Label>Username</Form.Label>
                     <Form.Control 
                         name="username"
@@ -104,7 +104,7 @@ const LoginForm = () => {
                     />
                     {errorMessages.usernameMsg === '' ? <></> : <div className='error-message'>{errorMessages.usernameMsg}</div>}
                 </Form.Group>
-                <Form.Group className="mt-4 password-form-group">
+                <Form.Group className="mt-3 position-relative">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         name='password'
@@ -126,7 +126,7 @@ const LoginForm = () => {
                     </div>
                 </div>
                 <div className="d-flex flex-column justify-content-center align-items-center">
-                    <input type={'submit'} className="button-primary d-flex justify-content-center mt-5" value={'Login'}/>
+                    <input type={'submit'} className="button-primary d-flex justify-content-center mt-5" style={{width: '400px'}} value={'Login'}/>
                     <div className="mt-4 not-registered">Not registered yet? <span onClick={toRegisterOnClick}>Create an account</span></div>
                 </div>
             </Form>

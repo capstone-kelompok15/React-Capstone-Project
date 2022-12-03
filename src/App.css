@@ -590,10 +590,6 @@
   max-width: 250px;
 }
 
-.password-form-group{
-  position: relative;
-}
-
 .password-icon{
   position: absolute;
   right: 10px;
@@ -603,4 +599,9 @@
 
 .error-message{
   color: #D62D33;
+}
+
+/* register */
+.register-form{
+  width: 400px;
 }
