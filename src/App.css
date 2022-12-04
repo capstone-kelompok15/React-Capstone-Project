@@ -690,3 +690,12 @@
   background: #173468;
   border-radius: 10px;
 }
+
+.no-selected-list-text{
+  padding-top: 30px;
+  width: 305px;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  color: #404040;
+}

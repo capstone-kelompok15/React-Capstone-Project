@@ -1,6 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { AiFillPlusCircle } from 'react-icons/ai';
 import filterIcon from '../../assets/svg/filterIcon.svg';
+import personPointing from '../../assets/svg/personPointing.svg';
 import InvoiceCard from "./InvoiceCard";
 
 const InvoicesPageBody = () => {
@@ -24,8 +25,9 @@ const InvoicesPageBody = () => {
                         </Container>
                     </Container>
                 </Col>
-                <Col md>
-                    Test
+                <Col md className="d-flex flex-column justify-content-center align-items-center">
+                    <img src={personPointing} alt='not found'/>
+                    <div className="no-selected-list-text">You can select one invoice from list to view</div>
                 </Col>
             </Row>
         </>
