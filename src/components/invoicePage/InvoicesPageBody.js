@@ -6,7 +6,7 @@ const InvoicesPageBody = () => {
     return(
         <>
             <Row>
-                <Col md style={{margin: 0}}>
+                <Col md>
                     <Container fluid className="pt-4 px-5" style={{backgroundColor: 'white', height: 'calc(100vh - 65px)'}}>
                         <div className="d-flex flex-row justify-content-between align-items-center">
                             <div className='invoice-title'>All Invoices</div>
