@@ -681,12 +681,12 @@
   background-color: #EAF0FA;
 }
 
-.invoice-cards-container{
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+.invoice-cards-container::-webkit-scrollbar{
+  position: absolute;
+  width: 10px;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.invoice-cards-container::-webkit-scrollbar{
-  display: none; 
+.invoice-cards-container::-webkit-scrollbar-thumb {
+  background: #173468;
+  border-radius: 10px;
 }
