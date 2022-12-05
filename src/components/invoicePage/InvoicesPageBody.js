@@ -29,7 +29,7 @@ const InvoicesPageBody = () => {
                             </div>
                         </div>
                         <Container fluid className="invoice-cards-container p-0" style={{height: 'calc(100vh - 150px)', overflow:'auto'}}>
-                            {DATA_DUMY.map(data => <InvoiceCard invoiceData={data} onClick={() => {invoiceCardOnClick(data)}} selected={data.id === detailData.id}/>)}
+                            {DATA_DUMY.map(data => <InvoiceCard invoiceData={data} onClick={() => {invoiceCardOnClick(data)}} selected={data.id === detailData?.id}/>)}
                         </Container>
                     </Container>
                 </Col>
@@ -45,9 +45,9 @@ export default InvoicesPageBody;
 const DATA_DUMY = [
     {
         id: 'INV-00341212',
-        payment_status: "Unpaid",
+        payment_status: "Paid",
         total_price: 24800000,
-        due_at: "28 Nov 2022",
+        due_at: "5 Dec 2022",
         created_at : "24 Nov 2022",
         updated_at: "",
         merchant: {
@@ -133,6 +133,59 @@ const DATA_DUMY = [
             },
             {
             product: "SSD Seagate",
+            quantity: 1,
+            price: 800000,
+            total_price: 800000,
+            created_at: "string",
+            updated_at: "string"
+            },
+            {
+            product: "Shipping",
+            quantity: 1,
+            price: 0,
+            total_price: 0,
+            created_at: "string",
+            updated_at: "string"
+            },
+        ]
+    },
+    {
+        id: 'INV-00341215',
+        payment_status: "Unpaid",
+        total_price: 24800000,
+        due_at: "7 Dec 2022",
+        created_at : "24 Nov 2022",
+        updated_at: "",
+        merchant: {
+            id: "string",
+            name: "string",
+            display_profile_url: "string",
+            address: "string"
+        },
+        customer: {
+            id: "1231233",
+            name: "Alvin Wiraprathama",
+            email: "wiraprathamaalvin@gmail.com",
+            address: "Jalan Gajah Waktra no 1"
+        },
+        "payment_method": {
+            "payment_type": "manual",
+            "bank_name": "string",
+            "bank_code": "string",
+            "bank_number": "string",
+            "on_behalf_of": "string"
+        },
+        items: [
+            {
+            product: "Asus Vivobook",
+            quantity: 2,
+            price: 12000000,
+            total_price: 24000000,
+            created_at: "string",
+            updated_at: "string"
+            },
+            {
+            product: "SSD Samsung Evo",
             quantity: 1,
             price: 800000,
             total_price: 800000,

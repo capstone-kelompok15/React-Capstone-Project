@@ -666,10 +666,23 @@
   padding: 2px 10px;
   height: 25px;
   width: 154px;
-  background-color: #F7D4D5;
   border-radius: 20px;
   font-weight: 600;
   font-size: 12px;
+}
+
+.invoice-status-paid{
+  background-color: #D9F2E4;
+  color: #329059;
+}
+
+.invoice-status-unpaid{
+  background-color: #FDE3CE;
+  color: #F57D15;
+}
+
+.invoice-status-overdue{
+  background-color: #F7D4D5;
   color: #D62D33;
 }
 
@@ -749,11 +762,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  width: 130px;
   height: 25px;
   border-radius: 20px;
-  background: #FDE3CE;
-  color: #F57D15;
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;

@@ -2,9 +2,14 @@ import { Col, Container, Table } from "react-bootstrap";
 import downloadLogo from '../../assets/svg/downloadLogo.svg';
 import mailIcon from '../../assets/svg/mailIcon.svg';
 import formatRupiah from "../../utils/formatRupiah";
+import getClassNameByStatus from "../../utils/getClassNameByStatus";
+import getDateDifferences from "../../utils/getDateDifferences";
 
 const InvoiceDetail = (props) => {
     const {detailData} = props;
+    const statusClassName = getClassNameByStatus(detailData.payment_status, detailData.due_at);
+    const statusValue = getDateDifferences(detailData.payment_status, detailData.due_at);
+    const allTotal = formatRupiah(detailData.total_price);
 
     return(
         <Col md={6} className='p-0' style={{overflow: 'auto',height: 'calc(100vh - 65px)'}}>
@@ -23,12 +28,12 @@ const InvoiceDetail = (props) => {
                             <div className='inovice-detail-status'>Payment Status</div>
                             <div>:</div>
                         </div>
-                        <div className='inovice-detail-status-box'>{detailData.payment_status}</div>
+                        <div className={`inovice-detail-status-box ${statusClassName}`}>{detailData.payment_status}</div>
                     </div>
                     <div className="d-flex flex-row justify-content-between align-items-center">
                         <div className="d-flex flex-row justify-content-start align-items-center gap-3 pt-2">
                             <div className='inovice-detail-status'>Payment Time Left :</div>
-                            <div className='inovice-detail-status-box'>3 Days Left</div>
+                            <div className={`inovice-detail-status-box ${statusClassName}`}>{statusValue}</div>
                         </div>
                         <div className="invoice-detail-send-button">
                             <img src={mailIcon} alt='not found' />
@@ -91,7 +96,7 @@ const InvoiceDetail = (props) => {
                         <div className="d-flex flex-row justify-content-end">
                             <div className="invoice-detail-total-container">
                                 <div>Total</div>
-                                <div>{formatRupiah(detailData.total_price)}</div>
+                                <div>{allTotal}</div>
                             </div>
                         </div>
                         <div className="d-flex flex-column" style={{paddingTop: '35px', gap:'10px'}}>
