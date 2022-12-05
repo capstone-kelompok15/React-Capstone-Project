@@ -5,12 +5,18 @@ import InvoiceCard from "./InvoiceCard";
 import NoSelectedList from "./NoSelectedList";
 import InvoiceDetail from "./InvoiceDetail";
 import { useState } from "react";
+import InvoiceFilterModal from "./InvoiceFilterModal";
 
 const InvoicesPageBody = () => {
     const [ detailData, setDetailData ] = useState(undefined);
+    const [ showFilterModal, setShowFilterModal ] = useState(false);
 
     const invoiceCardOnClick = (detailData) => {
         setDetailData(detailData);
+    }
+
+    const filterButtonOnClick = () => {
+        setShowFilterModal(prev => !prev);
     }
 
     return(
@@ -25,17 +31,17 @@ const InvoicesPageBody = () => {
                                     <AiFillPlusCircle size={20}/>
                                     <div>New Invoices</div>
                                 </div>
-                                <img className="filter-invoice" src={filterIcon} alt="Test"/>
+                                <img className="filter-invoice" src={filterIcon} alt="Test" onClick={filterButtonOnClick}/>
                             </div>
                         </div>
                         <Container fluid className="invoice-cards-container p-0" style={{height: 'calc(100vh - 150px)', overflow:'auto'}}>
-                            {DATA_DUMY.map(data => <InvoiceCard invoiceData={data} onClick={() => {invoiceCardOnClick(data)}} selected={data.id === detailData?.id}/>)}
+                            {DATA_DUMY.map((data, i) => <InvoiceCard key={i} invoiceData={data} onClick={() => {invoiceCardOnClick(data)}} selected={data.id === detailData?.id}/>)}
                         </Container>
                     </Container>
                 </Col>
                 {detailData === undefined ? <NoSelectedList/> : <InvoiceDetail detailData={detailData}/>}
-                
             </Row>
+            {showFilterModal ? <InvoiceFilterModal onClick={filterButtonOnClick}/> : <></>}
         </>
     );
 }
@@ -99,7 +105,7 @@ const DATA_DUMY = [
     {
         id: 'INV-00341213',
         payment_status: "Unpaid",
-        total_price: 20000000,
+        total_price: 12800000,
         due_at: "28 Nov 2022",
         created_at : "24 Nov 2022",
         updated_at: "",
@@ -163,7 +169,7 @@ const DATA_DUMY = [
             address: "string"
         },
         customer: {
-            id: "1231233",
+            id: "1231235",
             name: "Alvin Wiraprathama",
             email: "wiraprathamaalvin@gmail.com",
             address: "Jalan Gajah Waktra no 1"

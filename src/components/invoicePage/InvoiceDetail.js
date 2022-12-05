@@ -75,9 +75,9 @@ const InvoiceDetail = (props) => {
                                 <thead style={{backgroundColor: '#173468'}}>
                                     <tr className="table-head-text">
                                         <th>Item Description</th>
-                                        <th>Qty</th>
-                                        <th>Price</th>
-                                        <th>Total</th>
+                                        <th className="text-center">Qty</th>
+                                        <th className="text-center">Price</th>
+                                        <th className="text-center">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -85,9 +85,9 @@ const InvoiceDetail = (props) => {
                                         (data) => 
                                         <tr className="table-body-text">
                                             <td className="table-data">{data.product}</td>
-                                            <td className="table-data">{data.quantity}</td>
-                                            <td className="table-data">{data.price === 0 ? 'Free' : formatRupiah(data.price)}</td>
-                                            <td className="table-data">{data.total_price === 0 ? 'Free' : formatRupiah(data.total_price)}</td>
+                                            <td className="table-data text-center">{data.quantity}</td>
+                                            <td className="table-data text-center">{data.price === 0 ? 'Free' : formatRupiah(data.price)}</td>
+                                            <td className="table-data text-center">{data.total_price === 0 ? 'Free' : formatRupiah(data.total_price)}</td>
                                         </tr>
                                     )}
                                 </tbody>
