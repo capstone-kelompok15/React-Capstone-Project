@@ -681,6 +681,10 @@
   background-color: #EAF0FA;
 }
 
+.selected{
+  background-color: #EAF0FA;
+}
+
 .invoice-cards-container::-webkit-scrollbar{
   position: absolute;
   width: 10px;
@@ -698,4 +702,148 @@
   font-size: 20px;
   text-align: center;
   color: #404040;
+}
+
+.invoice-detail-id-text{
+  font-weight: 600;
+  font-size: 24px;
+  color: #173468;
+}
+
+.invoice-detail-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 120px;
+  height: 32px;
+  background-color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #173468;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.invoice-detail-button:hover{
+  transform: scale(1.05);
+}
+
+.invoice-detail-costumer-id-text{
+  padding: 15px 0px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #1915B7;
+}
+
+.inovice-detail-status{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #173468;
+}
+
+.inovice-detail-status-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 25px;
+  border-radius: 20px;
+  background: #FDE3CE;
+  color: #F57D15;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.invoice-detail-send-button{
+  height: 32px;
+  width: 166px;
+  background-color: #173468;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.invoice-detail-send-button:hover{
+  transform: scale(1.05);
+}
+
+.invoice-detail-underlined-container{
+  padding-left: 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 32px;
+  width: 200px;
+  border-bottom: 0.850722px solid #404040;
+}
+
+.main-text{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  color: #404040;
+}
+
+.sub-text{
+  font-weight: 500;
+  font-size: 10px;
+  color: #404040;
+}
+
+.sub-text2{
+  font-weight: 600;
+  font-size: 10px;
+  color: #404040;
+}
+
+.invoice-detail-main-title{
+  font-weight: 700;
+  font-size: 34px;
+  color: #404040;
+}
+
+.table-head-text{
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 15px;
+  color: #FFFFFF;
+}
+
+.table-body-text{
+  font-weight: 600;
+  font-size: 10px;
+  color: #404040;
+}
+
+.table-data{
+  border-bottom: 0.850722px solid #404040;
+}
+
+.invoice-detail-total-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 195px;
+  height: 28px;
+  background-color: #173468;
+  font-weight: 600;
+  font-size: 10.2087px;
+  color: #EAF0FA;
+  padding: 0px 8px;
 }
