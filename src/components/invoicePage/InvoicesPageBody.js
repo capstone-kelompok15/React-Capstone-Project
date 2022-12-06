@@ -48,7 +48,7 @@ const InvoicesPageBody = () => {
                         </Container>
                     </Container>
                 </Col>
-                {detailData === undefined ? <NoSelectedList/> : <InvoiceDetail detailData={detailData}/>}
+                {detailData === undefined ? <NoSelectedList/> : <InvoiceDetail/>}
             </Row>
             {isShownFilterModal ? <InvoiceFilterModal/> : <></>}
         </>

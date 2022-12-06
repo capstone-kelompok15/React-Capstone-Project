@@ -1,12 +1,14 @@
 import { Col, Container, Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import downloadLogo from '../../assets/svg/downloadLogo.svg';
 import mailIcon from '../../assets/svg/mailIcon.svg';
+import { getDetailData } from "../../redux/reducers/invoiceDetailSlice";
 import formatRupiah from "../../utils/formatRupiah";
 import getClassNameByStatus from "../../utils/getClassNameByStatus";
 import getDateDifferences from "../../utils/getDateDifferences";
 
-const InvoiceDetail = (props) => {
-    const {detailData} = props;
+const InvoiceDetail = () => {
+    const detailData = useSelector(getDetailData);
     const statusClassName = getClassNameByStatus(detailData.payment_status, detailData.due_at);
     const statusValue = getDateDifferences(detailData.payment_status, detailData.due_at);
     const allTotal = formatRupiah(detailData.total_price);
