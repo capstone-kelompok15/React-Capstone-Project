@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { hideFilterModal } from "../../redux/reducers/filterModalSlice";
 import { getFilterStatus, setFilter } from "../../redux/reducers/invoicesSlice";
 
-const InvoiceFilterModal = (props) => {
-    const {onClick} = props;
+const InvoiceFilterModal = () => {
     const currentFilterValue = useSelector(getFilterStatus);
     const [ filterValue, setFilterValue ] = useState(currentFilterValue);
     const dispatch = useDispatch();
@@ -19,12 +19,12 @@ const InvoiceFilterModal = (props) => {
 
     const onSubmit = () => {
         dispatch(setFilter(filterValue));
-        onClick();
+        dispatch(hideFilterModal());
     }
 
     return(
         <>
-            <div className="modal-test" onClick={onClick}/>
+            <div className="modal-test" onClick={() => dispatch(hideFilterModal())}/>
             <Container className="filter-modal-container">
                 <div className='d-flex flex-column justify-content-start align-items-start w-100 h-100'>
                     <div className="d-flex flex-row justify-content-between align-items-center w-100">

@@ -8,13 +8,14 @@ import { useEffect, useState } from "react";
 import InvoiceFilterModal from "./InvoiceFilterModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getFilteredData, getFilterStatus, getInvoicesData } from "../../redux/reducers/invoicesSlice";
-import { getShowFilterModal, hideFilterModal, showFilterModal } from "../../redux/reducers/filterModalSlice";
+import { getShowFilterModal, showFilterModal } from "../../redux/reducers/filterModalSlice";
+import { getDetailData } from "../../redux/reducers/invoiceDetailSlice";
 
 const InvoicesPageBody = () => {
-    const [ detailData, setDetailData ] = useState(undefined);
     const [ invoicesData, setInvoicesData ] = useState([]);
     const dispatch = useDispatch();
     const data = useSelector(getInvoicesData);
+    const detailData = useSelector(getDetailData);
     const filteredData = useSelector(getFilteredData);
     const filterStatus = useSelector(getFilterStatus);
     const isShownFilterModal = useSelector(getShowFilterModal);
@@ -26,10 +27,6 @@ const InvoicesPageBody = () => {
             setInvoicesData(() => [...filteredData]);
         }
     }, [filteredData, filterStatus, setInvoicesData, data])
-
-    const invoiceCardOnClick = (detailData) => {
-        setDetailData(detailData);
-    }
 
     return(
         <>
@@ -47,13 +44,13 @@ const InvoicesPageBody = () => {
                             </div>
                         </div>
                         <Container fluid className="invoice-cards-container p-0" style={{height: 'calc(100vh - 150px)', overflow:'auto'}}>
-                            {invoicesData.map((data, i) => <InvoiceCard key={i} invoiceData={data} onClick={() => {invoiceCardOnClick(data)}} selected={data.id === detailData?.id}/>)}
+                            {invoicesData.map((data, i) => <InvoiceCard key={i} invoiceData={data} selected={data.id === detailData?.id}/>)}
                         </Container>
                     </Container>
                 </Col>
                 {detailData === undefined ? <NoSelectedList/> : <InvoiceDetail detailData={detailData}/>}
             </Row>
-            {isShownFilterModal ? <InvoiceFilterModal onClick={() => dispatch(hideFilterModal())}/> : <></>}
+            {isShownFilterModal ? <InvoiceFilterModal/> : <></>}
         </>
     );
 }

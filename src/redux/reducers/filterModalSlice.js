@@ -8,7 +8,6 @@ const filterModalSlice = createSlice({
     reducers: {
         showFilterModal: (state) => {
             state.showModal = true;
-            console.log('Test');
         },
         hideFilterModal: (state) => {
             state.showModal = false;

@@ -1,14 +1,21 @@
 import { Col, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import arrowIcon from '../../assets/svg/arrowIcon.svg'
 import documentIcon from '../../assets/svg/documentIcon.svg'
+import { setDetailData } from "../../redux/reducers/invoiceDetailSlice";
 import formatRupiah from "../../utils/formatRupiah";
 import getClassNameByStatus from "../../utils/getClassNameByStatus";
 import getDateDifferences from "../../utils/getDateDifferences";
 
 const InvoiceCard = (props) => {
-    const { invoiceData, onClick, selected } = props;
+    const { invoiceData, selected } = props;
+    const dispatch = useDispatch();
     const statusClassName = getClassNameByStatus(invoiceData.payment_status, invoiceData.due_at);
     const statusValue = getDateDifferences(invoiceData.payment_status,invoiceData.due_at);
+    
+    const onClick = () => {
+        dispatch(setDetailData(invoiceData));
+    }
 
     return(
         <Row fluid className={`invoice-card align-items-center m-0 ${selected ? 'selected' : ""}`} style={{padding: '10px 0px 10px 40px', borderBottom: '1px solid #CDCDCD'}} onClick={onClick}>
