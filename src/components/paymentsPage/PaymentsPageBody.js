@@ -1,0 +1,42 @@
+import { Col, Container, Row } from "react-bootstrap";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import filterIcon from '../../assets/svg/filterIcon.svg';
+import { getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
+import { getPaymentsData } from "../../redux/reducers/paymentSlice";
+import NoSelectedList from "../invoicePage/NoSelectedList";
+import PaymentCard from "./PaymentCard";
+import PaymentDetail from "./PaymentDetail";
+
+const PaymentsPageBody = () => {
+    const paymentsData = useSelector(getPaymentsData);
+    const paymentDetailData = useSelector(getPaymentsDetailData);
+
+    return(
+        <>
+            <Row className='m-0'>
+                <Col md={6} className='p-0'>
+                    <Container fluid className="p-0" style={{backgroundColor: 'white', height: 'calc(100vh - 65px)', borderRight: '2px solid #CDCDCD'}}>
+                        <div className="d-flex flex-row justify-content-between align-items-center" style={{padding: '40px 40px 10px'}}>
+                            <div className='invoice-title'>All Payments</div>
+                            <div className='d-flex flex-row justify-content-center align-items-center gap-3'>
+                                <div className="new-invoice-button">
+                                    <AiFillPlusCircle size={20}/>
+                                    <div>New Invoices</div>
+                                </div>
+                                <img className="filter-invoice" src={filterIcon} alt="Test" onClick={() => {}}/>
+                            </div>
+                        </div>
+                        <Container fluid className="invoice-cards-container p-0" style={{height: 'calc(100vh - 150px)', overflow:'auto'}}>
+                            {paymentsData.map((data, i) => <PaymentCard key={i} data={data} selected={data.id === paymentDetailData?.id}/>)};
+                        </Container>
+                    </Container>
+                </Col>
+                {paymentDetailData === undefined ? <NoSelectedList/> : <PaymentDetail/>}
+            </Row>
+            {/* {isShownFilterModal ? <InvoiceFilterModal/> : <></>} */}
+        </>
+    );
+}
+
+export default PaymentsPageBody;
