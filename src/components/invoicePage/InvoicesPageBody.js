@@ -4,19 +4,31 @@ import filterIcon from '../../assets/svg/filterIcon.svg';
 import InvoiceCard from "./InvoiceCard";
 import NoSelectedList from "./NoSelectedList";
 import InvoiceDetail from "./InvoiceDetail";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InvoiceFilterModal from "./InvoiceFilterModal";
+import { useDispatch, useSelector } from "react-redux";
+import { getFilteredData, getFilterStatus, getInvoicesData } from "../../redux/reducers/invoicesSlice";
+import { getShowFilterModal, hideFilterModal, showFilterModal } from "../../redux/reducers/filterModalSlice";
 
 const InvoicesPageBody = () => {
     const [ detailData, setDetailData ] = useState(undefined);
-    const [ showFilterModal, setShowFilterModal ] = useState(false);
+    const [ invoicesData, setInvoicesData ] = useState([]);
+    const dispatch = useDispatch();
+    const data = useSelector(getInvoicesData);
+    const filteredData = useSelector(getFilteredData);
+    const filterStatus = useSelector(getFilterStatus);
+    const isShownFilterModal = useSelector(getShowFilterModal);
+
+    useEffect(() => {
+        if(filterStatus === 'All'){
+            setInvoicesData(() => [...data]);
+        } else {
+            setInvoicesData(() => [...filteredData]);
+        }
+    }, [filteredData, filterStatus, setInvoicesData, data])
 
     const invoiceCardOnClick = (detailData) => {
         setDetailData(detailData);
-    }
-
-    const filterButtonOnClick = () => {
-        setShowFilterModal(prev => !prev);
     }
 
     return(
@@ -31,181 +43,19 @@ const InvoicesPageBody = () => {
                                     <AiFillPlusCircle size={20}/>
                                     <div>New Invoices</div>
                                 </div>
-                                <img className="filter-invoice" src={filterIcon} alt="Test" onClick={filterButtonOnClick}/>
+                                <img className="filter-invoice" src={filterIcon} alt="Test" onClick={() => dispatch(showFilterModal())}/>
                             </div>
                         </div>
                         <Container fluid className="invoice-cards-container p-0" style={{height: 'calc(100vh - 150px)', overflow:'auto'}}>
-                            {DATA_DUMY.map((data, i) => <InvoiceCard key={i} invoiceData={data} onClick={() => {invoiceCardOnClick(data)}} selected={data.id === detailData?.id}/>)}
+                            {invoicesData.map((data, i) => <InvoiceCard key={i} invoiceData={data} onClick={() => {invoiceCardOnClick(data)}} selected={data.id === detailData?.id}/>)}
                         </Container>
                     </Container>
                 </Col>
                 {detailData === undefined ? <NoSelectedList/> : <InvoiceDetail detailData={detailData}/>}
             </Row>
-            {showFilterModal ? <InvoiceFilterModal onClick={filterButtonOnClick}/> : <></>}
+            {isShownFilterModal ? <InvoiceFilterModal onClick={() => dispatch(hideFilterModal())}/> : <></>}
         </>
     );
 }
 
 export default InvoicesPageBody;
-
-const DATA_DUMY = [
-    {
-        id: 'INV-00341212',
-        payment_status: "Paid",
-        total_price: 24800000,
-        due_at: "5 Dec 2022",
-        created_at : "24 Nov 2022",
-        updated_at: "",
-        merchant: {
-            id: "string",
-            name: "string",
-            display_profile_url: "string",
-            address: "string"
-        },
-        customer: {
-            id: "1231233",
-            name: "Alvin Wiraprathama",
-            email: "wiraprathamaalvin@gmail.com",
-            address: "Jalan Gajah Waktra no 1"
-        },
-        "payment_method": {
-            "payment_type": "manual",
-            "bank_name": "string",
-            "bank_code": "string",
-            "bank_number": "string",
-            "on_behalf_of": "string"
-        },
-        items: [
-            {
-            product: "Asus Vivobook",
-            quantity: 2,
-            price: 12000000,
-            total_price: 24000000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "SSD Samsung Evo",
-            quantity: 1,
-            price: 800000,
-            total_price: 800000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "Shipping",
-            quantity: 1,
-            price: 0,
-            total_price: 0,
-            created_at: "string",
-            updated_at: "string"
-            },
-        ]
-    },
-    {
-        id: 'INV-00341213',
-        payment_status: "Unpaid",
-        total_price: 12800000,
-        due_at: "28 Nov 2022",
-        created_at : "24 Nov 2022",
-        updated_at: "",
-        merchant: {
-            id: "string",
-            name: "string",
-            display_profile_url: "string",
-            address: "string"
-        },
-        customer: {
-            id: "1231234",
-            name: "Abdullah Nouval Shidqi",
-            email: "abullah.nouval@gmail.com",
-            address: "Jalan Kawista no 2"
-        },
-        "payment_method": {
-            "payment_type": "manual",
-            "bank_name": "string",
-            "bank_code": "string",
-            "bank_number": "string",
-            "on_behalf_of": "string"
-        },
-        items: [
-            {
-            product: "Microsoft Surface Pro 4",
-            quantity: 1,
-            price: 12000000,
-            total_price: 12000000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "SSD Seagate",
-            quantity: 1,
-            price: 800000,
-            total_price: 800000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "Shipping",
-            quantity: 1,
-            price: 0,
-            total_price: 0,
-            created_at: "string",
-            updated_at: "string"
-            },
-        ]
-    },
-    {
-        id: 'INV-00341215',
-        payment_status: "Unpaid",
-        total_price: 24800000,
-        due_at: "7 Dec 2022",
-        created_at : "24 Nov 2022",
-        updated_at: "",
-        merchant: {
-            id: "string",
-            name: "string",
-            display_profile_url: "string",
-            address: "string"
-        },
-        customer: {
-            id: "1231235",
-            name: "Alvin Wiraprathama",
-            email: "wiraprathamaalvin@gmail.com",
-            address: "Jalan Gajah Waktra no 1"
-        },
-        "payment_method": {
-            "payment_type": "manual",
-            "bank_name": "string",
-            "bank_code": "string",
-            "bank_number": "string",
-            "on_behalf_of": "string"
-        },
-        items: [
-            {
-            product: "Asus Vivobook",
-            quantity: 2,
-            price: 12000000,
-            total_price: 24000000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "SSD Samsung Evo",
-            quantity: 1,
-            price: 800000,
-            total_price: 800000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "Shipping",
-            quantity: 1,
-            price: 0,
-            total_price: 0,
-            created_at: "string",
-            updated_at: "string"
-            },
-        ]
-    },
-]

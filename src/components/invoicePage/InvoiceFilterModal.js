@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getFilterStatus, setFilter } from "../../redux/reducers/invoicesSlice";
 
 const InvoiceFilterModal = (props) => {
     const {onClick} = props;
-    const [ filterValue, setFilterValue ] = useState('All');
+    const currentFilterValue = useSelector(getFilterStatus);
+    const [ filterValue, setFilterValue ] = useState(currentFilterValue);
+    const dispatch = useDispatch();
 
     const onChange = (e) => {
         setFilterValue(e.target.value);
@@ -11,6 +15,11 @@ const InvoiceFilterModal = (props) => {
 
     const resetOnPressed = () => {
         setFilterValue('All');
+    }
+
+    const onSubmit = () => {
+        dispatch(setFilter(filterValue));
+        onClick();
     }
 
     return(
@@ -23,22 +32,22 @@ const InvoiceFilterModal = (props) => {
                         <div className="invoice-modal-reset-text-button" onClick={resetOnPressed}>Reset</div>
                     </div>
                     <div className="invoice-modal-border"/>
-                    <div onChange={onChange}>
+                    <div>
                         <div className="form-check">
-                            <input type="radio" className="form-check-input" id="radio1" name="optradio" value="All" checked={filterValue === 'All'}/>
+                            <input type="radio" className="form-check-input" id="radio1" name="optradio" value="All" checked={filterValue === 'All'} onChange={onChange}/>
                             <label className="form-check-label invoice-modal-label-text" for="radio1">All</label>
                         </div>
                         <div className="form-check">
-                            <input type="radio" className="form-check-input" id="radio2" name="optradio" value="Paid" checked={filterValue === 'Paid'}/>
+                            <input type="radio" className="form-check-input" id="radio2" name="optradio" value="Paid" checked={filterValue === 'Paid'} onChange={onChange}/>
                             <label className="form-check-label invoice-modal-label-text" for="radio2">Paid</label>
                         </div>
                         <div className="form-check">
-                            <input type="radio" className="form-check-input" id="radio3" name="optradio" value="Unpaid" checked={filterValue === 'Unpaid'}/>
+                            <input type="radio" className="form-check-input" id="radio3" name="optradio" value="Unpaid" checked={filterValue === 'Unpaid'} onChange={onChange}/>
                             <label className="form-check-label invoice-modal-label-text" for="radio3">Unpaid</label>
                         </div>
                     </div>
                 </div>
-                <div className="modal-filter-submit-button">
+                <div className="modal-filter-submit-button" onClick={onSubmit}>
                     Show Result
                 </div>
             </Container>
