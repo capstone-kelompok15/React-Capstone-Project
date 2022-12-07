@@ -20,7 +20,7 @@ const ProfilePageBody = () => {
           <div className="col-md-10">
             <div className="row mx-4">
               <div className="col-md-4">
-                <label class="label-profile" for="firstName">
+                <label className="label-profile" for="firstName">
                   First Name
                 </label>
                 <input
@@ -31,7 +31,7 @@ const ProfilePageBody = () => {
                 ></input>
               </div>
               <div className="col-md-4">
-                <label class="label-profile" for="lastName">
+                <label className="label-profile" for="lastName">
                   Last Name
                 </label>
                 <input
@@ -42,7 +42,7 @@ const ProfilePageBody = () => {
                 ></input>
               </div>
               <div className="col-md-6 mx-1 mt-3">
-                <label class="label-profile" for="email">
+                <label className="label-profile" for="email">
                   Email
                 </label>
                 <input
@@ -59,7 +59,7 @@ const ProfilePageBody = () => {
         <h1 className="profile mt-3">Merchant Details</h1>
         <div className="row">
           <div className="col-md-5">
-            <label class="label-profile" for="merchantName">
+            <label className="label-profile" for="merchantName">
               Merchant Name
             </label>
             <input
@@ -70,7 +70,7 @@ const ProfilePageBody = () => {
             ></input>
           </div>
           <div className="col-md-5 mx-4">
-            <label class="label-profile" for="bank-primary">
+            <label className="label-profile" for="bank-primary">
               Primary Bank Account
             </label>
             <input
@@ -81,7 +81,7 @@ const ProfilePageBody = () => {
             ></input>
           </div>
           <div className="col-md-5 mt-3">
-            <label class="label-profile" for="merchantAddress">
+            <label className="label-profile" for="merchantAddress">
               Merchant Address
             </label>
             <input
@@ -92,7 +92,7 @@ const ProfilePageBody = () => {
             ></input>
           </div>
           <div className="col-md-5 mx-4 mt-3">
-            <label class="label-profile" for="bank-additional">
+            <label className="label-profile" for="bank-additional">
               Additional Bank Account
             </label>
             <input
@@ -103,7 +103,7 @@ const ProfilePageBody = () => {
             ></input>
           </div>
           <div className="col-md-5 mt-3">
-            <label class="label-profile" for="phoneNumber">
+            <label className="label-profile" for="phoneNumber">
               Phone Number
             </label>
             <input
@@ -118,7 +118,7 @@ const ProfilePageBody = () => {
         <h1 className="profile mt-4">Change Password</h1>
         <div className="row mb-4">
           <div className="col-md-3">
-            <label class="label-profile" for="currentPassword">
+            <label className="label-profile" for="currentPassword">
               Current Password
             </label>
             <input
@@ -129,7 +129,7 @@ const ProfilePageBody = () => {
           </div>
 
           <div className="col-md-3">
-            <label class="label-profile" for="newPassword">
+            <label className="label-profile" for="newPassword">
               New Password
             </label>
             <input
@@ -140,7 +140,7 @@ const ProfilePageBody = () => {
           </div>
 
           <div className="col-md-3">
-            <label class="label-profile" for="confirmPassword">
+            <label className="label-profile" for="confirmPassword">
               Confirm Password
             </label>
             <input
