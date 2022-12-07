@@ -24,7 +24,7 @@ const PaymentFilterModal = () => {
 
     return(
         <>
-            <div className="modal-test" onClick={() => {}}/>
+            <div className="modal-test" onClick={() => dispatch(hideFilterModal())}/>
             <Container className="filter-modal-container">
                 <div className='d-flex flex-column justify-content-start align-items-start w-100 h-100'>
                     <div className="d-flex flex-row justify-content-between align-items-center w-100">
