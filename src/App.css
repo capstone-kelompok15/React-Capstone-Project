@@ -952,7 +952,7 @@ html{
   bottom: 0px;
   right: 0px;
   display: flex;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .filter-modal-container{

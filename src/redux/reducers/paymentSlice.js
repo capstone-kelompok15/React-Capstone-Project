@@ -180,10 +180,10 @@ const paymentSlice = createSlice({
 
             if(state.filter === 'All'){
                 state.filteredData = undefined;
-            } else if (state.filter === 'Paid'){
-                state.filteredData = state.data.filter((data) => data.payment_status.toLowerCase() === 'paid');
+            } else if (state.filter === 'Success'){
+                state.filteredData = state.data.filter((data) => data.payment_status.toLowerCase() === 'success');
             } else {
-                state.filteredData = state.data.filter((data) => data.payment_status.toLocaleLowerCase() === 'unpaid');
+                state.filteredData = state.data.filter((data) => data.payment_status.toLocaleLowerCase() === 'pending');
             }
         }
     }
