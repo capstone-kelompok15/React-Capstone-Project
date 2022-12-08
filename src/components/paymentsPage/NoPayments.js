@@ -1,10 +1,10 @@
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { getPaymentSearchValue } from "../../redux/reducers/paymentSlice";
 import emptyInvoiceLogo from '../../assets/svg/emptyInvoiceLogo.svg'
-import { getSearchValue } from "../../redux/reducers/invoicesSlice";
 
-const NoInvoices = () => {
-    const searchValue = useSelector(getSearchValue);
+const NoPayments = () => {
+    const searchValue = useSelector(getPaymentSearchValue);
 
     return(
         <Container fluid className='p-0' style={{height: 'calc(100vh - 150px)'}}>
@@ -20,4 +20,4 @@ const NoInvoices = () => {
     )
 }
 
-export default NoInvoices;
+export default NoPayments;
