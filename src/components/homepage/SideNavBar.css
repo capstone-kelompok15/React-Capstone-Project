@@ -224,9 +224,26 @@
 	color: #951D20;
   }
 
+  .search-container{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px;
+	width: 340px;
+	height: 36px;
+	background: #EAF0FA;
+	border-radius: 10px;
+  }
 
-
-
+  .header-search-input{
+	width: 260px;
+	outline: none;
+	border: none;
+	background-color: #EAF0FA;
+	font-weight: 500;
+	font-size: 16px;
+	color: black;
+  }
 
   @media screen and (min-width: 768px) {
 	main {
@@ -235,7 +252,6 @@
   
 	.header {
 	  height: calc(var(--header-height) + 3rem);
-	  padding-left: calc(var(--nav-width) + 2rem);
 	}
   
 	.sidebar {

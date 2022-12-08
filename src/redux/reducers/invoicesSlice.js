@@ -166,6 +166,7 @@ const INVOICE_INITIAL_STATE = {
     filter: 'All',
     data: dummyData,
     filteredData: undefined,
+    searchValue: ''
 }
 
 const invoiceSlice = createSlice({
@@ -178,23 +179,40 @@ const invoiceSlice = createSlice({
         setFilter: (state, event) => {
             state.filter = event.payload;
 
-            if(state.filter === 'All'){
-                state.filteredData = undefined;
-            } else if (state.filter === 'Paid'){
-                state.filteredData = state.data.filter((data) => data.payment_status.toLowerCase() === 'paid');
+            if(state.filter !== 'All'){
+                state.filteredData = state.data.filter(
+                    (data) => data.payment_status.toLocaleLowerCase() === state.filter.toLowerCase() && (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                );
             } else {
-                state.filteredData = state.data.filter((data) => data.payment_status.toLocaleLowerCase() === 'unpaid');
+                state.filteredData = state.data.filter(
+                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                );
+            }
+        },
+        setSearch: (state, action) => {
+            state.searchValue = action.payload.toLowerCase();
+
+            if(state.filter !== 'All'){
+                state.filteredData = state.data.filter(
+                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue)) && data.payment_status.toLowerCase() === state.filter.toLowerCase()
+                )
+            } else {
+                state.filteredData = state.data.filter(
+                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                ); 
             }
         }
     }
 });
 
-export const { setData, setFilter } = invoiceSlice.actions;
+export const { setData, setFilter, setSearch } = invoiceSlice.actions;
 
 export const getInvoicesData = (state) => state.invoices.data;
 
 export const getFilterStatus = (state) => state.invoices.filter;
 
 export const getFilteredData = (state) => state.invoices.filteredData;
+
+export const getSearchValue = (state) => state.invoices.searchValue;
 
 export default invoiceSlice.reducer;

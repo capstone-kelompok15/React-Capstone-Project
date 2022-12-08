@@ -1017,3 +1017,12 @@ html{
   color: #FFFFFF;
   cursor: pointer;
 }
+
+.no-invoices-text{
+  max-width: 300px;
+  margin: 0px 20px;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  color: #404040;
+}

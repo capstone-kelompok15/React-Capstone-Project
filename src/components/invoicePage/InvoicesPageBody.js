@@ -10,23 +10,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFilteredData, getFilterStatus, getInvoicesData } from "../../redux/reducers/invoicesSlice";
 import { getShowFilterModal, showFilterModal } from "../../redux/reducers/filterModalSlice";
 import { getDetailData } from "../../redux/reducers/invoiceDetailSlice";
+import NoInvoices from "./NoInvoices";
 
 const InvoicesPageBody = () => {
-    const [ invoicesData, setInvoicesData ] = useState([]);
     const dispatch = useDispatch();
     const data = useSelector(getInvoicesData);
+    const [ invoicesData, setInvoicesData ] = useState(data);
     const detailData = useSelector(getDetailData);
     const filteredData = useSelector(getFilteredData);
     const filterStatus = useSelector(getFilterStatus);
     const isShownFilterModal = useSelector(getShowFilterModal);
 
     useEffect(() => {
-        if(filterStatus === 'All'){
+        if(filteredData === undefined){
             setInvoicesData(() => [...data]);
         } else {
             setInvoicesData(() => [...filteredData]);
         }
-    }, [filteredData, filterStatus, setInvoicesData, data])
+    }, [filteredData, filterStatus, setInvoicesData, data]);
 
     return(
         <>
@@ -43,9 +44,11 @@ const InvoicesPageBody = () => {
                                 <img className="filter-invoice" src={filterIcon} alt="Test" onClick={() => dispatch(showFilterModal())}/>
                             </div>
                         </div>
+                        {invoicesData.length === 0 ? <NoInvoices/> : 
                         <Container fluid className="invoice-cards-container p-0" style={{height: 'calc(100vh - 150px)', overflow:'auto'}}>
                             {invoicesData.map((data, i) => <InvoiceCard key={i} invoiceData={data} selected={data.id === detailData?.id}/>)}
                         </Container>
+                        }
                     </Container>
                 </Col>
                 {detailData === undefined ? <NoSelectedList/> : <InvoiceDetail/>}

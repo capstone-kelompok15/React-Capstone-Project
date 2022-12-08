@@ -6,6 +6,7 @@ import filterIcon from '../../assets/svg/filterIcon.svg';
 import { getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
 import { getPaymentModalShowStatus, showFilterModal } from "../../redux/reducers/paymentFilterModalSlice";
 import { getPaymentsData, getPaymentsFilteredData, getPaymentsFilterStatus } from "../../redux/reducers/paymentSlice";
+import NoInvoices from "../invoicePage/NoInvoices";
 import NoSelectedList from "../invoicePage/NoSelectedList";
 import PaymentCard from "./PaymentCard";
 import PaymentDetail from "./PaymentDetail";
@@ -43,9 +44,11 @@ const PaymentsPageBody = () => {
                                 <img className="filter-invoice" src={filterIcon} alt="Test" onClick={() => {dispatch(showFilterModal())}}/>
                             </div>
                         </div>
+                        {currentPaymentsData.length === 0 ? <NoInvoices/> :
                         <Container fluid className="invoice-cards-container p-0" style={{height: 'calc(100vh - 150px)', overflow:'auto'}}>
                             {currentPaymentsData.map((data, i) => <PaymentCard key={i} data={data} selected={data.id === paymentDetailData?.id}/>)}
                         </Container>
+                        }
                     </Container>
                 </Col>
                 {paymentDetailData === undefined ? <NoSelectedList/> : <PaymentDetail/>}
