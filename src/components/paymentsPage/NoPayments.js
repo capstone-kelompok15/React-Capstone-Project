@@ -11,9 +11,9 @@ const NoPayments = () => {
             <div className="d-flex flex-column justify-content-center align-items-center h-100">
                 <img src={emptyInvoiceLogo} alt={'Not Found'}/>
                 <div className="no-invoices-text">
-                    {searchValue !== '' ? "No invoice were found"
+                    {searchValue !== '' ? "No payment were found"
                     : 
-                    "There is no invoice right now, click new invoices above to create one"}
+                    "There is no payments right now"}
                 </div>
             </div>
         </Container>
