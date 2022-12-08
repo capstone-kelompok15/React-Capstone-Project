@@ -165,7 +165,8 @@ const dummyData = [
 const paymentInitialData = {
     filter: 'All',
     data: dummyData,
-    filteredData: undefined
+    filteredData: undefined,
+    searchValue: ''
 }
 
 const paymentSlice = createSlice({
@@ -178,23 +179,42 @@ const paymentSlice = createSlice({
         setFilter: (state, event) => {
             state.filter = event.payload;
 
-            if(state.filter === 'All'){
-                state.filteredData = undefined;
-            } else if (state.filter === 'Success'){
-                state.filteredData = state.data.filter((data) => data.payment_status.toLowerCase() === 'success');
+            state.filter = event.payload;
+
+            if(state.filter !== 'All'){
+                state.filteredData = state.data.filter(
+                    (data) => data.payment_status.toLocaleLowerCase() === state.filter.toLowerCase() && (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                );
             } else {
-                state.filteredData = state.data.filter((data) => data.payment_status.toLocaleLowerCase() === 'pending');
+                state.filteredData = state.data.filter(
+                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                );
+            }
+        },
+        setSearch: (state, action) => {
+            state.searchValue = action.payload.toLowerCase();
+
+            if(state.filter !== 'All'){
+                state.filteredData = state.data.filter(
+                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue)) && data.payment_status.toLowerCase() === state.filter.toLowerCase()
+                )
+            } else {
+                state.filteredData = state.data.filter(
+                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                ); 
             }
         }
     }
 })
 
-export const { setData, setFilter } = paymentSlice.actions;
+export const { setData, setFilter, setSearch } = paymentSlice.actions;
 
 export const getPaymentsData = (state) => state.payments.data;
 
 export const getPaymentsFilteredData = (state) => state.payments.filteredData;
 
 export const getPaymentsFilterStatus = (state) => state.payments.filter;
+
+export const getPaymentSearchValue = (state) => state.payments.searchValue;
 
 export default paymentSlice.reducer;

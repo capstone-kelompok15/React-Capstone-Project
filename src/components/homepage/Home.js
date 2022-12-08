@@ -8,27 +8,12 @@ import profile from "../../assets/image/profile.png"
 import logout from "../../assets/image/logout.png"
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import avatar from "../../assets/image/jisoo.jpg"
-import searchLogo from "../../assets/svg/searchLogo.svg";
-import {TiDelete} from 'react-icons/ti';
-import { useDispatch } from "react-redux";
-import { setSearch } from "../../redux/reducers/invoicesSlice";
-import { useState } from "react";
+import InvoicesSearchContainer from "./InvoicesSearchContainer";
+import PaymentSearchContainer from "./PaymentsSearchContainer";
 
 
 const Dashboard = () => {
-  const [ searchvalue, setSearchValue ] = useState("");
-  const dispatch = useDispatch();
   const location = useLocation();
-
-  const onChange = (e) => {
-    setSearchValue(e.target.value);
-    dispatch(setSearch(e.target.value));
-  }
-
-  const xIconOnClick = () => {
-    setSearchValue('');
-    dispatch(setSearch(''));
-  }
 
   return (
     <main className="main">
@@ -36,15 +21,9 @@ const Dashboard = () => {
         <div className='headerWrapper'>
           <div className='headerLeft'>
             {location.pathname === '/home/invoices' ? 
-              <div className="search-container">
-                <div className="d-flex flex-row justify-content-between align-items-center w-100">
-                  <div className="d-flex flex-row justify-content-start align-items-center gap-2">
-                    <img src={searchLogo} alt='Not found'/>
-                    <input className="header-search-input" type={'text'} placeholder='Search Invoices' onChange={onChange} value={searchvalue} />
-                  </div>
-                  <TiDelete style={{cursor: 'pointer'}} size={25} color={'#D62D33'} onClick={xIconOnClick} />
-                </div>
-              </div>
+              <InvoicesSearchContainer/>
+            : location.pathname === '/home/payments' ? 
+              <PaymentSearchContainer/>
             : <></>}
           </div>
           <div className='headerRight'>

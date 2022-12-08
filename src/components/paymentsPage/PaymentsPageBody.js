@@ -13,16 +13,16 @@ import PaymentDetail from "./PaymentDetail";
 import PaymentFilterModal from "./PaymentFIlterModal";
 
 const PaymentsPageBody = () => {
-    const [ currentPaymentsData, setcurrentPaymentsData ] = useState([]);
     const dispatch = useDispatch();
     const filterStatus = useSelector(getPaymentsFilterStatus);
     const filteredData = useSelector(getPaymentsFilteredData);
     const isShownFilterModal = useSelector(getPaymentModalShowStatus);
     const paymentDetailData = useSelector(getPaymentsDetailData);
     const paymentsData = useSelector(getPaymentsData);
+    const [ currentPaymentsData, setcurrentPaymentsData ] = useState(paymentsData);
 
     useEffect(() => {
-        if(filterStatus === 'All'){
+        if(filteredData === undefined){
             setcurrentPaymentsData(() => [...paymentsData]);
         } else {
             setcurrentPaymentsData(() => [...filteredData]);
