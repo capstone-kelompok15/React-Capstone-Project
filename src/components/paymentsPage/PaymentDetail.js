@@ -3,14 +3,20 @@ import formatRupiah from "../../utils/formatRupiah";
 import detailDocumentIcon from '../../assets/svg/detailDocumentIcon.svg';
 import deleteIcon from '../../assets/svg/deleteIcon.svg';
 import paymentDollarIcon from '../../assets/svg/paymentDollarIcon.svg';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
 import paymentGetClassnameByStatus from "../../utils/paymentGetClassnameByStatus";
+import { showRejectionModal } from "../../redux/reducers/paymentRejectionModalSlice";
 
 const PaymentDetail = () => {
+    const dispatch = useDispatch();
     const paymentDetailData = useSelector(getPaymentsDetailData);
     const paymentClassname = paymentGetClassnameByStatus(paymentDetailData.payment_status);
     const allTotal = formatRupiah(paymentDetailData.total_price);
+
+    const rejectOnClick = () => {
+        dispatch(showRejectionModal());
+    }
 
     return(
         <Col md={6} className='p-0 invoice-detail-column' style={{overflow: 'auto',height: 'calc(100vh - 65px)'}}>
@@ -113,7 +119,7 @@ const PaymentDetail = () => {
                         </div>
                     </Container>
                     <div className='d-flex flex-row justify-content-end align-items-center' style={{paddingTop: '30px', gap:'10px'}}>
-                        <div className="invoice-payment-reject-button">
+                        <div className="invoice-payment-reject-button" onClick={rejectOnClick}>
                             <img src={deleteIcon} alt='not found'/>
                             Reject Payment
                         </div>

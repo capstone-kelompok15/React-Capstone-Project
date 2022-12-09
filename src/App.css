@@ -975,6 +975,26 @@ html{
   border-radius: 6px;
 }
 
+.rejection-modal-container{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  z-index: 3;
+  height: 350px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px 24px;
+  border-radius: 6px;
+}
+
 .invoice-modal-filter-text{
   font-weight: 600;
   font-size: 24px;
