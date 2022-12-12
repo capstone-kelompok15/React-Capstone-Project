@@ -1,8 +1,57 @@
 import { Col, Container, Row, Table } from "react-bootstrap";
+import {useDetectClickOutside} from "react-detect-click-outside";
 import pencilIcon from '../../assets/svg/pencilIcon.svg';
 import trashIcon from '../../assets/svg/trashIcon.svg'
+import dropdownIcon from '../../assets/svg/dropdownIcon.svg'
+import UserDataDropdownCard from "./UserDataDropdownCard";
+import { useState } from "react";
+
+const FORM_BASE_DATA = {
+    email: '',
+    name: '',
+    address: ''
+}
 
 const NewInvoicesBody = () => {
+    const [ showDropdown, setShowDropdown ] = useState(false);
+
+    const [ formData, setFormData ] = useState(FORM_BASE_DATA)
+
+    const onChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        setFormData(prev => ({
+            ...prev,
+            [name] : value
+        }))
+    }
+
+    const ref = useDetectClickOutside({ onTriggered: () => {
+        if(document.activeElement === ref.current){
+            return
+        }
+        setShowDropdown(false);
+    }});
+
+    const dropdownCardOnClick = (userData) => {
+        setFormData(prev => ({
+            ...prev,
+            email: userData.email,
+            name: userData.name,
+            address: userData.address
+        }))
+    }
+
+    const dropdownIconOnClick = () => {
+        ref.current.focus();
+        setShowDropdown(true);
+    }
+
+    const toShowDropDown = () => {
+        setShowDropdown(true);
+    }
+
     return(
         <Container fluid className="p-0" style={{height: 'calc(100vh - 64px)'}}>
             <div className="d-flex flex-column h-100 justify-content-center align-items-center">
@@ -23,9 +72,41 @@ const NewInvoicesBody = () => {
                     <div className='main-text' style={{paddingTop: '35px'}}>Bill to:</div>
                         <Row>
                             <Col md>
-                                <div className="invoice-detail-underlined-container sub-text">{''}</div>
-                                <div className="invoice-detail-underlined-container sub-text">{''}</div>
-                                <div className="invoice-detail-underlined-container sub-text">{''}</div>
+                                <div className="invoice-detail-underlined-container sub-text" style={{position: 'relative'}}>
+                                    <input
+                                        name='email'
+                                        ref={ref}
+                                        type={'text'}
+                                        style={{border: 'none', outline:'none', width: '100%'}}
+                                        placeholder='Client Email'
+                                        onMouseDown={toShowDropDown}
+                                        onChange={onChange}
+                                        value={formData.email}
+                                        autoComplete='off'
+                                    />
+                                    <img src={dropdownIcon} alt='not found' style={{cursor: 'pointer'}} onClick={dropdownIconOnClick}/>
+                                    {showDropdown ? <UserDataDropdownCard onClick={dropdownCardOnClick} currentEmail={formData.email}/> : <></>}
+                                </div>
+                                <div className="invoice-detail-underlined-container sub-text">
+                                    <input
+                                        className="disabled-input"
+                                        type={'text'}
+                                        style={{border: 'none', outline:'none', width: '100%'}}
+                                        placeholder='Client Name'
+                                        value={formData.name}
+                                        disabled
+                                    />
+                                </div>
+                                <div className="invoice-detail-underlined-container sub-text">
+                                    <input 
+                                        className="disabled-input"
+                                        type={'text'}
+                                        style={{border: 'none', outline:'none', width: '100%'}}
+                                        placeholder='Client Address'
+                                        value={formData.address}
+                                        disabled
+                                    />
+                                </div>
                             </Col>
                             <Col md className="d-flex flex-column sub-text2" style={{gap: '16px'}}>
                                 <div className="d-flex flex-row" style={{gap: '32px'}}>
