@@ -1,10 +1,14 @@
 import { Col, Container, Row, Table } from "react-bootstrap";
 import {useDetectClickOutside} from "react-detect-click-outside";
+import Moment from 'moment'
+import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
 import pencilIcon from '../../assets/svg/pencilIcon.svg';
 import trashIcon from '../../assets/svg/trashIcon.svg'
 import dropdownIcon from '../../assets/svg/dropdownIcon.svg'
 import UserDataDropdownCard from "./UserDataDropdownCard";
 import { useState } from "react";
+import CostumDatePicker from "./CotumDatePicker";
 
 const FORM_BASE_DATA = {
     email: '',
@@ -17,6 +21,8 @@ const NewInvoicesBody = () => {
 
     const [ formData, setFormData ] = useState(FORM_BASE_DATA)
 
+    const [ startDate, setStartDate ] = useState(new Date());
+
     const onChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -26,6 +32,8 @@ const NewInvoicesBody = () => {
             [name] : value
         }))
     }
+
+    const currentDate = Moment().format('DD MMM YYYY');
 
     const ref = useDetectClickOutside({ onTriggered: () => {
         if(document.activeElement === ref.current){
@@ -115,11 +123,18 @@ const NewInvoicesBody = () => {
                                 </div>
                                 <div className="d-flex flex-row" style={{gap: '5px'}}>
                                     <div>Invoice Date</div>
-                                    <div>: </div>
+                                    <div>:</div>
+                                    <div>{currentDate}</div>
                                 </div>
                                 <div className="d-flex flex-row" style={{gap: '22px'}}>
                                     <div>Due Date</div>
-                                    <div>: </div>
+                                    <div className="d-flex flex-row" style={{gap: '5px'}}>:
+                                    <DatePicker
+                                        selected={startDate}
+                                        onChange={(date) => setStartDate(date)}
+                                        customInput={<CostumDatePicker />}
+                                    />
+                                    </div>
                                 </div>
                             </Col>
                         </Row>
