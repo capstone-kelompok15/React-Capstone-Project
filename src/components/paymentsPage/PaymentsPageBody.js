@@ -5,18 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 import filterIcon from '../../assets/svg/filterIcon.svg';
 import { getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
 import { getPaymentModalShowStatus, showFilterModal } from "../../redux/reducers/paymentFilterModalSlice";
+import { getRejectionModalStatus } from "../../redux/reducers/paymentRejectionModalSlice";
 import { getPaymentsData, getPaymentsFilteredData, getPaymentsFilterStatus } from "../../redux/reducers/paymentSlice";
 import NoSelectedList from "../invoicePage/NoSelectedList";
 import NoPayments from "./NoPayments";
 import PaymentCard from "./PaymentCard";
 import PaymentDetail from "./PaymentDetail";
 import PaymentFilterModal from "./PaymentFIlterModal";
+import PaymentRejectionModal from "./PaymentRejectionModal";
 
 const PaymentsPageBody = () => {
     const dispatch = useDispatch();
     const filterStatus = useSelector(getPaymentsFilterStatus);
     const filteredData = useSelector(getPaymentsFilteredData);
     const isShownFilterModal = useSelector(getPaymentModalShowStatus);
+    const isShownRejectionModal = useSelector(getRejectionModalStatus);
     const paymentDetailData = useSelector(getPaymentsDetailData);
     const paymentsData = useSelector(getPaymentsData);
     const [ currentPaymentsData, setcurrentPaymentsData ] = useState(paymentsData);
@@ -54,6 +57,7 @@ const PaymentsPageBody = () => {
                 {paymentDetailData === undefined ? <NoSelectedList/> : <PaymentDetail/>}
             </Row>
             {isShownFilterModal ? <PaymentFilterModal/> : <></>}
+            {isShownRejectionModal ? <PaymentRejectionModal/> : <></>}
         </>
     );
 }

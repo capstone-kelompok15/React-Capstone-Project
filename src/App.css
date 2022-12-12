@@ -840,9 +840,9 @@ html{
 }
 
 .invoice-detail-underlined-container{
-  padding-left: 10px;
+  padding: 0px 10px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   height: 32px;
   width: 200px;
@@ -966,6 +966,26 @@ html{
   border-radius: 6px;
 }
 
+.rejection-modal-container{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  z-index: 3;
+  height: 350px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px 24px;
+  border-radius: 6px;
+}
+
 .invoice-modal-filter-text{
   font-weight: 600;
   font-size: 24px;
@@ -1016,4 +1036,71 @@ html{
   font-size: 20px;
   text-align: center;
   color: #404040;
+}
+
+/* create invoice page */
+.create-invoice-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 151px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: #173468;
+  font-weight: 600;
+  font-size: 14px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.create-invoice-button:hover{
+  transform: scale(1.05);
+}
+
+.table-trash-icon{
+  width: 15px;
+  border: none;
+}
+
+.user-suggestion-container{
+  overflow: auto;
+  position: absolute;
+  height: auto;
+  max-height: 200px;
+  background-color: white;
+  left: 0px;
+  right: 0px;
+  top: 30px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #404040;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.user-suggestion-card{
+  padding: 10px;
+  cursor: pointer;
+}
+
+.user-suggestion-card:hover{
+  background-color: #EAF0FA;
+}
+
+.user-suggestion-card div.email-text{
+  font-weight: 500;
+  font-size: 10px;
+  color: #404040;
+}
+
+.user-suggestion-card div.name-text{
+  font-weight: 500;
+  font-size: 10px;
+  color: #999999;
+}
+
+.disabled-input:disabled{
+  background-color: white;
+  color: #000000;
 }

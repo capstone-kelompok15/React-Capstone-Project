@@ -5,6 +5,7 @@ import invoicesSlice from "./reducers/invoicesSlice";
 import navbarSlice from "./reducers/navbarSlice";
 import paymentDetailSlice from "./reducers/paymentDetailSlice";
 import paymentFilterModalSlice from "./reducers/paymentFilterModalSlice";
+import paymentRejectionModalSlice from "./reducers/paymentRejectionModalSlice";
 import paymentSlice from "./reducers/paymentSlice";
 
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
         invoiceDetail: invoiceDetailSlice,
         payments: paymentSlice,
         paymentDetail: paymentDetailSlice,
-        paymentModal: paymentFilterModalSlice
+        paymentModal: paymentFilterModalSlice,
+        rejectionModal: paymentRejectionModalSlice
     },
 })

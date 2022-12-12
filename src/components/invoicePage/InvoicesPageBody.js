@@ -11,8 +11,10 @@ import { getFilteredData, getFilterStatus, getInvoicesData } from "../../redux/r
 import { getShowFilterModal, showFilterModal } from "../../redux/reducers/filterModalSlice";
 import { getDetailData } from "../../redux/reducers/invoiceDetailSlice";
 import NoInvoices from "./NoInvoices";
+import { useNavigate } from "react-router-dom";
 
 const InvoicesPageBody = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const data = useSelector(getInvoicesData);
     const [ invoicesData, setInvoicesData ] = useState(data);
@@ -20,6 +22,10 @@ const InvoicesPageBody = () => {
     const filteredData = useSelector(getFilteredData);
     const filterStatus = useSelector(getFilterStatus);
     const isShownFilterModal = useSelector(getShowFilterModal);
+
+    const newInvoicseButtonOnClick = () => {
+        navigate('/home/invoices/newInvoices')
+    }
 
     useEffect(() => {
         if(filteredData === undefined){
@@ -37,7 +43,7 @@ const InvoicesPageBody = () => {
                         <div className="d-flex flex-row justify-content-between align-items-center" style={{padding: '40px 40px 10px'}}>
                             <div className='invoice-title'>All Invoices</div>
                             <div className='d-flex flex-row justify-content-center align-items-center gap-3'>
-                                <div className="new-invoice-button">
+                                <div className="new-invoice-button" onClick={newInvoicseButtonOnClick}>
                                     <AiFillPlusCircle size={20}/>
                                     <div>New Invoices</div>
                                 </div>
