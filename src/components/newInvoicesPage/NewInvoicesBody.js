@@ -18,10 +18,9 @@ const FORM_BASE_DATA = {
 
 const NewInvoicesBody = () => {
     const [ showDropdown, setShowDropdown ] = useState(false);
-
     const [ formData, setFormData ] = useState(FORM_BASE_DATA)
-
     const [ startDate, setStartDate ] = useState(new Date());
+    const currentDate = Moment().format('DD MMMM YYYY');
 
     const onChange = (e) => {
         const name = e.target.name;
@@ -33,7 +32,6 @@ const NewInvoicesBody = () => {
         }))
     }
 
-    const currentDate = Moment().format('DD MMMM YYYY');
 
     const ref = useDetectClickOutside({ onTriggered: () => {
         if(document.activeElement === ref.current){
