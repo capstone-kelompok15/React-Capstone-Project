@@ -1046,3 +1046,29 @@ html{
   text-align: center;
   color: #404040;
 }
+
+/* create invoice page */
+.create-invoice-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 151px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: #173468;
+  font-weight: 600;
+  font-size: 14px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.create-invoice-button:hover{
+  transform: scale(1.05);
+}
+
+.table-trash-icon{
+  width: 15px;
+  border: none;
+}
