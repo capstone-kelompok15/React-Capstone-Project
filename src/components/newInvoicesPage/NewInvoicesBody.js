@@ -33,7 +33,7 @@ const NewInvoicesBody = () => {
         }))
     }
 
-    const currentDate = Moment().format('DD MMM YYYY');
+    const currentDate = Moment().format('DD MMMM YYYY');
 
     const ref = useDetectClickOutside({ onTriggered: () => {
         if(document.activeElement === ref.current){

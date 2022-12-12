@@ -5,8 +5,8 @@ const dummyData = [
         id: 'INV-00341212',
         payment_status: "Paid",
         total_price: 24800000,
-        due_at: "5 Dec 2022",
-        created_at : "24 Nov 2022",
+        due_at: "5 December 2022",
+        created_at : "24 November 2022",
         updated_at: "",
         merchant: {
             id: "string",
@@ -58,8 +58,8 @@ const dummyData = [
         id: 'INV-00341213',
         payment_status: "Unpaid",
         total_price: 12800000,
-        due_at: "28 Nov 2022",
-        created_at : "24 Nov 2022",
+        due_at: "28 November 2022",
+        created_at : "24 November 2022",
         updated_at: "",
         merchant: {
             id: "string",
@@ -111,8 +111,8 @@ const dummyData = [
         id: 'INV-00341215',
         payment_status: "Unpaid",
         total_price: 24800000,
-        due_at: "7 Dec 2022",
-        created_at : "24 Nov 2022",
+        due_at: "7 December 2022",
+        created_at : "24 November 2022",
         updated_at: "",
         merchant: {
             id: "string",
