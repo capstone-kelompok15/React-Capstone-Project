@@ -702,25 +702,16 @@ html{
   background-color: #EAF0FA;
 }
 
-.invoice-cards-container::-webkit-scrollbar{
+::-webkit-scrollbar{
   position: absolute;
-  width: 10px;
+  width: 6px;
 }
 
-.invoice-cards-container::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #173468;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
-.invoice-detail-column::-webkit-scrollbar{
-  position: absolute;
-  width: 10px;
-}
-
-.invoice-detail-column::-webkit-scrollbar-thumb {
-  background: #173468;
-  border-radius: 10px;
-}
 .invoice-card-payment-status{
   font-weight: 500;
   font-size: 14px;

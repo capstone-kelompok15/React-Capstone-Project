@@ -9,7 +9,7 @@ import recent2 from "../../assets/image/recent2.png";
 
 const Dashboard = () => {
   return (
-    <div className="container">
+    <div className="container p-0" style={{height: 'calc(100vh - 65px)', overflow: 'auto'}}>
       <div className="dashboardWrapper">
         <div className="dashboardLeft">Dashboard</div>
         <div className="dashboardRight">
@@ -43,10 +43,9 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="container pb-5 d-flex justify-content-center">
-        <div className="row">
+
+        <div className="d-flex pb-5 flex-row justify-content-between" style={{margin: '0px 40px'}}>
           <div
-            className="col-md-6 col-lg-3"
             data-aos="zoom-in"
             data-aos-delay="100"
           >
@@ -57,7 +56,6 @@ const Dashboard = () => {
           </div>
 
           <div
-            className="col-md-6 col-lg-3"
             data-aos="zoom-in"
             data-aos-delay="100"
           >
@@ -68,7 +66,6 @@ const Dashboard = () => {
           </div>
 
           <div
-            className="col-md-6 col-lg-3"
             data-aos="zoom-in"
             data-aos-delay="100"
           >
@@ -79,7 +76,6 @@ const Dashboard = () => {
           </div>
 
           <div
-            className="col-md-6 col-lg-3"
             data-aos="zoom-in"
             data-aos-delay="100"
           >
@@ -89,7 +85,6 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </div>
 
       <div class="container text-center">
         <div class="row justify-content-evenly">
@@ -105,7 +100,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div class="col-6">
+          <div class="col-6 mb-4">
             <h4 className="textRecent"> Recent Payments</h4>
             <div className="recent">
               <img className="pic2" src={recent2} alt="img" />
