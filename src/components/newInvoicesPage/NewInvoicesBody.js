@@ -126,8 +126,8 @@ const NewInvoicesBody = () => {
     }
 
     return(
-        <Container fluid className="p-0" style={{height: 'calc(100vh - 64px)'}}>
-            <div className="d-flex flex-column h-100 justify-content-center align-items-center">
+        <Container fluid className="p-0" style={{height: 'calc(100vh - 64px)', overflow: 'auto'}}>
+            <div className="d-flex flex-column justify-content-center align-items-center my-3">
                 <div className='d-flex justify-content-end' style={{width: '620px'}}>
                     <div className="create-invoice-button">
                         <img src={pencilIcon} alt='Not Found'/>
