@@ -52,6 +52,7 @@ const NewInvoicesBody = () => {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Please insert a product first before you add a new line',
+                confirmButtonColor: '#173468',
             })
             return;
         }
@@ -196,6 +197,15 @@ const NewInvoicesBody = () => {
                                     <DatePicker
                                         selected={startDate}
                                         onChange={(date) => {
+                                            if(date < new Date()){
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Oops...',
+                                                    text: `Please input date atleast after today's date`,
+                                                    confirmButtonColor: '#173468',
+                                                })
+                                                return;
+                                            }
                                             setStartDate(date);
                                             setFormData(prev => ({
                                                 ...prev,
