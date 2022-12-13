@@ -45,7 +45,7 @@ const AddBankModal = (props) => {
         let errorNumber = false;
         let errorName = false;
 
-        if(formData.bank_id === -1){
+        if(parseInt(formData.bank_id) === -1){
             setErrMsg(prev => ({
                 ...prev,
                 bank_id_msg: 'Please select one bank to use'
