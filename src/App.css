@@ -610,6 +610,50 @@ html{
   width: 400px;
 }
 
+.register-add-bank-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 12px;
+  gap: 10px;
+  width: 400px;
+  height: 50px;
+  background: #FFFFFF;
+  border: 1px solid #999999;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #404040;
+  cursor: pointer;
+}
+
+.add-bank-modal-container{
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* top: 0; */
+  /* bottom: 0; */
+  margin: auto;
+  position: absolute;
+  z-index: 3;
+  height: auto;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px 24px;
+  border-radius: 6px;
+}
+
+.add-bank-modal-title{
+  font-weight: 600;
+  font-size: 16px;
+  color: #404040;
+}
+
 /* invoice */
 .invoice-title{
   font-weight: 600;
