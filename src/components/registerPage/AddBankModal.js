@@ -30,7 +30,7 @@ const AddBankModal = (props) => {
     }
 
     useEffect(() => {
-        if(currentBankData.bank_id !== '-1'){
+        if(currentBankData.bank_id !== -1){
             setFormData(currentBankData);
             setTodo('Update');
         }
@@ -125,10 +125,12 @@ const AddBankModal = (props) => {
                         <Form.Group className="mb-3">
                             <Form.Label className='mb-1'>Card Number</Form.Label>
                             <Form.Control
+                                type='text'
                                 name='bank_number'
                                 placeholder="1234-5678-4321"
                                 value={formData.bank_number}
                                 onChange={onChange}
+                                autoComplete='off'
                             />
                             {errMsg.bank_number_msg !== '' ? 
                                 <div className='error-message'>{errMsg.bank_number_msg}</div>
@@ -138,10 +140,12 @@ const AddBankModal = (props) => {
                         <Form.Group className="mb-3">
                             <Form.Label className='mb-1'>Card Holder Name</Form.Label>
                             <Form.Control
+                                type='text'
                                 name='on_behalf_of'
                                 placeholder="e.g Alvin W"
                                 value={formData.on_behalf_of}
                                 onChange={onChange}
+                                autoComplete='off'
                             />
                             {errMsg.on_behalf_of_msg !== '' ? 
                                 <div className='error-message'>{errMsg.on_behalf_of_msg}</div>

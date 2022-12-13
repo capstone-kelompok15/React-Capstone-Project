@@ -159,6 +159,58 @@ const RegisterForm = () => {
         swiperState.slideNext();
     }
 
+    const onRegister = () => {
+        let merchantNameError = false;
+        let merchantAddressError = false;
+        let merchantBankError = false;
+
+        if(registerFormData.merchant_name === ''){
+            setErrMsgs(prev => ({
+                ...prev,
+                merchant_nameMsg: 'Plese input your merchant name'
+            }))
+            merchantNameError = true;
+        } else {
+            setErrMsgs(prev => ({
+                ...prev,
+                merchant_nameMsg: ''
+            }))
+            merchantNameError = false;
+        }
+
+        if(registerFormData.merchant_address === ''){
+            setErrMsgs(prev => ({
+                ...prev,
+                merchant_addressMsg: 'Please input your merchant address'
+            }));
+            merchantAddressError = true;
+        } else {
+            setErrMsgs(prev => ({
+                ...prev,
+                merchant_addressMsg: ''
+            }));
+            merchantAddressError = false;
+        }
+
+        if(registerFormData.merchant_banks[0].bank_id === -1){
+            setErrMsgs(prev => ({
+                ...prev,
+                bankAccountMsg: 'Please add a bank account for transfer'
+            }));
+            merchantBankError = true
+        } else {
+            setErrMsgs(prev => ({
+                ...prev,
+                bankAccountMsg: ''
+            }));
+            merchantBankError = false;
+        }
+
+        if(merchantNameError || merchantAddressError || merchantBankError){
+            return;
+        }
+    }
+
     const toLoginOnClick = () => {
         navigate('/login');
     }
@@ -263,10 +315,12 @@ const RegisterForm = () => {
                             <Form.Group className="mt-3 register-form" style={{width: '400px'}}>
                                 <Form.Label>Merchant Name</Form.Label>
                                 <Form.Control name="merchant_name" type="text" placeholder="e.g Toko Sejahtera" value={registerFormData.merchant_name} onChange={onChange} />
+                                {errMsgs.merchant_nameMsg === '' ? <></> : <div className='error-message'>{errMsgs.merchant_nameMsg}</div>}
                             </Form.Group>
                             <Form.Group className="mt-3 register-form">
                                 <Form.Label>Merchant Address</Form.Label>
                                 <Form.Control name='merchant_address' type="text" placeholder="e.g Jalan Sumatra no 2" value={registerFormData.merchant_address} onChange={onChange} />
+                                {errMsgs.merchant_addressMsg === '' ? <></> : <div className='error-message'>{errMsgs.merchant_addressMsg}</div>}
                             </Form.Group>
                             <Form.Group className="mt-3 register-form">
                                 <Form.Label>Bank Account</Form.Label>
@@ -283,11 +337,12 @@ const RegisterForm = () => {
                                     </>
                                 }
                                 </div>
+                                {errMsgs.bankAccountMsg === '' ? <></> : <div className='error-message'>{errMsgs.bankAccountMsg}</div>}
                             </Form.Group>
                     </SwiperSlide>
                 </Swiper>
                 <div className="d-flex flex-column justify-content-center align-items-center">
-                        <div className="button-primary d-flex justify-content-center" style={{width: '400px'}} onClick={nextOnClick}>{currentIndex === 1 ? 'SignUp' :'Next'}</div>
+                        <div className="button-primary d-flex justify-content-center" style={{width: '400px'}} onClick={currentIndex === 1 ? onRegister : nextOnClick }>{currentIndex === 1 ? 'SignUp' :'Next'}</div>
                         <div className="mt-4 not-registered">Already have an account? <span onClick={toLoginOnClick}>Login</span></div>   
                 </div>
             </Form>
