@@ -682,6 +682,13 @@ html{
   transform: scale(1.01);
 }
 
+.add-line-container{
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  color: #404040;
+}
+
 .filter-invoice{
   cursor: pointer;
 }
@@ -1147,4 +1154,10 @@ html{
 .disabled-input:disabled{
   background-color: white;
   color: #000000;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

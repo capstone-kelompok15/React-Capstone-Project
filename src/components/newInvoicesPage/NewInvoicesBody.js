@@ -9,11 +9,23 @@ import dropdownIcon from '../../assets/svg/dropdownIcon.svg'
 import UserDataDropdownCard from "./UserDataDropdownCard";
 import { useState } from "react";
 import CostumDatePicker from "./CotumDatePicker";
+import {IoMdAddCircle} from 'react-icons/io'
+import formatRupiah from "../../utils/formatRupiah";
+import Swal from 'sweetalert2';
 
 const FORM_BASE_DATA = {
+    cotumer_id: 0,
     email: '',
     name: '',
-    address: ''
+    address: '',
+    due_at: new Date(),
+    items: [
+        {
+            product: '',
+            quantity: 0,
+            price: 0
+        }
+    ]
 }
 
 const NewInvoicesBody = () => {
@@ -30,6 +42,59 @@ const NewInvoicesBody = () => {
             ...prev,
             [name] : value
         }))
+
+    }
+
+    const addLineOnClick = () => {
+        const latestIndex = formData.items.length - 1;
+        if(formData.items[latestIndex].product === ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please insert a product first before you add a new line',
+            })
+            return;
+        }
+        const newArray = [...formData.items, FORM_BASE_DATA.items[0]];
+
+        setFormData(prev => ({
+            ...prev,
+            items: [...newArray]
+        }))
+    };
+
+    const deleteOnClick = (i) => {
+        const newArray = [...formData.items];
+        newArray.splice(i, 1);
+
+        setFormData(prev => ({
+            ...prev,
+            items: [...newArray]
+        }))
+    }
+
+    const tableOnChange = (e, i) => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        const newArray = [...formData.items];
+
+        if((name === 'quantity' || name === 'price') && value !== ''){
+            newArray[i] = {
+                ...formData.items[i],
+                [name]: parseInt(value)
+            }
+        } else {
+            newArray[i] = {
+                ...formData.items[i],
+                [name]: value
+            }
+        }
+
+        setFormData(prev => ({
+            ...prev,
+            items: [...newArray]
+        }))
     }
 
 
@@ -43,6 +108,7 @@ const NewInvoicesBody = () => {
     const dropdownCardOnClick = (userData) => {
         setFormData(prev => ({
             ...prev,
+            cotumer_id: userData.id,
             email: userData.email,
             name: userData.name,
             address: userData.address
@@ -129,7 +195,13 @@ const NewInvoicesBody = () => {
                                     <div className="d-flex flex-row" style={{gap: '5px'}}>:
                                     <DatePicker
                                         selected={startDate}
-                                        onChange={(date) => setStartDate(date)}
+                                        onChange={(date) => {
+                                            setStartDate(date);
+                                            setFormData(prev => ({
+                                                ...prev,
+                                                due_at: date,
+                                            }))
+                                        }}
                                         customInput={<CostumDatePicker />}
                                     />
                                     </div>
@@ -148,28 +220,39 @@ const NewInvoicesBody = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="table-body-text">
-                                    <td className="table-data" style={{width: '265px'}}>
-                                        <input type='text' style={{border: 'none', outline: 'none', width: '100%'}} placeholder={'Input item name'}/>
-                                    </td>
-                                    <td className="table-data text-center">
-                                        <input className="text-center" type={'text'} style={{border: 'none', outline: 'none', width: '20px'}} value={1}/>
-                                    </td>
-                                    <td className="table-data text-center" style={{width: '100px'}}>
-                                        <input className="text-center" type={'text'} style={{border: 'none', outline: 'none', width: '100%'}} value={0}/>
-                                    </td>
-                                    <td className="table-data text-center">{0}</td>
-                                    <td className="table-trash-icon">
-                                        <img src={trashIcon} alt='Not Found' style={{cursor: 'pointer'}}/>
-                                    </td>
-                                </tr>
+                                
+                                    {formData.items.map((data, i) => {
+                                        return(
+                                            <tr className="table-body-text" key={i}>
+                                                <td className="table-data" style={{width: '265px'}}>
+                                                    <input type='text' name='product' style={{border: 'none', outline: 'none', width: '100%'}} placeholder={'Input item name'} value={data.product} onChange={(e) => tableOnChange(e, i)} autoComplete='off' />
+                                                </td>
+                                                <td className="table-data text-center">
+                                                    <input className="text-center" name='quantity' type={'number'} style={{border: 'none', outline: 'none', width: '20px'}} placeholder={'qty'} value={data.quantity} onChange={(e) => tableOnChange(e, i)} />
+                                                </td>
+                                                <td className="table-data text-center" style={{width: '100px'}}>
+                                                    <input className="text-center" name='price' type={'number'} style={{border: 'none', outline: 'none', width: '100%'}} placeholder={'price'} value={data.price} onChange={(e) => tableOnChange(e, i)} />
+                                                </td>
+                                                <td className="table-data text-center">{formatRupiah(data.price * data.quantity)}</td>
+                                                {i === 0 ? <td className="table-trash-icon" style={{paddingRight: '27px'}}></td> : 
+                                                <td className="table-trash-icon" onClick={() => deleteOnClick(i)}>
+                                                    <img src={trashIcon} alt='Not Found' style={{cursor: 'pointer'}}/>
+                                                </td>
+                                                }
+                                            </tr>
+                                        )
+                                    })}
                             </tbody>
                         </Table>
                     </div>
-                    <div className="d-flex flex-row justify-content-end" style={{marginRight: '35px'}}>
+                    <div className="d-flex flex-row justify-content-between" style={{marginRight: '35px'}}>
+                        <div className="add-line-container d-flex flex-row align-items-center" style={{gap: '10px'}} onClick={addLineOnClick}>
+                            <IoMdAddCircle size={18} color="#329059"/>
+                            <div>Add Line Item</div>
+                        </div>
                         <div className="invoice-detail-total-container">
                             <div>Total</div>
-                            <div>{0}</div>
+                            <div>{formatRupiah(formData.items.reduce((a,b) => a + (b.price * b.quantity), 0))}</div>
                         </div>
                     </div>
                     <div className="d-flex flex-column" style={{paddingTop: '35px', gap:'10px'}}>
