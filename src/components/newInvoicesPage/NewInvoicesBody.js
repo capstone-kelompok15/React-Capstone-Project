@@ -13,12 +13,14 @@ import {IoMdAddCircle} from 'react-icons/io'
 import formatRupiah from "../../utils/formatRupiah";
 import Swal from 'sweetalert2';
 
+const today = new Date();
+
 const FORM_BASE_DATA = {
     cotumer_id: 0,
     email: '',
     name: '',
     address: '',
-    due_at: new Date(),
+    due_at: today.setDate(today.getDate() + 1),
     items: [
         {
             product: '',
@@ -31,7 +33,7 @@ const FORM_BASE_DATA = {
 const NewInvoicesBody = () => {
     const [ showDropdown, setShowDropdown ] = useState(false);
     const [ formData, setFormData ] = useState(FORM_BASE_DATA)
-    const [ startDate, setStartDate ] = useState(new Date());
+    const [ startDate, setStartDate ] = useState(formData.due_at);
     const currentDate = Moment().format('DD MMMM YYYY');
 
     const onChange = (e) => {
