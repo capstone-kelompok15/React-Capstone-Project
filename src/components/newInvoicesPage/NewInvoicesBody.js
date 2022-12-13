@@ -11,6 +11,7 @@ import { useState } from "react";
 import CostumDatePicker from "./CotumDatePicker";
 import {IoMdAddCircle} from 'react-icons/io'
 import formatRupiah from "../../utils/formatRupiah";
+import Swal from 'sweetalert2';
 
 const FORM_BASE_DATA = {
     cotumer_id: 0,
@@ -46,6 +47,15 @@ const NewInvoicesBody = () => {
     }
 
     const addLineOnClick = () => {
+        const latestIndex = formData.items.length - 1;
+        if(formData.items[latestIndex].product === ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please insert a product first before you add a new line',
+            })
+            return;
+        }
         const newArray = [...formData.items, FORM_BASE_DATA.items[0]];
 
         setFormData(prev => ({

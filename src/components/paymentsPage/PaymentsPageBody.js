@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import filterIcon from '../../assets/svg/filterIcon.svg';
 import { getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
 import { getPaymentModalShowStatus, showFilterModal } from "../../redux/reducers/paymentFilterModalSlice";
@@ -16,6 +17,7 @@ import PaymentRejectionModal from "./PaymentRejectionModal";
 
 const PaymentsPageBody = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const filterStatus = useSelector(getPaymentsFilterStatus);
     const filteredData = useSelector(getPaymentsFilteredData);
     const isShownFilterModal = useSelector(getPaymentModalShowStatus);
@@ -23,6 +25,10 @@ const PaymentsPageBody = () => {
     const paymentDetailData = useSelector(getPaymentsDetailData);
     const paymentsData = useSelector(getPaymentsData);
     const [ currentPaymentsData, setcurrentPaymentsData ] = useState(paymentsData);
+
+    const newInvoicseButtonOnClick = () => {
+        navigate('/home/invoices/newInvoices')
+    }
 
     useEffect(() => {
         if(filteredData === undefined){
@@ -40,7 +46,7 @@ const PaymentsPageBody = () => {
                         <div className="d-flex flex-row justify-content-between align-items-center" style={{padding: '40px 40px 10px'}}>
                             <div className='invoice-title'>All Payments</div>
                             <div className='d-flex flex-row justify-content-center align-items-center gap-3'>
-                                <div className="new-invoice-button">
+                                <div className="new-invoice-button" onClick={newInvoicseButtonOnClick}>
                                     <AiFillPlusCircle size={20}/>
                                     <div>New Invoices</div>
                                 </div>
