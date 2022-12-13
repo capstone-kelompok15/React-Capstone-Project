@@ -1,44 +1,50 @@
 import React from "react";
 import Myprofile from "../../assets/image/Myprofile.png";
-// import Pencil from "../../assets/image/Pencil.png";
+import Bca from "../../assets/image/Bca.png";
+import Pencil from "../../assets/image/Pencil.png";
+import Tambah from "../../assets/image/Tambah.png";
 
 const ProfilePageBody = () => {
   return (
     // Profile page
-    <div className="container-fluid">
+    <div className="body-profile container-fluid">
       <div className="container">
-        <h1>My Profile</h1>
+        <h1 class="text-profile">My Profile</h1>
         <hr />
         <form>
           <div className="row">
             <div className="col-6">
               <div>
-                <label for="username">Username</label>
+                <label className="label-text" for="username">
+                  Username
+                </label>
                 <input
                   type="text"
                   name="username"
                   id="username"
                   placeholder="Alvinwira"
                   required
-                  className="form-control mt-2"
+                  className="form-profile form-control mt-2"
                 ></input>
               </div>
 
-              <div className="mt-3">
-                <label for="email">Email</label>
+              <div className="mt-2">
+                <label className="label-text" for="email">
+                  Email
+                </label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   id="email"
                   placeholder="wiraprathamaalvin@gmail.com"
                   required
-                  className="form-control mt-2"
+                  className="form-profile form-control mt-2"
                 ></input>
               </div>
 
               <div className="mt-3 col-4">
                 <button
-                  className="form-control bg bg-primary text-white"
+                  className="button-profile form-control"
                   type="submit"
                   name="update"
                 >
@@ -47,76 +53,101 @@ const ProfilePageBody = () => {
               </div>
             </div>
 
-            <div className="col-4 mx-5">
+            <div className="col-4 mx-4">
               <div className="row">
                 <div>
-                  <label>Profile Picture</label>
-                </div>
-                <div>
-                  <img src={Myprofile} alt="myprofile" class="img-profile" />
+                  <label className="label-text">Profile Picture</label>
+                  <div>
+                    <img src={Pencil} alt="pencil" class="pencil" />
+                    <button
+                      type="submit"
+                      class="button-edit"
+                      alt="edit"
+                      name="edit"
+                    >
+                      Edit
+                    </button>
+                    <img src={Myprofile} alt="myprofile" class="img-profile" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </form>
-        {/*  End of Profile Page */}
-        {/* Merchant Detail */}
-        <h1 className="mt-3">Merchant Details</h1>
+      </div>
+      {/*  End of Profile Page */}
+      {/* Merchant Detail */}
+      <div class="container">
+        <h1 class="text-merchant mt-3">Merchant Details</h1>
         <hr />
         <form>
           <div className="row">
             <div className="col-4">
-              <label for="merchantName">merchant Name</label>
+              <label className="label-text" for="merchantName">
+                Merchant Name
+              </label>
               <input
                 type="text"
-                className="form-control mt-2"
+                className="form-merchant form-control mt-2"
                 id="merchantName"
                 name="merchantName"
                 placeholder="Toko Sejahtera"
               ></input>
             </div>
-            <div className="col-4">
+            <div className="col-4 mx-4">
               <label for="primaryBank">Primary Bank Account</label>
-              <input
-                type="number"
-                className="form-control mt-2"
-                placeholder="712312728"
-                id="primaryBank"
-                name="primaryBank"
-              ></input>
+              <div>
+                <img src={Bca} alt="bca" class="bca" />
+                <input
+                  type="number"
+                  className="form-primary form-control mt-2"
+                  placeholder="712312827"
+                  id="primaryBank"
+                  name="primaryBank"
+                ></input>
+              </div>
             </div>
           </div>
 
           <div className="row mt-3">
             <div className="col-4">
-              <label for="merchantAddress">Merchant Address</label>
+              <label className="label-text" for="merchantAddress">
+                Merchant Address
+              </label>
               <input
                 type="text"
-                className="form-control mt-2"
-                placeholder="Jalan sumatra no 2"
+                className="form-merchant form-control mt-2"
+                placeholder="Jalan Sumatra no 2"
                 id="merchantAddress"
                 name="merchantAddress"
               ></input>
             </div>
-            <div className="col-4">
-              <label for="additionalBank">Additional Bank Account</label>
-              <input
-                type="text"
-                className="form-control mt-2"
-                placeholder="Add Bank for your account"
-                id="additionalBank"
-                name="additionalBank"
-              ></input>
+            <div className="col-4 mx-4">
+              <label className="label-text" for="additionalBank">
+                Additional Bank Account
+              </label>
+              <div>
+                <img src={Tambah} alt="tambah" class="tambah" />
+                <input
+                  type="text"
+                  className="form-merchant form-control mt-2"
+                  placeholder="Add Bank for your account"
+                  id="additionalBank"
+                  name="additionalBank"
+                ></input>
+              </div>
             </div>
           </div>
 
           <div className="row mt-3">
             <div className="col-4">
-              <label for="phoneNumber">Phone Number</label>
+              <label className="label-text" for="phoneNumber">
+                Phone Number
+              </label>
               <input
                 type="number"
-                className="form-control mt-2"
-                placeholder="086788874555"
+                className="form-merchant form-control mt-2"
+                placeholder="0821338102989"
                 id="phoneNumber"
                 name="phoneNumber"
               ></input>
@@ -126,50 +157,57 @@ const ProfilePageBody = () => {
           <div className="col-4 mt-3">
             <button
               type="submit"
-              className="btn btn-primary text-white"
+              className="button-merchant"
               name="updateDetails"
             >
               Update Details
             </button>
           </div>
         </form>
-        {/* End of Merchants */}
-
-        <h1 className="mt-3">Change Password</h1>
+      </div>
+      {/* End of Merchants */}
+      <div class="container">
+        <h1 className="text-password mt-3">Change Password</h1>
         <hr />
         <div className="row mt-3">
           <div className="col-4">
-            <label for="currentPassword">Current Password</label>
+            <label className="label-text" for="currentPassword">
+              Current Password
+            </label>
             <input
               type="password"
-              className="form-control mt-2"
-              placeholder="086788874555"
+              className="form-password form-control mt-2"
+              placeholder="********"
               id="currentPassword"
               name="currentPassword"
             ></input>
           </div>
           <div className="col-4">
-            <label for="newPassword">New Password</label>
+            <label className="label-text" for="newPassword">
+              New Password
+            </label>
             <input
               type="password"
-              className="form-control mt-2"
-              placeholder="086788874555"
+              className="form-password form-control mt-2"
+              placeholder="********"
               id="newPassword"
               name="newPassword"
             ></input>
           </div>
           <div className="col-4">
-            <label for="confirmPassword">Confirm Password</label>
+            <label className="label-text" for="confirmPassword">
+              Confirm Password
+            </label>
             <input
               type="password"
-              className="form-control mt-2"
-              placeholder="086788874555"
+              className="form-password form-control mt-2"
+              placeholder="********"
               id="confirmPassword"
               name="confirmPassword"
             ></input>
           </div>
           <div className="col-4 mt-3">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="button-password">
               Change Password
             </button>
           </div>
