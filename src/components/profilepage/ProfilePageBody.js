@@ -97,24 +97,14 @@ const ProfilePageBody = () => {
             <div className="col-4 mx-4">
               <label for="primaryBank">Primary Bank Account</label>
               <div>
-<<<<<<< Updated upstream
                 <input
-=======
-              <input
->>>>>>> Stashed changes
                   type="number"
                   className="form-primary form-control mt-2 ps-5"
                   placeholder="712312827"
                   id="primaryBank"
                   name="primaryBank"
                 ></input>
-<<<<<<< Updated upstream
                 <img src={Bca} alt="bca" class="bca" />
-=======
-              <div className="col-2 mx-2 img-bca">
-                  <img src={Bca} alt="bca" class="bca" />
-              </div>          
->>>>>>> Stashed changes
               </div>
             </div>
           </div>
