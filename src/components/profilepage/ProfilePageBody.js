@@ -97,14 +97,14 @@ const ProfilePageBody = () => {
             <div className="col-4 mx-4">
               <label for="primaryBank">Primary Bank Account</label>
               <div>
-                <img src={Bca} alt="bca" class="bca" />
                 <input
                   type="number"
-                  className="form-primary form-control mt-2"
+                  className="form-primary form-control mt-2 ps-5"
                   placeholder="712312827"
                   id="primaryBank"
                   name="primaryBank"
                 ></input>
+                <img src={Bca} alt="bca" class="bca" />
               </div>
             </div>
           </div>
@@ -127,14 +127,14 @@ const ProfilePageBody = () => {
                 Additional Bank Account
               </label>
               <div>
-                <img src={Tambah} alt="tambah" class="tambah" />
                 <input
                   type="text"
-                  className="form-merchant form-control mt-2"
+                  className="form-merchant form-control mt-2 ps-5"
                   placeholder="Add Bank for your account"
                   id="additionalBank"
                   name="additionalBank"
                 ></input>
+                <img src={Tambah} alt="tambah" class="tambah" />
               </div>
             </div>
           </div>

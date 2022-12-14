@@ -783,3 +783,18 @@
   left: 25px;
   top: 72px;
 }
+
+.bca {
+  position: relative;
+  bottom: 38px;
+  left: 10px;
+  width: 35px;
+}
+
+.tambah {
+  position: relative;
+  bottom: 39px;
+  left: 15px;
+  width: 25px;
+  height: 25px;
+}
