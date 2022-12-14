@@ -21,6 +21,7 @@ import svgValidation from '../../utils/svgValidation';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearState, getRegisterState, register } from '../../redux/reducers/registerSlice';
 import Swal from 'sweetalert2';
+import loadingRolling from '../../assets/svg/loadingRolling.svg';
 
 const REGISTER_FORM_BASE_DATA = {
     email: '',
@@ -384,8 +385,8 @@ const RegisterForm = () => {
                     </SwiperSlide>
                 </Swiper>
                 <div className="d-flex flex-column justify-content-center align-items-center">
-                        <div className="button-primary d-flex justify-content-center" style={{width: '400px'}} onClick={currentIndex === 1 ? onRegister : nextOnClick }>{currentIndex === 1 ? 'SignUp' :'Next'}</div>
-                        <div className="mt-4 not-registered">Already have an account? <span onClick={toLoginOnClick}>Login</span></div>   
+                    <div className="button-primary d-flex justify-content-center" style={{width: '400px'}} onClick={currentIndex === 1 ? onRegister : nextOnClick }>{registerState.loading ? <img src={loadingRolling} height='20px' width='20px' alt='notFound' /> : currentIndex === 1 ? 'SignUp' :'Next'}</div>
+                    <div className="mt-4 not-registered">Already have an account? <span onClick={toLoginOnClick}>Login</span></div>         
                 </div>
             </Form>
             {showAddBankModal ? <AddBankModal outisdeModalOnClick={()=>{setShowAddBankModal(false)}} addBankFormSubmit={addBankFormSubmit} currentBankData={registerFormData.merchant_banks[0]} /> : <></>}
