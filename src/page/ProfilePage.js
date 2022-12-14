@@ -1,5 +1,11 @@
+import ProfilePageBody from "../components/profilePage/ProfilePageBody";
+//import AddCard from "../components/profilepage/AddCard";
+
 const ProfilePage = () => {
-    return(<h1>Profile Page</h1>)
+    return(
+        //<AddCard />
+        <ProfilePageBody />
+    );
 }
 
 export default ProfilePage;
