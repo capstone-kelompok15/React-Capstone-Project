@@ -23,6 +23,13 @@ const AddBankModal = (props) => {
         const name = e.target.name;
         const value = e.target.value;
 
+        if(name === 'bank_id'){
+            setFormData(prev => ({
+                ...prev,
+                [name]: parseInt(value)
+            }))
+            return
+        }
         setFormData(prev => ({
             ...prev,
             [name]: value
@@ -35,10 +42,6 @@ const AddBankModal = (props) => {
             setTodo('Update');
         }
     }, [currentBankData])
-    
-    useEffect(() => {
-        console.log(formData.bank_id);
-    }, [currentBankData, formData])
 
     const onSubmit = () => {
         let errorBank = false;
@@ -63,6 +66,12 @@ const AddBankModal = (props) => {
             setErrMsg(prev => ({
                 ...prev,
                 bank_number_msg: 'Please input your bank number'
+            }))
+            errorNumber = true;
+        } else if(isNaN(formData.bank_number)) {
+            setErrMsg(prev => ({
+                ...prev,
+                bank_number_msg: 'The bank number should writtern with number only'
             }))
             errorNumber = true;
         } else if(formData.bank_number.length < 10 || formData.bank_number.length > 15){
@@ -113,8 +122,8 @@ const AddBankModal = (props) => {
                             <Form.Label className='mb-1'>Bank Name</Form.Label>
                             <Form.Select name='bank_id' value={formData.bank_id} onChange={onChange}>
                                 <option value={-1}>Choose your bank</option>
-                                <option value={0}>Bank BCA</option>
-                                <option value={1}>Bank BNI</option>
+                                <option value={1}>Bank BCA</option>
+                                <option value={3}>Bank BNI</option>
                                 <option value={2}>Bank Mandiri</option>
                             </Form.Select>
                             {errMsg.bank_id_msg !== '' ? 

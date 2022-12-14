@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import { Form } from "react-bootstrap";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
@@ -18,6 +18,9 @@ import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import plusIcon from '../../assets/svg/plusIcon.svg';
 import AddBankModal from './AddBankModal';
 import svgValidation from '../../utils/svgValidation';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearState, getRegisterState, register } from '../../redux/reducers/registerSlice';
+import Swal from 'sweetalert2';
 
 const REGISTER_FORM_BASE_DATA = {
     email: '',
@@ -53,7 +56,36 @@ const RegisterForm = () => {
     const [ showConfirmPassword, setShowConfirmPassowrd ] = useState(false);
     const [ errMsgs, setErrMsgs ] = useState(REGISTER_BASE_ERR_MSG);
     const [ showAddBankModal, setShowAddBankModal ] = useState(false);
-    const navigate = useNavigate(); 
+    const registerState = useSelector(getRegisterState);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(registerState.loading)return;
+        if(registerState.succeed){
+            Swal.fire({
+                icon: 'success',
+                title: 'Register Succeed',
+                text: `We've sent you an email to you for email verification, please verified before login`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            }).then(() => {
+                dispatch(clearState())
+                navigate('/login');
+            })
+        } 
+        if(registerState.error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Register Failed',
+                text: `${registerState.errMsg}`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            }).then(() => {
+                dispatch(clearState());
+            })
+        }
+    }, [registerState, navigate, dispatch]);
 
     const addBankButtonOnClick = () => {
         setShowAddBankModal(true);
@@ -209,6 +241,16 @@ const RegisterForm = () => {
         if(merchantNameError || merchantAddressError || merchantBankError){
             return;
         }
+
+        dispatch(register({
+            username: registerFormData.username,
+            email: registerFormData.email,
+            password: registerFormData.password,
+            merchant_name: registerFormData.merchant_name,
+            merchant_address: registerFormData.merchant_address,
+            merchant_phone_number: '',
+            merchant_banks: registerFormData.merchant_banks
+        }));
     }
 
     const toLoginOnClick = () => {
