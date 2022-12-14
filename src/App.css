@@ -763,7 +763,6 @@
   border: none;
   flex: none;
   order: 1;
-  z-index: 1;
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
@@ -784,6 +783,7 @@
   top: 72px;
 }
 
+<<<<<<< Updated upstream
 .bca {
   position: relative;
   bottom: 38px;
@@ -797,4 +797,24 @@
   left: 15px;
   width: 25px;
   height: 25px;
+=======
+.pencil {
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+}
+
+.img-bca {
+  margin-top: -40px;
+}
+
+/* Add Card */
+
+.kotak {
+  background-color: white;
+  width: 500px;
+  height: 450px;
+  border: 1px solid black;
+>>>>>>> Stashed changes
 }

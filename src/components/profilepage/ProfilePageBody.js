@@ -58,17 +58,17 @@ const ProfilePageBody = () => {
                 <div>
                   <label className="label-text">Profile Picture</label>
                   <div>
-                    <img src={Pencil} alt="pencil" class="pencil" />
+                    <img src={Myprofile} alt="myprofile" class="img-profile" />
+                    </div>
                     <button
                       type="submit"
                       class="button-edit"
                       alt="edit"
                       name="edit"
                     >
-                      Edit
+                     <img src={Pencil} alt="pencil" class="pencil" /> Edit
                     </button>
-                    <img src={Myprofile} alt="myprofile" class="img-profile" />
-                  </div>
+                
                 </div>
               </div>
             </div>
@@ -97,14 +97,24 @@ const ProfilePageBody = () => {
             <div className="col-4 mx-4">
               <label for="primaryBank">Primary Bank Account</label>
               <div>
+<<<<<<< Updated upstream
                 <input
+=======
+              <input
+>>>>>>> Stashed changes
                   type="number"
                   className="form-primary form-control mt-2 ps-5"
                   placeholder="712312827"
                   id="primaryBank"
                   name="primaryBank"
                 ></input>
+<<<<<<< Updated upstream
                 <img src={Bca} alt="bca" class="bca" />
+=======
+              <div className="col-2 mx-2 img-bca">
+                  <img src={Bca} alt="bca" class="bca" />
+              </div>          
+>>>>>>> Stashed changes
               </div>
             </div>
           </div>
