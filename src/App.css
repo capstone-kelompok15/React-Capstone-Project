@@ -772,15 +772,14 @@
 }
 
 .body-profile {
-width: 100%;
-height: 100%;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 16px 0px 0px;
-gap: 45px;
-width: 935px;
-height: 946px;
-left: 25px;
-top: 72px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 65px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 40px;
+  gap: 45px;
+  left: 25px;
+  top: 72px;
 }
