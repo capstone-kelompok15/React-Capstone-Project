@@ -38,7 +38,7 @@ const VerifyResult = () => {
         if(verifyState.resendSucceed){
             Swal.fire({
                 icon: 'success',
-                title: 'Register Succed',
+                title: 'Resend Succeed',
                 text: `Resend has succeded, check your email and verified before it expired`,
                 confirmButtonText: 'Yes',
                 confirmButtonColor: '#173468',
