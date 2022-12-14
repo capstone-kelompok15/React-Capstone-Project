@@ -15,7 +15,7 @@ const VerifyResult = () => {
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
-        console.log(verifyState.resendError);
+
         if(verifyState.resendLoading)return;
         if(verifyState.resendError){
             Swal.fire({

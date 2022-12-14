@@ -65,8 +65,7 @@ const verificationSlice = createSlice({
             console.log(action.payload.errMsg);
             state.errMsg = action.payload.errMsg;
         })
-
-        builder.addCase(resendVerification.pending, (state) => {
+        .addCase(resendVerification.pending, (state) => {
             state.resendLoading = true;
             state.resendsucceed = false;
             state.resendError = false
