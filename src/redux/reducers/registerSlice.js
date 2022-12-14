@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import InvoiceAPI from "../../api/InvoiceAPI";
 
-export const register = createAsyncThunk("post/register", async (data, {rejectWithValue}) => {
+export const register = createAsyncThunk("post/register", async (data, {rejectWithValue, fulfillWithValue}) => {
     try{
         const response = await InvoiceAPI.register(data);
-        return response.data;
+        return fulfillWithValue(response.data)
     } catch(e){
         return rejectWithValue(e.response.data.error);
     }
-})
+});
 
 const initialState = {
     loading: false,

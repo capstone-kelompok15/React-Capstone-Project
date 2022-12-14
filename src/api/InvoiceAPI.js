@@ -4,6 +4,10 @@ const InvoiceAPI = {
     async register(data){
         const response = await axiosInstance.post('/auth/register/merchant', data);
         return response;
+    },
+    async verifyAccount(data){
+        const response = await axiosInstance.post('/auth/verification/admin', data);
+        return response;
     }
 }
 
