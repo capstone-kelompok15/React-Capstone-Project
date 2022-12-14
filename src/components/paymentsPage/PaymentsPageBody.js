@@ -40,7 +40,7 @@ const PaymentsPageBody = () => {
 
     return(
         <>
-            <Row className='m-0'>
+            <Row className='m-0'> 
                 <Col md={6} className='p-0'>
                     <Container fluid className="p-0" style={{backgroundColor: 'white', height: 'calc(100vh - 65px)', borderRight: '2px solid #CDCDCD'}}>
                         <div className="d-flex flex-row justify-content-between align-items-center" style={{padding: '40px 40px 10px'}}>

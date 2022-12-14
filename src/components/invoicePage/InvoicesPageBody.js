@@ -20,7 +20,7 @@ const InvoicesPageBody = () => {
     const [ invoicesData, setInvoicesData ] = useState(data);
     const detailData = useSelector(getDetailData);
     const filteredData = useSelector(getFilteredData);
-    const filterStatus = useSelector(getFilterStatus);
+    const filterStatus = useSelector(getFilterStatus); 
     const isShownFilterModal = useSelector(getShowFilterModal);
 
     const newInvoicseButtonOnClick = () => {

@@ -94,10 +94,10 @@ html{
 
 .my-image1 {
   position: relative;
-  width: 460px;
-  height: 340px;
-  left: -110px;
-  top: 30px;
+  width: 540px;
+  height: 430px;
+  left: -140px;
+  top: 20px;
 }
 
 .box1 {
@@ -751,6 +751,10 @@ html{
 
 .selected{
   background-color: #EAF0FA;
+}
+
+.page {
+  position: relative;
 }
 
 ::-webkit-scrollbar{

@@ -4,8 +4,8 @@ import invoicess from "../../assets/image/invoicess.png";
 import customerr from "../../assets/image/customerr.png";
 import noinvoicess from "../../assets/image/noinvoicess.png";
 import paymentss from "../../assets/image/paymentss.png";
-import recent1 from "../../assets/image/recent1.png";
-import recent2 from "../../assets/image/recent2.png";
+import RecentPayment from "../../page/RecentPayment";
+import RecentInvoice from "../../page/RecentInvoice";
 
 const Dashboard = () => {
   return (
@@ -91,20 +91,15 @@ const Dashboard = () => {
           <div class="col-6">
             <h4 className="textRecent"> Recent Invoices</h4>
             <div className="recent">
-              <img className="pic2" src={recent1} alt="img" />
-              There is no invoice right now
-              <button className="create button-lg-primary">
-                <i class="plusIcon fa fa-plus-circle" aria-hidden="true"></i>
-                Create New Invoices
-              </button>
+              
+              <RecentInvoice />
             </div>
           </div>
 
           <div class="col-6 mb-4">
             <h4 className="textRecent"> Recent Payments</h4>
             <div className="recent">
-              <img className="pic2" src={recent2} alt="img" />
-              There is no recent payment right now
+             <RecentPayment />
             </div>
           </div>
         </div>

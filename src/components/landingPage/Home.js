@@ -8,7 +8,7 @@ import Logo5 from "../../assets/image/bisnis5.png";
 import Logo6 from "../../assets/image/bisnis6.png";
 import Logo7 from "../../assets/image/bisnis7.png";
 import Logo8 from "../../assets/image/bisnis8.png";
-import Image1 from "../../assets/image/image1.png";
+import ImageHome from "../../assets/image/imagehome.png";
 
 const Home = () => {
 
@@ -33,7 +33,7 @@ const Home = () => {
         </div>
         <div className="col-md-5">
           <div className="box1">
-            <img className="my-image1 ms-5 ps-2" src={Image1} alt="Logo" />
+            <img className="my-image1 ms-5 ps-2" src={ImageHome} alt="Logo" />
           </div>
         </div>
       </div>
