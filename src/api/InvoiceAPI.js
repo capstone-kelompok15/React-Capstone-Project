@@ -8,6 +8,10 @@ const InvoiceAPI = {
     async verifyAccount(data){
         const response = await axiosInstance.post('/auth/verification/admin', data);
         return response;
+    },
+    async resendVerification(data){
+        const response = await axiosInstance.post('/auth/verification/admin/refresh', data);
+        return response;
     }
 }
 

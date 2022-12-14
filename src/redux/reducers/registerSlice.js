@@ -6,7 +6,10 @@ export const register = createAsyncThunk("post/register", async (data, {rejectWi
         const response = await InvoiceAPI.register(data);
         return fulfillWithValue(response.data)
     } catch(e){
-        return rejectWithValue(e.response.data.error);
+        return rejectWithValue({
+            errMsg: e.response.data.error.message,
+            errCode: e.response.request.status,
+        });
     }
 });
 
@@ -14,7 +17,8 @@ const initialState = {
     loading: false,
     succeed: false,
     error: false,
-    errMsg: ''
+    errMsg: '',
+    errCode: 0
 }
 
 const registerSlice = createSlice({
@@ -40,7 +44,8 @@ const registerSlice = createSlice({
             state.error = true;
             state.succeed = false;
             state.loading = false;
-            state.errMsg = action.payload.detail;
+            state.errMsg = action.payload.errMsg;
+            state.errCode = action.payload.errCode;
         })
     }
 })

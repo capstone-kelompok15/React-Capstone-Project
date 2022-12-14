@@ -8,6 +8,7 @@ import paymentFilterModalSlice from "./reducers/paymentFilterModalSlice";
 import paymentRejectionModalSlice from "./reducers/paymentRejectionModalSlice";
 import paymentSlice from "./reducers/paymentSlice";
 import registerSlice from "./reducers/registerSlice";
+import verificationSlice from "./reducers/verificationSlice";
 
 export const store = configureStore({
     reducer: {
@@ -19,6 +20,7 @@ export const store = configureStore({
         paymentDetail: paymentDetailSlice,
         paymentModal: paymentFilterModalSlice,
         rejectionModal: paymentRejectionModalSlice,
-        register: registerSlice
+        register: registerSlice,
+        verificationState: verificationSlice
     },
 })
