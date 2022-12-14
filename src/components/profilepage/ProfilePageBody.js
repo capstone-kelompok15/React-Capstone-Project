@@ -58,7 +58,7 @@ const ProfilePageBody = () => {
                 <div>
                   <label className="label-text">Profile Picture</label>
                   <div>
-                    <img src={Myprofile} alt="myprofile" class="img-profile" />
+                    <img src={Myprofile} alt="myprofile" class="img-profile pt-2" />
                     </div>
                     <button
                       type="submit"

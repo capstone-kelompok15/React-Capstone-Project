@@ -809,6 +809,12 @@ bottom: 0%;
   margin-top: -40px;
 }
 
+.button-edit {
+  position: relative;
+  bottom: 40px;
+  left: 10px;
+}
+
 /* Add Card */
 
 .kotak {
