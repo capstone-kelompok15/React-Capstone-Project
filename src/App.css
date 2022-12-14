@@ -1161,3 +1161,34 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+/* verified page */
+
+.verified-title-text{
+  margin-top: 20px;
+  max-width: 340px;
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+  color: #173468;
+}
+
+.verified-button{
+  margin-top: 60px;
+  height: 40px;
+  width: 395px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #173468;
+  font-weight: 600;
+  font-size: 16px;
+  color: #FFFFFF;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.verified-button:hover{
+  transform: scale(1.02);
+}

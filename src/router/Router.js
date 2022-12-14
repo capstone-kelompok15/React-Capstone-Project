@@ -10,6 +10,7 @@ import NewInvoicesPage from "../page/NewInvoicesPage";
 import PaymentsPage from "../page/PaymentsPage";
 import ProfilePage from "../page/ProfilePage";
 import RegisterPage from "../page/RegisterPage";
+import VerifyPage from "../page/VerifyPage";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/register" element={<RegisterPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/verification" element={<VerifyPage/>}/>
         <Route path="/home" element={<HomePage/>}>
           <Route path="dashboard" element={<DashboardPage/>}/>
           <Route path="invoices" element={<InvoicesPage/>}/>
