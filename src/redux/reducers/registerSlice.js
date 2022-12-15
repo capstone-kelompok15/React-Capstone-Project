@@ -26,7 +26,7 @@ const registerSlice = createSlice({
     initialState,
     reducers: {
         clearState(state){
-            state = initialState;
+            return state = initialState;
         }
     },
     extraReducers(builder){

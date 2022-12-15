@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
+import { useDispatch, useSelector } from "react-redux";
+import { clearLoginState, getLoginStatus, loginApi } from "../../redux/reducers/loginSlice";
+import Swal from "sweetalert2";
 
 const LOGIN_BASE_DATA = {
     username: '',
@@ -17,6 +20,39 @@ const LoginForm = () => {
     const [ loginFormData, setLoginFormData ] = useState(LOGIN_BASE_DATA);
     const [ showPassword, setShowPassword ] = useState(false);
     const [ errorMessages, setErrorMessages ] = useState(ERROR_MESSAGE_BASE_DATA);
+    const loginStatus = useSelector(getLoginStatus);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+    })
+
+    useEffect(() => {
+        if(loginStatus.succeed){
+            Toast.fire({
+                icon: 'success',
+                title: 'Login Success'
+            });
+            dispatch(clearLoginState());
+            navigate('/home/dashboard');
+        }
+        if(loginStatus.error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Login Failed',
+                text: `Please check your email and password`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            }).then(() => {
+                dispatch(clearLoginState());
+            })
+        }
+    }, [loginStatus, navigate, dispatch, Toast]);
 
     const onChange = e => {
         const name = e.target.name;
@@ -27,8 +63,6 @@ const LoginForm = () => {
             [name] : value
         }));
     }
-
-    const navigate = useNavigate();
 
     const toRegisterOnClick = () => {
         navigate('/register')
@@ -43,7 +77,7 @@ const LoginForm = () => {
         if(loginFormData.username === ''){
             setErrorMessages(prev => ({
                 ...prev,
-                usernameMsg: 'Please input your username'
+                usernameMsg: 'Please input your email'
             }));
             usernameErrorStatus = true;
         } else {
@@ -82,7 +116,10 @@ const LoginForm = () => {
         if(usernameErrorStatus || passwordErrorStatus){
             return;
         }
-        navigate('/home/dashboard');
+        dispatch(loginApi({
+            email: loginFormData.username,
+            password: loginFormData.password
+        }))
     }
 
     const passwordIconOnClick = () => {
@@ -93,11 +130,11 @@ const LoginForm = () => {
         <>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mt-3" style={{width: '400px'}}>
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label>Email</Form.Label>
                     <Form.Control 
                         name="username"
                         type="text"
-                        placeholder="Enter username"
+                        placeholder="Enter email"
                         value={loginFormData.username}
                         onChange={onChange}
                         style={{borderColor: `${errorMessages.usernameMsg === '' ? '' : '#D62D33'}`}}

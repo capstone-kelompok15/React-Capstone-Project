@@ -9,8 +9,8 @@ import getDateDifferences from "../../utils/getDateDifferences";
 
 const InvoiceDetail = () => {
     const detailData = useSelector(getDetailData);
-    const statusClassName = getClassNameByStatus(detailData.payment_status, detailData.due_at);
-    const statusValue = getDateDifferences(detailData.payment_status, detailData.due_at);
+    const statusClassName = getClassNameByStatus(detailData.payment_status_name, detailData.due_at);
+    const statusValue = getDateDifferences(detailData.payment_status_name, detailData.due_at);
     const allTotal = formatRupiah(detailData.total_price);
 
     return(
@@ -18,19 +18,19 @@ const InvoiceDetail = () => {
             <Container fluid className='p-0'>
                 <div style={{margin: '40px 40px 40px'}}>
                     <div className="d-flex flex-row justify-content-between align-items-center">
-                        <div className="invoice-detail-id-text">{detailData.id}</div>
+                        <div className="invoice-detail-id-text">{`INV-${detailData.invoice_id}`}</div>
                         <div className="invoice-detail-button">
                             <img src={downloadLogo} alt={'not found'} />
                             <div>Download</div>
                         </div>
                     </div>
-                    <div className='invoice-detail-costumer-id-text'>Customer ID : {detailData.customer.id}</div>
+                    <div className='invoice-detail-costumer-id-text'>Customer ID : {detailData.customer_id}</div>
                     <div className="d-flex flex-row justify-content-start align-items-center gap-3">
                         <div className="d-flex flex-row justify-content-start align-items-center" style={{gap: '26px'}}>
                             <div className='inovice-detail-status'>Payment Status</div>
                             <div>:</div>
                         </div>
-                        <div className={`inovice-detail-status-box ${statusClassName}`}>{detailData.payment_status}</div>
+                        <div className={`inovice-detail-status-box ${statusClassName}`}>{detailData.payment_status_name}</div>
                     </div>
                     <div className="d-flex flex-row justify-content-between align-items-center">
                         <div className="d-flex flex-row justify-content-start align-items-center gap-3 pt-2">
@@ -53,14 +53,14 @@ const InvoiceDetail = () => {
                         <div className='main-text' style={{paddingTop: '35px'}}>Bill to:</div>
                         <div className="d-flex flex-row justify-content-between align-items-start">
                             <div className="d-flex flex-column">
-                                <div className="invoice-detail-underlined-container sub-text">{detailData.customer.name}</div>
-                                <div className="invoice-detail-underlined-container sub-text">{detailData.customer.email}</div>
-                                <div className="invoice-detail-underlined-container sub-text">{detailData.customer.address}</div>
+                                <div className="invoice-detail-underlined-container sub-text">{detailData.customer_name}</div>
+                                <div className="invoice-detail-underlined-container sub-text">{detailData.customer_email}</div>
+                                <div className="invoice-detail-underlined-container sub-text">{detailData.customer_address}</div>
                             </div>
                             <div className="d-flex flex-column sub-text2" style={{gap: '16px'}}>
                                 <div className="d-flex flex-row" style={{gap: '32px'}}>
                                     <div>Invoice</div>
-                                    <div>: {detailData.id}</div>
+                                    <div>: {`INV-${detailData.invoice_id}`}</div>
                                 </div>
                                 <div className="d-flex flex-row" style={{gap: '5px'}}>
                                     <div>Invoice Date</div>
@@ -83,13 +83,13 @@ const InvoiceDetail = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {detailData.items.map(
+                                    {detailData.invoice_detail.map(
                                         (data) => 
                                         <tr className="table-body-text">
                                             <td className="table-data">{data.product}</td>
                                             <td className="table-data text-center">{data.quantity}</td>
                                             <td className="table-data text-center">{data.price === 0 ? 'Free' : formatRupiah(data.price)}</td>
-                                            <td className="table-data text-center">{data.total_price === 0 ? 'Free' : formatRupiah(data.total_price)}</td>
+                                            <td className="table-data text-center">{data.total_price === 0 ? 'Free' : formatRupiah(data.price * data.quantity)}</td>
                                         </tr>
                                     )}
                                 </tbody>

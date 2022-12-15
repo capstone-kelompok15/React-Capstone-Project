@@ -6,14 +6,23 @@ import payment from "../../assets/image/payment.png"
 import customer from "../../assets/image/customer.png"
 import profile from "../../assets/image/profile.png"
 import logout from "../../assets/image/logout.png"
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import avatar from "../../assets/image/jisoo.jpg"
 import InvoicesSearchContainer from "./InvoicesSearchContainer";
 import PaymentSearchContainer from "./PaymentsSearchContainer";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../redux/reducers/loginSlice";
 
 
 const Dashboard = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logOutOnClick = () => {
+    dispatch(logOut());
+    navigate('/');
+  }
 
   return (
     <main className="main">
@@ -27,11 +36,6 @@ const Dashboard = () => {
             : <></>}
           </div>
           <div className='headerRight'>
-            <div className='headerIcons'>
-              <div className='notif'>
-                <i className="bell fa fa-bell" aria-hidden="true"/>
-              </div>
-            </div>
             <div className='headerProfile'>
             <img src={avatar} alt='' className='headerAvatar'/>
             <div className='headerName'>
@@ -91,7 +95,7 @@ const Dashboard = () => {
           </div>
           
         
-          <NavLink to='/' className='nav-item3'>
+          <NavLink to='/' className='nav-item3' onClick={logOutOnClick}>
             <img className="logo4 ms-1 ps-2 me-1" src={logout} alt="Logo" />
             Logout
           </NavLink>

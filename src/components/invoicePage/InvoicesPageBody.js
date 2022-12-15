@@ -7,17 +7,19 @@ import InvoiceDetail from "./InvoiceDetail";
 import { useEffect, useState } from "react";
 import InvoiceFilterModal from "./InvoiceFilterModal";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilteredData, getFilterStatus, getInvoicesData } from "../../redux/reducers/invoicesSlice";
+import { clearInvoiceStatus, getFilteredData, getFilterStatus, getInvoices, getInvoicesData, getInvoiceStatus } from "../../redux/reducers/invoicesSlice";
 import { getShowFilterModal, showFilterModal } from "../../redux/reducers/filterModalSlice";
 import { getDetailData } from "../../redux/reducers/invoiceDetailSlice";
 import NoInvoices from "./NoInvoices";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const InvoicesPageBody = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const data = useSelector(getInvoicesData);
     const [ invoicesData, setInvoicesData ] = useState(data);
+    const invoiceStatus = useSelector(getInvoiceStatus);
     const detailData = useSelector(getDetailData);
     const filteredData = useSelector(getFilteredData);
     const filterStatus = useSelector(getFilterStatus);
@@ -28,12 +30,28 @@ const InvoicesPageBody = () => {
     }
 
     useEffect(() => {
+        if(invoiceStatus.loading)return;
+        dispatch(getInvoices());
+    }, []);
+
+    useEffect(() => {
+        if(invoiceStatus.error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Error on getting new data',
+                text: `${invoiceStatus.errMsg}`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            }).then(() => {
+                dispatch(clearInvoiceStatus());
+            })
+        }
         if(filteredData === undefined){
             setInvoicesData(() => [...data]);
         } else {
             setInvoicesData(() => [...filteredData]);
         }
-    }, [filteredData, filterStatus, setInvoicesData, data]);
+    }, [filteredData, filterStatus, setInvoicesData, data, invoiceStatus, dispatch]);
 
     return(
         <>
@@ -52,7 +70,7 @@ const InvoicesPageBody = () => {
                         </div>
                         {invoicesData.length === 0 ? <NoInvoices/> : 
                         <Container fluid className="invoice-cards-container p-0" style={{height: 'calc(100vh - 150px)', overflow:'auto'}}>
-                            {invoicesData.map((data, i) => <InvoiceCard key={i} invoiceData={data} selected={data.id === detailData?.id}/>)}
+                            {invoicesData.map((data, i) => <InvoiceCard key={i} invoiceData={data} selected={data.invoice_id === detailData?.invoice_id}/>)}
                         </Container>
                         }
                     </Container>

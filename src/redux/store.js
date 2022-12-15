@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import filterModalSlice from "./reducers/filterModalSlice";
 import invoiceDetailSlice from "./reducers/invoiceDetailSlice";
 import invoicesSlice from "./reducers/invoicesSlice";
+import loginSlice from "./reducers/loginSlice";
 import navbarSlice from "./reducers/navbarSlice";
 import paymentDetailSlice from "./reducers/paymentDetailSlice";
 import paymentFilterModalSlice from "./reducers/paymentFilterModalSlice";
@@ -21,6 +22,7 @@ export const store = configureStore({
         paymentModal: paymentFilterModalSlice,
         rejectionModal: paymentRejectionModalSlice,
         register: registerSlice,
-        verificationState: verificationSlice
+        verificationState: verificationSlice,
+        login: loginSlice
     },
 })
