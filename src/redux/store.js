@@ -9,6 +9,7 @@ import paymentFilterModalSlice from "./reducers/paymentFilterModalSlice";
 import paymentRejectionModalSlice from "./reducers/paymentRejectionModalSlice";
 import paymentSlice from "./reducers/paymentSlice";
 import registerSlice from "./reducers/registerSlice";
+import userDropDownSlice from "./reducers/userDropDownSlice";
 import verificationSlice from "./reducers/verificationSlice";
 
 export const store = configureStore({
@@ -23,6 +24,7 @@ export const store = configureStore({
         rejectionModal: paymentRejectionModalSlice,
         register: registerSlice,
         verificationState: verificationSlice,
-        login: loginSlice
+        login: loginSlice,
+        userDropdown: userDropDownSlice
     },
 })

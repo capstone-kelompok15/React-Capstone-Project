@@ -20,6 +20,10 @@ const InvoiceAPI = {
     async getInvoices(){
         const response = await axiosInstance.get('/invoices/merchants?limit=100&offset=0');
         return response;
+    },
+    async getAllCostumer(){
+        const response = await axiosInstance.get('/customers?page=1&limit=100');
+        return response;
     }
 }
 

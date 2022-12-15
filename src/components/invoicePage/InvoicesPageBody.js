@@ -40,10 +40,13 @@ const InvoicesPageBody = () => {
                 icon: 'error',
                 title: 'Error on getting new data',
                 text: `${invoiceStatus.errMsg}`,
-                confirmButtonText: 'Yes',
+                confirmButtonText: 'Refetch',
                 confirmButtonColor: '#173468',
-            }).then(() => {
+            }).then((result) => {
                 dispatch(clearInvoiceStatus());
+                if(result.isConfirmed){
+                    dispatch(getInvoices());
+                }
             })
         }
         if(filteredData === undefined){

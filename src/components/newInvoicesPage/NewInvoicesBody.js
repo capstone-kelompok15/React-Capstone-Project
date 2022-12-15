@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 const today = new Date();
 
 const FORM_BASE_DATA = {
-    cotumer_id: 0,
+    id: 0,
     email: '',
     name: '',
     address: '',
@@ -111,9 +111,9 @@ const NewInvoicesBody = () => {
     const dropdownCardOnClick = (userData) => {
         setFormData(prev => ({
             ...prev,
-            cotumer_id: userData.id,
+            id: userData.id,
             email: userData.email,
-            name: userData.name,
+            name: userData.full_name,
             address: userData.address
         }))
     }

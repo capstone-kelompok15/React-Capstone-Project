@@ -1,45 +1,54 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { clearUsersState, getAllCostumer, getUserDropdownData, getUserDropdownStatus } from "../../redux/reducers/userDropDownSlice";
 
 const USER_DUMMY = [
     {
         id: 0,
         name: "Abdullah Nouval Shidqi",
         email: "abdullah.nouval@gmail.com",
-        display_profile_url: "string",
-        phone_number: "string",
         address: "Jl kawista no 2",
-        created_at: "string",
-        updated_at: "string"
     },
     {
         id: 1,
         name: "Alvin Wiraprathama",
         email: "wiraprathamaalvin@gmail.com",
-        display_profile_url: "string",
-        phone_number: "string",
         address: "Jalan Gajah Waktra no 1",
-        created_at: "string",
-        updated_at: "string"
     },
     {
         id: 2,
         name: "Deni Subardi",
         email: "deni.subardi@gmail.com",
-        display_profile_url: "string",
-        phone_number: "string",
         address: "Jalan Sumatra no 40",
-        created_at: "string",
-        updated_at: "string"
     },
 ]
 
 const UserDataDropdownCard = (props) => {
     const { onClick, currentEmail } = props;
-    const [ userDataDummy, setUserDataDummy ] = useState(USER_DUMMY.filter((data) => data.email.includes(currentEmail)));
+    const dispatch = useDispatch();
+    const userDropdownData = useSelector(getUserDropdownData);
+    const userDropDownStatus = useSelector(getUserDropdownStatus);
+    const [ userDataDummy, setUserDataDummy ] = useState(userDropdownData.filter((data) => data.email.toLowerCase().includes(currentEmail)));
 
     useEffect(() => {
-        setUserDataDummy(() => USER_DUMMY.filter((data) => data.email.includes(currentEmail.toLowerCase())));
-    }, [currentEmail])
+        if(userDropDownStatus.loading)return;
+        dispatch(getAllCostumer());
+    }, [])
+
+    useEffect(() => {
+        if(userDropDownStatus.error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Get costumers suggestion failed, try again',
+                text: `${userDropDownStatus.errMsg}`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            })
+            dispatch(clearUsersState());
+        }
+        setUserDataDummy(() => userDropdownData.filter((data) => data.email.toLowerCase().includes(currentEmail.toLowerCase())));
+    }, [currentEmail, userDropdownData, dispatch, userDropDownStatus])
 
     return(
         <div className="user-suggestion-container">
@@ -47,7 +56,7 @@ const UserDataDropdownCard = (props) => {
                 return (
                     <div key={i} className="user-suggestion-card" onClick={() => onClick(data)}>
                         <div className="email-text">{data.email}</div>
-                        <div className="name-text">{data.name}</div>
+                        <div className="name-text">{data.full_name}</div>
                     </div>
                 )
             })}
