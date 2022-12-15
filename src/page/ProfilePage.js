@@ -1,5 +1,4 @@
-import ProfilePageBody from "../components/profilePage/ProfilePageBody";
-//import AddCard from "../components/profilepage/AddCard";
+import ProfilePageBody from "../components/profilepage/ProfilePageBody";
 
 const ProfilePage = () => {
     return(
