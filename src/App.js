@@ -2,15 +2,17 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./App.css";
-import { Navbar, Home, Footer } from "./components";
+import Router from "./router/Router";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Home />
-      <Footer />
+      <Provider store={store}>
+        <Router/>
+      </Provider>
     </div>
   );
 }
