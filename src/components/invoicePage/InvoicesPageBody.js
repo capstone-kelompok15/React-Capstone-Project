@@ -38,7 +38,7 @@ const InvoicesPageBody = () => {
         if(invoiceStatus.error){
             Swal.fire({
                 icon: 'error',
-                title: 'Error on getting new data',
+                title: 'Error on getting invoices',
                 text: `${invoiceStatus.errMsg}`,
                 confirmButtonText: 'Refetch',
                 confirmButtonColor: '#173468',

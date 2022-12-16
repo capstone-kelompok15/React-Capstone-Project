@@ -6,9 +6,10 @@ export const loginApi = createAsyncThunk('post/login', async (data, {fulfillWith
     try{
         const response = await InvoiceAPI.login(data);
         const token = response.data.data.access_token;
+        const refreshToken = response.data.data.refresh_token
         const user = jwtDecode(token);
-        console.log(user);
-        localStorage.setItem('token', token)
+        localStorage.setItem('token', token);
+        localStorage.setItem('refrehToken', refreshToken);
         return fulfillWithValue(user);
     } catch(e) {
         return rejectWithValue({
@@ -41,7 +42,18 @@ const loginSlice = createSlice({
             state.status = initialState.status;
         },
         logOut: (state) => {
-            state = initialState;
+            state.status = {
+                loading: false,
+                succeed: false,
+                error: false,
+                errMsg: '',
+                errCode: 0
+            };
+            state.data = {
+                id: 0,
+                merchant_id: 0,
+                merchant_name: ''
+            }
             localStorage.clear();
         }
     },

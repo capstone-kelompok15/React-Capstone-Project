@@ -5,6 +5,7 @@ import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { useDispatch, useSelector } from "react-redux";
 import { clearLoginState, getLoginStatus, loginApi } from "../../redux/reducers/loginSlice";
 import Swal from "sweetalert2";
+import { getMerchantData } from "../../redux/reducers/merchantSlice";
 
 const LOGIN_BASE_DATA = {
     username: '',
@@ -39,6 +40,7 @@ const LoginForm = () => {
                 title: 'Login Success'
             });
             dispatch(clearLoginState());
+            dispatch(getMerchantData());
             navigate('/home/dashboard');
         }
         if(loginStatus.error){

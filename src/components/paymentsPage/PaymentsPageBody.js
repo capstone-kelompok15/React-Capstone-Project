@@ -3,11 +3,12 @@ import { Col, Container, Row } from "react-bootstrap";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 import filterIcon from '../../assets/svg/filterIcon.svg';
 import { getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
 import { getPaymentModalShowStatus, showFilterModal } from "../../redux/reducers/paymentFilterModalSlice";
 import { getRejectionModalStatus } from "../../redux/reducers/paymentRejectionModalSlice";
-import { getPaymentsData, getPaymentsFilteredData, getPaymentsFilterStatus } from "../../redux/reducers/paymentSlice";
+import { clearPaymentStatus, getAllPayments, getPaymentsData, getPaymentsFilteredData, getPaymentsFilterStatus, getPaymentStatus } from "../../redux/reducers/paymentSlice";
 import NoSelectedList from "../invoicePage/NoSelectedList";
 import NoPayments from "./NoPayments";
 import PaymentCard from "./PaymentCard";
@@ -24,6 +25,7 @@ const PaymentsPageBody = () => {
     const isShownRejectionModal = useSelector(getRejectionModalStatus);
     const paymentDetailData = useSelector(getPaymentsDetailData);
     const paymentsData = useSelector(getPaymentsData);
+    const paymentStatus = useSelector(getPaymentStatus);
     const [ currentPaymentsData, setcurrentPaymentsData ] = useState(paymentsData);
 
     const newInvoicseButtonOnClick = () => {
@@ -31,12 +33,32 @@ const PaymentsPageBody = () => {
     }
 
     useEffect(() => {
+        if(paymentStatus.loading)return;
+        dispatch(getAllPayments());
+    }, []);
+
+    useEffect(() => {
+        if(paymentStatus.error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Error on getting payments',
+                text: `${paymentStatus.errMsg}`,
+                confirmButtonText: 'Refetch',
+                confirmButtonColor: '#173468',
+            }).then((result) => {
+                dispatch(clearPaymentStatus());
+                if(result.isConfirmed){
+                    dispatch(getAllPayments());
+                }
+            })
+        }
+
         if(filteredData === undefined){
             setcurrentPaymentsData(() => [...paymentsData]);
         } else {
             setcurrentPaymentsData(() => [...filteredData]);
         }
-    }, [filteredData, filterStatus, setcurrentPaymentsData, paymentsData]);
+    }, [filteredData, filterStatus, setcurrentPaymentsData, paymentsData, paymentStatus, dispatch]);
 
     return(
         <>
@@ -55,7 +77,7 @@ const PaymentsPageBody = () => {
                         </div>
                         {currentPaymentsData.length === 0 ? <NoPayments/> :
                         <Container fluid className="invoice-cards-container p-0" style={{height: 'calc(100vh - 150px)', overflow:'auto'}}>
-                            {currentPaymentsData.map((data, i) => <PaymentCard key={i} data={data} selected={data.id === paymentDetailData?.id}/>)}
+                            {currentPaymentsData.map((data, i) => <PaymentCard key={i} data={data} selected={data.invoice_id === paymentDetailData?.invoice_id}/>)}
                         </Container>
                         }
                     </Container>

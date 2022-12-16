@@ -1,48 +1,65 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import InvoiceAPI from "../../api/InvoiceAPI";
 
-const INVOICE_DETAIL_DUMMY = {
-    invoice_id: 1231412,
-    merchant_id: 0,
-    customer_id: 12,
-    customer_name: "Abdullah Nouval Shidqi",
-    customer_address: 'Jl. kawista no 2',
-    payment_status_id: 0,
-    payment_status_name: "Paid",
-    payment_type_id: null,
-    payment_type_name: null,
-    merchant_bank_id: null,
-    total_price: 200000,
-    product_quantity: 1,
-    note: null,
-    message: null,
-    due_at: "5 December 2022",
-    created_at: "24 November 2022",
-    updated_at: "string",
-    invoice_detail: [
-      {
-        invoice_detail_id: 0,
-        product: "Motor mainan",
-        quantity: 1,
-        price: 20000,
-        created_at: "string",
-        updated_at: "string"
-      }
-    ]
+const invoiceDetailInitialState = undefined;
+
+const statusInitialState = {
+  loading: false,
+  error: false,
+  succeed: false,
+  errMsg: '',
+  errCode: 0
+}
+
+export const getInvoiceDetailById = createAsyncThunk('get/invoiceDetailById', async (id, {fulfillWithValue, rejectWithValue}) => {
+  try{
+    const response = await InvoiceAPI.getInvoiceDetailById(id);
+    return fulfillWithValue(response.data);
+  } catch(e) {
+    return rejectWithValue({
+      errMsg: e.response.data.error.message,
+      errCode: e.response.request.status,
+    })
   }
+});
 
 const invoiceDetailSlice = createSlice({
-    name: 'invoiceDetail',
-    initialState: {
-        detailData: INVOICE_DETAIL_DUMMY,
+  name: 'invoiceDetail',
+  initialState: {
+      status: statusInitialState,
+      detailData: invoiceDetailInitialState,
+  },
+  reducers: {
+    clearDetailData: (state) => {
+        state.detailData = invoiceDetailInitialState;
     },
-    reducers: {
-        setDetailData: (state, event) => {
-            state.detailData = event.payload;
-        },
+    clearDetailStatus: (state) => {
+      state.staus = statusInitialState;
     }
-})
+  },
+  extraReducers(builder){
+    builder.addCase(getInvoiceDetailById.pending, (state) => {
+      state.status.loading = true;
+      state.status.error = false;
+      state.status.succeed = false;
+    })
+    .addCase(getInvoiceDetailById.fulfilled, (state, action) => {
+      state.status.loading = false;
+      state.status.error = false;
+      state.status.succeed = true;
+      state.detailData = action.payload.data;
+    })
+    .addCase(getInvoiceDetailById.rejected, (state, action) => {
+      state.status.loading = false;
+      state.status.error = true;
+      state.status.succeed = false;
+      state.status.errCode = action.payload.errCode;
+      state.status.errMsg = action.payload.errMsg
+    })
+  }
+});
 
-export const { setDetailData } = invoiceDetailSlice.actions;
+export const { setDetailData, clearDetailData, clearDetailStatus } = invoiceDetailSlice.actions;
 
 export const getDetailData = (state) => state.invoiceDetail.detailData;
 
