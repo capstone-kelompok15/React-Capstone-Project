@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
 import paymentGetClassnameByStatus from "../../utils/paymentGetClassnameByStatus";
 import { showRejectionModal } from "../../redux/reducers/paymentRejectionModalSlice";
+import moment from "moment";
 
 const PaymentDetail = () => {
     const dispatch = useDispatch();
@@ -64,11 +65,11 @@ const PaymentDetail = () => {
                                 </div>
                                 <div className="d-flex flex-row" style={{gap: '5px'}}>
                                     <div>Invoice Date</div>
-                                    <div>: {paymentDetailData.created_at}</div>
+                                    <div>: {moment(paymentDetailData.created_at).format('DD MMMM YYYY')}</div>
                                 </div>
                                 <div className="d-flex flex-row" style={{gap: '22px'}}>
                                     <div>Due Date</div>
-                                    <div>: {paymentDetailData.due_at}</div>
+                                    <div>: {moment(paymentDetailData.due_at).format('DD MMMM YYYY')}</div>
                                 </div>
                             </div>
                         </div>
