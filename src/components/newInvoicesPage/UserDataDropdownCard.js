@@ -29,7 +29,7 @@ const UserDataDropdownCard = (props) => {
     const dispatch = useDispatch();
     const userDropdownData = useSelector(getUserDropdownData);
     const userDropDownStatus = useSelector(getUserDropdownStatus);
-    const [ userDataDummy, setUserDataDummy ] = useState(userDropdownData.filter((data) => data.email.toLowerCase().includes(currentEmail)));
+    const [ userData, setUserData ] = useState(userDropdownData.filter((data) => data.email.toLowerCase().includes(currentEmail)));
 
     useEffect(() => {
         if(userDropDownStatus.loading)return;
@@ -47,12 +47,12 @@ const UserDataDropdownCard = (props) => {
             })
             dispatch(clearUsersState());
         }
-        setUserDataDummy(() => userDropdownData.filter((data) => data.email.toLowerCase().includes(currentEmail.toLowerCase())));
+        setUserData(() => userDropdownData.filter((data) => data.email.toLowerCase().includes(currentEmail.toLowerCase())));
     }, [currentEmail, userDropdownData, dispatch, userDropDownStatus])
 
     return(
         <div className="user-suggestion-container">
-            {userDataDummy.length === 0 ? <div className="user-suggestion-card">No user data found</div> : userDataDummy.map((data, i) => {
+            {userData.length === 0 ? <div className="user-suggestion-card">No user data found</div> : userData.map((data, i) => {
                 return (
                     <div key={i} className="user-suggestion-card" onClick={() => onClick(data)}>
                         <div className="email-text">{data.email}</div>

@@ -24,6 +24,22 @@ const InvoiceAPI = {
     async getAllCostumer(){
         const response = await axiosInstance.get('/customers?page=1&limit=100');
         return response;
+    },
+    async createNewInvoice(data){
+        const response = await axiosInstance.post('/invoices', data);
+        return response;
+    },
+    async getMerchantData(){
+        const response = await axiosInstance.get('/merchants/me');
+        return response;
+    },
+    async getInvoiceDetailById(id){
+        const response = await axiosInstance.get(`/invoices/${id}/merchants`);
+        return response;
+    },
+    async getPayemntDetailById(id){
+        const response = await axiosInstance.get(`/invoices/${id}/merchants`);
+        return response;
     }
 }
 

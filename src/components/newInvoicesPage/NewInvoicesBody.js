@@ -7,11 +7,17 @@ import pencilIcon from '../../assets/svg/pencilIcon.svg';
 import trashIcon from '../../assets/svg/trashIcon.svg'
 import dropdownIcon from '../../assets/svg/dropdownIcon.svg'
 import UserDataDropdownCard from "./UserDataDropdownCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CostumDatePicker from "./CotumDatePicker";
 import {IoMdAddCircle} from 'react-icons/io'
 import formatRupiah from "../../utils/formatRupiah";
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from "react-redux";
+import { clearNewInvoiceState, createNewInvoice, getNewInvoiceState } from "../../redux/reducers/newInvoiceSlice";
+import { useNavigate } from "react-router-dom";
+import loadingRolling from '../../assets/svg/loadingRolling.svg';
+import moment from "moment";
+import { getInvoices } from "../../redux/reducers/invoicesSlice";
 
 const today = new Date();
 
@@ -31,10 +37,39 @@ const FORM_BASE_DATA = {
 }
 
 const NewInvoicesBody = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const newInvoiceState = useSelector(getNewInvoiceState);
     const [ showDropdown, setShowDropdown ] = useState(false);
     const [ formData, setFormData ] = useState(FORM_BASE_DATA)
     const [ startDate, setStartDate ] = useState(formData.due_at);
     const currentDate = Moment().format('DD MMMM YYYY');
+
+    useEffect(() => {
+        if(newInvoiceState.succeed){
+            Swal.fire({
+                icon: 'success',
+                title: 'Creating Invoice Succeed',
+                text: 'Invoice was successfuly created, please continue to invoices page',
+                confirmButtonText: 'Continue to Invoices Page',
+                confirmButtonColor: '#173468'
+            }).then(() => {
+                dispatch(clearNewInvoiceState());
+                navigate('/home/invoices');
+            });
+            dispatch(getInvoices())
+        }
+        if(newInvoiceState.error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Creating Invoice Failed',
+                text: `${newInvoiceState.errMsg}`,
+                confirmButtonText: 'Continue',
+                confirmButtonColor: '#173468',
+            })
+            dispatch(clearNewInvoiceState())
+        }
+    }, [newInvoiceState, dispatch, navigate])
 
     const onChange = (e) => {
         const name = e.target.name;
@@ -127,13 +162,44 @@ const NewInvoicesBody = () => {
         setShowDropdown(true);
     }
 
+    const createOnClick = () => {
+        if(newInvoiceState.loading)return;
+        const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if(
+            !formData.email.match(emailRegEx) || 
+            formData.items.reduce((a,b) => a + (b.price * b.quantity), 0) === 0 ||
+            formData.items.filter((data) => data.product === '').length !== 0
+        ){
+            Swal.fire({
+                icon: 'error',
+                title: 'Create Invoice Failed',
+                text: `There is something wrong with the data, please check again`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            });
+            return;
+        }
+
+        dispatch(createNewInvoice({
+            customer_id: formData.id,
+            due_at: moment(formData.due_at).format('YYYY-M-D'),
+            items: formData.items
+        }))
+    }
+
     return(
         <Container fluid className="p-0" style={{height: 'calc(100vh - 64px)', overflow: 'auto'}}>
             <div className="d-flex flex-column justify-content-center align-items-center my-3">
                 <div className='d-flex justify-content-end' style={{width: '620px'}}>
-                    <div className="create-invoice-button">
-                        <img src={pencilIcon} alt='Not Found'/>
-                        Create Invoice
+                    <div className="create-invoice-button" onClick={createOnClick}>
+                        {newInvoiceState.loading ? 
+                            <img src={loadingRolling} height='20px' width='20px' alt='notFound' /> : 
+                            <>
+                                <img src={pencilIcon} alt='Not Found'/>
+                                Create Invoice
+                            </>
+                        }
                     </div>
                 </div>
                 <Container fluid style={{marginTop: '18px', backgroundColor: 'white', padding: '60px 27px', width: '620px'}}>

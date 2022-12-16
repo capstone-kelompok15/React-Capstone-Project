@@ -6,9 +6,8 @@ export const getInvoices = createAsyncThunk('get/invoices', async (data, {fulfil
         const reponse = await InvoiceAPI.getInvoices();
         return fulfillWithValue(reponse.data.data);
     }catch(e){
-        console.log(e);
         return rejectWithValue({
-            errMsg: e.response.data.message,
+            errMsg: e.response.data.error.message,
             errCode: e.response.request.status,
         })
     }
@@ -44,11 +43,11 @@ const invoiceSlice = createSlice({
 
             if(state.filter !== 'All'){
                 state.filteredData = state.data.filter(
-                    (data) => data.payment_status.toLocaleLowerCase() === state.filter.toLowerCase() && (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                    (data) => data.payment_status_name.toLowerCase() === state.filter.toLowerCase() && (data.customer_name.toLowerCase().includes(state.searchValue) || data.invoice_id.toString().toLowerCase().includes(state.searchValue))
                 );
             } else {
                 state.filteredData = state.data.filter(
-                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                    (data) => (data.customer_name.toLowerCase().includes(state.searchValue) || data.invoice_id.toString().toLowerCase().includes(state.searchValue))
                 );
             }
         },
@@ -57,11 +56,11 @@ const invoiceSlice = createSlice({
 
             if(state.filter !== 'All'){
                 state.filteredData = state.data.filter(
-                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue)) && data.payment_status.toLowerCase() === state.filter.toLowerCase()
+                    (data) => (data.customer_name.toLowerCase().includes(state.searchValue) || data.invoice_id.toString().toLowerCase().includes(state.searchValue)) && data.payment_status_name.toLowerCase() === state.filter.toLowerCase()
                 )
             } else {
                 state.filteredData = state.data.filter(
-                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                    (data) => (data.customer_name.toLowerCase().includes(state.searchValue) || data.invoice_id.toString().toLowerCase().includes(state.searchValue))
                 ); 
             }
         }
@@ -76,13 +75,12 @@ const invoiceSlice = createSlice({
             state.status.loading = false;
             state.status.error = false;
             state.status.succeed = true;
-            state.data = action.payload.invoices;
+            state.data = action.payload.invoices.filter((data) => data.payment_status_name !== 'Pending');
         })
         .addCase(getInvoices.rejected, (state, action) => {
             state.status.loading = false;
             state.status.error = true;
             state.status.succeed = false;
-            console.log(action.payload.errMsg);
             state.status.errMsg = action.payload.errMsg;
             state.status.errCode = action.payload.errCode;
         })

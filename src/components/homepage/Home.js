@@ -7,17 +7,18 @@ import customer from "../../assets/image/customer.png"
 import profile from "../../assets/image/profile.png"
 import logout from "../../assets/image/logout.png"
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import avatar from "../../assets/image/jisoo.jpg"
 import InvoicesSearchContainer from "./InvoicesSearchContainer";
 import PaymentSearchContainer from "./PaymentsSearchContainer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/reducers/loginSlice";
+import { getMerhchantDataValue } from "../../redux/reducers/merchantSlice";
 
 
 const Dashboard = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const merchantData = useSelector(getMerhchantDataValue);
 
   const logOutOnClick = () => {
     dispatch(logOut());
@@ -37,10 +38,10 @@ const Dashboard = () => {
           </div>
           <div className='headerRight'>
             <div className='headerProfile'>
-            <img src={avatar} alt='' className='headerAvatar'/>
+            <img src={merchantData.display_profile_url} alt='' className='headerAvatar'/>
             <div className='headerName'>
-              <h1 className='username'>Kim Jisoo</h1>
-              <p className='company'>Black Pink</p>
+              <h1 className='username'>{merchantData.username}</h1>
+              <p className='company'>{merchantData.merchant_name}</p>
             </div>
             </div>
           </div>

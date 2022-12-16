@@ -11,7 +11,7 @@ import { showRejectionModal } from "../../redux/reducers/paymentRejectionModalSl
 const PaymentDetail = () => {
     const dispatch = useDispatch();
     const paymentDetailData = useSelector(getPaymentsDetailData);
-    const paymentClassname = paymentGetClassnameByStatus(paymentDetailData.payment_status);
+    const paymentClassname = paymentGetClassnameByStatus(paymentDetailData.payment_status_name);
     const allTotal = formatRupiah(paymentDetailData.total_price);
 
     const rejectOnClick = () => {
@@ -24,18 +24,18 @@ const PaymentDetail = () => {
                 <div style={{margin: '40px 40px 40px'}}>
                     <div className='d-flex flex-row justify-content-between align-items-center'>
                         <div className='d-flex flex-column'>
-                            <div className="invoice-detail-id-text">{paymentDetailData.id}</div>
+                            <div className="invoice-detail-id-text">{`INV-${paymentDetailData.invoice_id}`}</div>
                             <div className="d-flex flex-row justify-content-start align-items-center gap-3" style={{paddingTop: '20px'}}>
                                 <div className="d-flex flex-row justify-content-start align-items-center" style={{gap: '0px'}}>
                                     <div className='inovice-detail-status'>Payment Status</div>
                                     <div>:</div>
                                 </div>
-                                <div className={`payment-detail-status-box ${paymentClassname}`}>{paymentDetailData.payment_status}</div>
+                                <div className={`payment-detail-status-box ${paymentClassname}`}>{paymentDetailData.payment_status_name}</div>
                             </div>
-                            <div className="invoice-detail-payment-type" style={{paddingTop: '10px'}}>Payment Type : {paymentDetailData.payment_method.payment_type}</div>
+                            <div className="invoice-detail-payment-type" style={{paddingTop: '10px'}}>Payment Type : {paymentDetailData.payment_type_name}</div>
                         </div>
                         <div className="d-flex flex-column justfiy-content-center align-items-center">
-                            <div className='invoice-detail-costumer-id-text'>Customer ID : {paymentDetailData.customer.id}</div>
+                            <div className='invoice-detail-costumer-id-text'>Customer ID : {paymentDetailData.customer_id}</div>
                             <div className='invoice-check-recepient-button'>
                                 <img src={detailDocumentIcon} alt='not found'/>
                                 Check Transfer Receipt
@@ -53,9 +53,9 @@ const PaymentDetail = () => {
                         <div className='main-text' style={{paddingTop: '35px'}}>Bill to:</div>
                         <div className="d-flex flex-row justify-content-between align-items-start">
                             <div className="d-flex flex-column">
-                                <div className="invoice-detail-underlined-container sub-text">{paymentDetailData.customer.name}</div>
-                                <div className="invoice-detail-underlined-container sub-text">{paymentDetailData.customer.email}</div>
-                                <div className="invoice-detail-underlined-container sub-text">{paymentDetailData.customer.address}</div>
+                                <div className="invoice-detail-underlined-container sub-text">{paymentDetailData.customer_name}</div>
+                                <div className="invoice-detail-underlined-container sub-text">{paymentDetailData.customer_email}</div>
+                                <div className="invoice-detail-underlined-container sub-text">{paymentDetailData.customer_address}</div>
                             </div>
                             <div className="d-flex flex-column sub-text2" style={{gap: '16px'}}>
                                 <div className="d-flex flex-row" style={{gap: '32px'}}>
@@ -83,7 +83,7 @@ const PaymentDetail = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {paymentDetailData.items.map(
+                                    {paymentDetailData.invoice_detail.map(
                                         (data) => 
                                         <tr className="table-body-text">
                                             <td className="table-data">{data.product}</td>

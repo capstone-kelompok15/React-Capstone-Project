@@ -43,7 +43,16 @@ const verificationSlice = createSlice({
     initialState,
     reducers: {
         clearVerificationState(state){
-            state = initialState;
+            state.loading = false;
+            state.error = false;
+            state.succeed = false;
+            state.errMsg = '';
+            state.errCode = 0;
+            state.resendLoading = false;
+            state.resendsucceed = false;
+            state.resendError = false;
+            state.resendErrMsg = '';
+            state.resendErrCode = 0;
         },
     },
     extraReducers(builder){

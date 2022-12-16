@@ -1,178 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import InvoiceAPI from "../../api/InvoiceAPI";
 
-const dummyData = [
-    {
-        id: 'INV-00341212',
-        payment_status: "Success",
-        total_price: 24800000,
-        due_at: "5 Dec 2022",
-        created_at : "24 Nov 2022",
-        updated_at: "",
-        merchant: {
-            id: "string",
-            name: "string",
-            display_profile_url: "string",
-            address: "string"
-        },
-        customer: {
-            id: "1231233",
-            name: "Alvin Wiraprathama",
-            email: "wiraprathamaalvin@gmail.com",
-            address: "Jalan Gajah Waktra no 1"
-        },
-        payment_method: {
-            payment_type: "Manual Transfer",
-            bank_name: "string",
-            bank_code: "string",
-            bank_number: "string",
-            on_behalf_of: "string"
-        },
-        items: [
-            {
-            product: "Asus Vivobook",
-            quantity: 2,
-            price: 12000000,
-            total_price: 24000000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "SSD Samsung Evo",
-            quantity: 1,
-            price: 800000,
-            total_price: 800000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "Shipping",
-            quantity: 1,
-            price: 0,
-            total_price: 0,
-            created_at: "string",
-            updated_at: "string"
-            },
-        ]
-    },
-    {
-        id: 'INV-00341213',
-        payment_status: "Pending",
-        total_price: 12800000,
-        due_at: "28 Nov 2022",
-        created_at : "24 Nov 2022",
-        updated_at: "",
-        merchant: {
-            id: "string",
-            name: "string",
-            display_profile_url: "string",
-            address: "string"
-        },
-        customer: {
-            id: "1231234",
-            name: "Abdullah Nouval Shidqi",
-            email: "abullah.nouval@gmail.com",
-            address: "Jalan Kawista no 2"
-        },
-        payment_method: {
-            payment_type: "Manual Transfer",
-            bank_name: "string",
-            bank_code: "string",
-            bank_number: "string",
-            on_behalf_of: "string"
-        },
-        items: [
-            {
-            product: "Microsoft Surface Pro 4",
-            quantity: 1,
-            price: 12000000,
-            total_price: 12000000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "SSD Seagate",
-            quantity: 1,
-            price: 800000,
-            total_price: 800000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "Shipping",
-            quantity: 1,
-            price: 0,
-            total_price: 0,
-            created_at: "string",
-            updated_at: "string"
-            },
-        ]
-    },
-    {
-        id: 'INV-00341215',
-        payment_status: "Pending",
-        total_price: 24800000,
-        due_at: "7 Dec 2022",
-        created_at : "24 Nov 2022",
-        updated_at: "",
-        merchant: {
-            id: "string",
-            name: "string",
-            display_profile_url: "string",
-            address: "string"
-        },
-        customer: {
-            id: "1231235",
-            name: "Alvin Wiraprathama",
-            email: "wiraprathamaalvin@gmail.com",
-            address: "Jalan Gajah Waktra no 1"
-        },
-        payment_method: {
-            payment_type: "Manual Transfer",
-            bank_name: "string",
-            bank_code: "string",
-            bank_number: "string",
-            on_behalf_of: "string"
-        },
-        items: [
-            {
-            product: "Asus Vivobook",
-            quantity: 2,
-            price: 12000000,
-            total_price: 24000000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "SSD Samsung Evo",
-            quantity: 1,
-            price: 800000,
-            total_price: 800000,
-            created_at: "string",
-            updated_at: "string"
-            },
-            {
-            product: "Shipping",
-            quantity: 1,
-            price: 0,
-            total_price: 0,
-            created_at: "string",
-            updated_at: "string"
-            },
-        ]
-    },
-]
+const initialStatus = {
+    loading: false,
+    error: false,
+    succeed: false,
+    errMsg: '',
+    errCode: 0
+}
 
 const paymentInitialData = {
+    status: initialStatus,
     filter: 'All',
-    data: dummyData,
+    data: [],
     filteredData: undefined,
     searchValue: ''
 }
+
+export const getAllPayments = createAsyncThunk('get/invoices', async (data, {fulfillWithValue, rejectWithValue}) => {
+    try{
+        const reponse = await InvoiceAPI.getInvoices();
+        return fulfillWithValue(reponse.data.data);
+    }catch(e){
+        return rejectWithValue({
+            errMsg: e.response.data.error.message,
+            errCode: e.response.request.status,
+        })
+    }
+})
 
 const paymentSlice = createSlice({
     name: 'payments',
     initialState: paymentInitialData,
     reducers: {
+        clearPaymentStatus: (state) => {
+            state.status = initialStatus;
+        },
         setData: (state, event) => {
             state.data = [...event.payload];
         },
@@ -183,11 +46,11 @@ const paymentSlice = createSlice({
 
             if(state.filter !== 'All'){
                 state.filteredData = state.data.filter(
-                    (data) => data.payment_status.toLocaleLowerCase() === state.filter.toLowerCase() && (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                    (data) => data.payment_type_name.toLocaleLowerCase() === state.filter.toLowerCase() && (data.customer_name.toLowerCase().includes(state.searchValue) || data.invoice_id.toString().toLowerCase().includes(state.searchValue))
                 );
             } else {
                 state.filteredData = state.data.filter(
-                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                    (data) => (data.customer_name.toLowerCase().includes(state.searchValue) || data.invoice_id.toString().toLowerCase().includes(state.searchValue))
                 );
             }
         },
@@ -196,18 +59,38 @@ const paymentSlice = createSlice({
 
             if(state.filter !== 'All'){
                 state.filteredData = state.data.filter(
-                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue)) && data.payment_status.toLowerCase() === state.filter.toLowerCase()
+                    (data) => (data.customer_name.toLowerCase().includes(state.searchValue) || data.invoice_id.toString().toLowerCase().includes(state.searchValue)) && data.payment_type_name.toLowerCase() === state.filter.toLowerCase()
                 )
             } else {
                 state.filteredData = state.data.filter(
-                    (data) => (data.customer.name.toLowerCase().includes(state.searchValue) || data.id.toLowerCase().includes(state.searchValue))
+                    (data) => (data.customer_name.toLowerCase().includes(state.searchValue) || data.invoice_id.toString().toLowerCase().includes(state.searchValue))
                 ); 
             }
         }
+    },
+    extraReducers(builder){
+        builder.addCase(getAllPayments.pending, (state) => {
+            state.status.loading = true;
+            state.status.error = false;
+            state.status.succeed = false;
+        })
+        .addCase(getAllPayments.fulfilled, (state, action) => {
+            state.status.loading = false;
+            state.status.error = false;
+            state.status.succeed = true;
+            state.data = action.payload.invoices.filter((data) => data.payment_status_name === 'Pending');
+        })
+        .addCase(getAllPayments.rejected, (state, action) => {
+            state.status.loading = false;
+            state.status.error = true;
+            state.status.succeed = false;
+            state.status.errMsg = action.payload.errMsg;
+            state.status.errCode = action.payload.errCode;
+        })
     }
 })
 
-export const { setData, setFilter, setSearch } = paymentSlice.actions;
+export const { setData, setFilter, setSearch, clearPaymentStatus } = paymentSlice.actions;
 
 export const getPaymentsData = (state) => state.payments.data;
 
@@ -216,5 +99,7 @@ export const getPaymentsFilteredData = (state) => state.payments.filteredData;
 export const getPaymentsFilterStatus = (state) => state.payments.filter;
 
 export const getPaymentSearchValue = (state) => state.payments.searchValue;
+
+export const getPaymentStatus = (state) => state.payments.status;
 
 export default paymentSlice.reducer;
