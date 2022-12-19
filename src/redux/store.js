@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import acceptRejectPaymentSlice from "./reducers/acceptRejectPaymentSlice";
 import filterModalSlice from "./reducers/filterModalSlice";
 import invoiceDetailSlice from "./reducers/invoiceDetailSlice";
 import invoicesSlice from "./reducers/invoicesSlice";
@@ -29,6 +30,7 @@ export const store = configureStore({
         login: loginSlice,
         userDropdown: userDropDownSlice,
         newInvoice: newInvoiceSlice,
-        merchant: merchantSlice
+        merchant: merchantSlice,
+        paymentConfirmation: acceptRejectPaymentSlice
     },
 })

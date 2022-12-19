@@ -30,8 +30,8 @@ const paymentDetailSlice = createSlice({
         detailData : paymentDetailInitialState,
     },
     reducers: {
-        setPaymentDetailData: (state, event) => {
-            state.detailData = event.payload;
+        clearPaymentDetailData: (state) => {
+            state.detailData = undefined;
         },
     },
     extraReducers(builder){
@@ -56,7 +56,7 @@ const paymentDetailSlice = createSlice({
     }
 })
 
-export const { setPaymentDetailData } = paymentDetailSlice.actions;
+export const { clearPaymentDetailData } = paymentDetailSlice.actions;
 
 export const getPaymentsDetailData = (state) => state.paymentDetail.detailData;
 
