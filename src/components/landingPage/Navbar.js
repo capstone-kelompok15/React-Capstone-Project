@@ -68,7 +68,7 @@ const Navbar = () => {
               </div>
             </li>
           </ul>
-          <button class="button-primary" onClick={cobaGratisOnClick}>Coba Gratis</button>
+          <button class="button-primary" onClick={cobaGratisOnClick}>Coba Sekarang</button>
         </div>
       </div>
     </nav>

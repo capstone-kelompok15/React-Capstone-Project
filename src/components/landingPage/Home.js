@@ -29,7 +29,7 @@ const Home = () => {
             usahamu untuk membuat invoice, mengirim notifikasi pembayaran, serta
             menerima pembayaran dengan lebih cepat dan mudah!
           </p>
-          <button className="button-lg-primary" onClick={cobaGratisOnClick}>Coba Gratis</button>
+          <button className="button-lg-primary" onClick={cobaGratisOnClick}>Coba Sekarang</button>
         </div>
         <div className="col-md-5">
           <div className="box1">

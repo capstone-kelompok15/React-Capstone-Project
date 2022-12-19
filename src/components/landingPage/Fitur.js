@@ -163,7 +163,7 @@ const Fitur = () => {
                 </div>
               </li>
             </ul>
-            <button className="download button-lg-primary">
+            <button className="download button-download">
               Download Sekarang
             </button>
           </div>
