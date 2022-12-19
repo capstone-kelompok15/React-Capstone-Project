@@ -32,7 +32,7 @@ const LandingPage = () => {
       <Home />
       <Fitur />
       <Testimoni />
-      <Hargaa />
+      {/* <Hargaa /> */}
       <Footer />
     </div>
   );
