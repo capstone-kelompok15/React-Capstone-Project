@@ -1,18 +1,88 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearPaymentDeclineState, getRejectStatus, rejectPaymentById } from "../../redux/reducers/acceptRejectPaymentSlice";
+import { clearPaymentDetailData, getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
 import { hideRejectionModal } from "../../redux/reducers/paymentRejectionModalSlice";
+import loadingRolling from '../../assets/svg/loadingRolling.svg';
+import Swal from "sweetalert2";
+import { getAllPayments } from "../../redux/reducers/paymentSlice";
 
 const PaymentRejectionModal = () => {
     const dispatch = useDispatch();
-    const [ reasonValue, setReasonValue ] = useState();
+    const rejectStatus = useSelector(getRejectStatus);
+    const paymentDetailData = useSelector(getPaymentsDetailData);
+    const [ reasonValue, setReasonValue ] = useState('');
+    const [ otherMessage, setOtherMessage ] = useState('');
+
+    useEffect(() => {
+        if(rejectStatus.succeed){
+            Swal.fire({
+                icon: 'success',
+                title: 'Reject Payment Succeed',
+                text: `You have succesfuly reject the payment`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            }).then(() => {
+                dispatch(clearPaymentDeclineState());
+                dispatch(getAllPayments());
+                dispatch(clearPaymentDetailData());
+                dispatch(hideRejectionModal());
+            })
+        }
+        if(rejectStatus.error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Confirm Payment Failed',
+                text: `${rejectStatus.errMsg}`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            }).then(() => {
+                dispatch(clearPaymentDeclineState());
+            })
+        }
+    })
 
     const onChange = (e) => {
+        setOtherMessage('');
         setReasonValue(e.target.value);
+    }
+
+    const otherOnChange = (e) => {
+        setOtherMessage(e.target.value);
     }
 
     const backgroundOnClick = () => {
         dispatch(hideRejectionModal());
+    }
+
+    const confirmOnClick = () => {
+        if(rejectStatus.loading)return;
+        if(reasonValue === ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'Reject Payment Failed',
+                text: `Please input a reason before reject payment`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            });
+            return
+        }
+        if(otherMessage !== ''){
+            dispatch(rejectPaymentById({
+                id: paymentDetailData.invoice_id,
+                message: {
+                    message: otherMessage
+                }
+            }))
+        } else {
+            dispatch(rejectPaymentById({
+                id: paymentDetailData.invoice_id,
+                message: {
+                    message: reasonValue
+                }
+            }))
+        }
     }
 
     return(
@@ -67,11 +137,16 @@ const PaymentRejectionModal = () => {
                             name='reason'
                             type="text"
                             placeholder="Input your reason of payment rejection..."
+                            value={otherMessage}
+                            onChange={otherOnChange}
                         />
                     </div>
                 </div>
-                <div className="modal-filter-submit-button" onClick={() => {}}>
-                    Confirm
+                <div className="modal-filter-submit-button" onClick={confirmOnClick}>
+                    {
+                        rejectStatus.loading ? <img src={loadingRolling} height='20px' width='20px' alt='notFound' /> :
+                        "Confirm"
+                    }
                 </div>
             </Container>
         </>

@@ -11,7 +11,8 @@ import InvoicesSearchContainer from "./InvoicesSearchContainer";
 import PaymentSearchContainer from "./PaymentsSearchContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/reducers/loginSlice";
-import { getMerhchantDataValue } from "../../redux/reducers/merchantSlice";
+import { getMerchantData, getMerhchantDataValue } from "../../redux/reducers/merchantSlice";
+import { useEffect } from "react";
 
 
 const Dashboard = () => {
@@ -24,6 +25,10 @@ const Dashboard = () => {
     dispatch(logOut());
     navigate('/');
   }
+
+  useEffect(() => {
+    dispatch(getMerchantData());
+  }, [])
 
   return (
     <main className="main">

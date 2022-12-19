@@ -40,6 +40,14 @@ const InvoiceAPI = {
     async getPayemntDetailById(id){
         const response = await axiosInstance.get(`/invoices/${id}/merchants`);
         return response;
+    },
+    async acceptPaymentById(id){
+        const response = await axiosInstance.put(`invoices/${id}/accept`);
+        return response;
+    },
+    async rejectPaymentById(id, data){
+        const response = await axiosInstance.put(`invoices/${id}/reject`, data);
+        return response;
     }
 }
 

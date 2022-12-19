@@ -59,7 +59,7 @@ const merchantSlice = createSlice({
             state.status.loading = false;
             state.status.error = false;
             state.status.succeed = true;
-            state.data = action.payload;
+            state.data = action.payload.data;
         })
         .addCase(getMerchantData.rejected, (state, action) => {
             state.status.loading = false;

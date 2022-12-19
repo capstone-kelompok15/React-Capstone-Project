@@ -4,18 +4,56 @@ import detailDocumentIcon from '../../assets/svg/detailDocumentIcon.svg';
 import deleteIcon from '../../assets/svg/deleteIcon.svg';
 import paymentDollarIcon from '../../assets/svg/paymentDollarIcon.svg';
 import { useDispatch, useSelector } from "react-redux";
-import { getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
+import { clearPaymentDetailData, getPaymentsDetailData } from "../../redux/reducers/paymentDetailSlice";
 import paymentGetClassnameByStatus from "../../utils/paymentGetClassnameByStatus";
 import { showRejectionModal } from "../../redux/reducers/paymentRejectionModalSlice";
+import { acceptPaymentById, clearPaymentAcceptState, getAcceptStatus } from "../../redux/reducers/acceptRejectPaymentSlice";
+import loadingRolling from '../../assets/svg/loadingRolling.svg';
+import { useEffect } from "react";
+import Swal from "sweetalert2";
+import { getAllPayments } from "../../redux/reducers/paymentSlice";
 
 const PaymentDetail = () => {
     const dispatch = useDispatch();
+    const acceptPaymentStatus = useSelector(getAcceptStatus);
     const paymentDetailData = useSelector(getPaymentsDetailData);
     const paymentClassname = paymentGetClassnameByStatus(paymentDetailData.payment_status_name);
     const allTotal = formatRupiah(paymentDetailData.total_price);
 
+    useEffect(() => {
+        if(acceptPaymentStatus.succeed){
+            Swal.fire({
+                icon: 'success',
+                title: 'Confirm Payment Succeed',
+                text: `You have succesfuly accept the payment`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            }).then(() => {
+                dispatch(clearPaymentAcceptState());
+                dispatch(getAllPayments());
+                dispatch(clearPaymentDetailData());
+            })
+        }
+        if(acceptPaymentStatus.error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Confirm Payment Failed',
+                text: `${acceptPaymentStatus.errMsg}`,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#173468',
+            }).then(() => {
+                dispatch(clearPaymentAcceptState());
+            })
+        }
+    }, [acceptPaymentStatus, dispatch])
+
     const rejectOnClick = () => {
         dispatch(showRejectionModal());
+    }
+
+    const confirmPaymentOnClick = () => {
+        if(acceptPaymentStatus.loading)return;
+        dispatch(acceptPaymentById(paymentDetailData.invoice_id));
     }
 
     return(
@@ -36,10 +74,10 @@ const PaymentDetail = () => {
                         </div>
                         <div className="d-flex flex-column justfiy-content-center align-items-center">
                             <div className='invoice-detail-costumer-id-text'>Customer ID : {paymentDetailData.customer_id}</div>
-                            <div className='invoice-check-recepient-button'>
+                            <a href={paymentDetailData.approval_document_url} className='invoice-check-recepient-button' target={'_blank'} rel="noreferrer">
                                 <img src={detailDocumentIcon} alt='not found'/>
                                 Check Transfer Receipt
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <Container fluid style={{marginTop: '18px', backgroundColor: 'white', padding: '60px 27px'}}>
@@ -123,9 +161,13 @@ const PaymentDetail = () => {
                             <img src={deleteIcon} alt='not found'/>
                             Reject Payment
                         </div>
-                        <div className="invoice-payment-confirm-button">
-                            <img src={paymentDollarIcon} alt='not found'/>
-                            Confirm Payment
+                        <div className="invoice-payment-confirm-button" onClick={confirmPaymentOnClick}>
+                            {acceptPaymentStatus.loading ? <img src={loadingRolling} height='20px' width='20px' alt='notFound' /> : 
+                                <>
+                                    <img src={paymentDollarIcon} alt='not found'/>
+                                    Confirm Payment
+                                </>
+                        }   
                         </div>
                     </div>
                 </div>
