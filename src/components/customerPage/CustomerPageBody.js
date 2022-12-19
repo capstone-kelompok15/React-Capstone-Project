@@ -2,16 +2,15 @@ import React from "react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import "../App.css";
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Image3 from "../assets/image/image3.png";
-import Image4 from "../assets/image/image4.png";
+import Image3 from "../../assets/image/image3.png";
+import Image4 from "../../assets/image/image4.png";
 
 const ListCustomer = () => {
-  const [bg, changeBGColor] = React.useState(1);
+  const [bg, changeBGColor] = useState(1);
 
   return (
     <div className="mt-4">
