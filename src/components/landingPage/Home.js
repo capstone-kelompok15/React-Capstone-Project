@@ -45,37 +45,37 @@ const Home = () => {
           <div class="row pb-5">
             <div class="col">
               <img className="logo2 ms-5 ps-2 me-2" src={Logo1} alt="Logo" />
-              Logoipsum
+              Greenbear
             </div>
             <div class="col">
               <img className="logo2 ms-5 ps-2 me-2" src={Logo2} alt="Logo" />
-              Logoipsum
+              Orangesun
             </div>
             <div class="col">
               <img className="logo2 ms-5 ps-2 me-2" src={Logo3} alt="Logo" />
-              Logoipsum
+              Bluestart
             </div>
             <div class="col">
               <img className="logo3 ms-5 ps-2 me-2" src={Logo4} alt="Logo" />
-              Logoipsum
+              Beekela
             </div>
           </div>
           <div class="row pt-5 pb-5">
             <div class="col">
               <img className="logo2 ms-5 ps-2 me-2" src={Logo5} alt="Logo" />
-              Logoipsum
+              Starbusines
             </div>
             <div class="col">
               <img className="logo2 ms-5 ps-2 me-2" src={Logo6} alt="Logo" />
-              Logoipsum
+              Roundshop
             </div>
             <div class="col">
               <img className="logo2 ms-5 ps-2 me-2" src={Logo7} alt="Logo" />
-              Logoipsum
+              Cubic
             </div>
             <div class="col">
               <img className="logo2 ms-5 ps-2 me-2" src={Logo8} alt="Logo" />
-              Logoipsum
+              Rounders
             </div>
           </div>
         </div>

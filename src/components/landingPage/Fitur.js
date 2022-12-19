@@ -151,7 +151,7 @@ const Fitur = () => {
                   </div>
                 </div>
               </li>
-              <li className="list-item ms-3 mb-3">
+              <li className="list-item ms-3">
                 <div className="row">
                   <div className="col-sm-1">
                     <img className="check me-3" src={checkbox} alt="img" />
