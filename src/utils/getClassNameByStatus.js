@@ -9,6 +9,9 @@ const getClassNameByStatus = (status, dueDate) => {
     if (status.toLowerCase() === 'paid'){
         return 'invoice-status-paid'
     }
+    else if(status.toLowerCase() === 'failed'){
+        return 'invoice-status-overdue';
+    }
     else if(trueDueDate > todaysDate || diffDays === 0){
         return `invoice-status-unpaid`;
     } else {

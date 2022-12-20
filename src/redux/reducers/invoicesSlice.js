@@ -75,7 +75,7 @@ const invoiceSlice = createSlice({
             state.status.loading = false;
             state.status.error = false;
             state.status.succeed = true;
-            state.data = action.payload.invoices.filter((data) => (data.payment_status_name.toLowerCase() !== 'pending' && data.payment_status_name.toLowerCase() !== 'failed'));
+            state.data = action.payload.invoices.filter((data) => data.payment_status_name.toLowerCase() !== 'pending');
         })
         .addCase(getInvoices.rejected, (state, action) => {
             state.status.loading = false;

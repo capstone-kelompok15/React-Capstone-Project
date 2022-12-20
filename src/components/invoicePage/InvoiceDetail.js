@@ -42,10 +42,12 @@ const InvoiceDetail = () => {
                                 <div className='inovice-detail-status'>Payment Time Left :</div>
                                 <div className={`inovice-detail-status-box ${statusClassName}`}>{statusValue}</div>
                             </div>
+                                {detailData.payment_status_name === 'Paid' ? <div></div> : 
                             <div className="invoice-detail-send-button">
                                 <img src={mailIcon} alt='not found' />
                                 Send via email
                             </div>
+                            }
                         </div>
                         <Container fluid style={{marginTop: '18px', backgroundColor: 'white', padding: '60px 27px'}}>
                             <div className="d-flex justify-content-between align-items-center">

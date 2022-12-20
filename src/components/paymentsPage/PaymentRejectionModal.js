@@ -58,7 +58,7 @@ const PaymentRejectionModal = () => {
 
     const confirmOnClick = () => {
         if(rejectStatus.loading)return;
-        if(reasonValue === ''){
+        if(reasonValue === '' || (reasonValue === 'Other' && otherMessage === '')){
             Swal.fire({
                 icon: 'error',
                 title: 'Reject Payment Failed',

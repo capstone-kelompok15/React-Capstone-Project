@@ -9,6 +9,9 @@ const getDateDifferences = (status, dueDate) =>{
     if(status.toLowerCase() === 'paid'){
         return 'Paid';
     }
+    else if(status.toLowerCase() === 'failed'){
+        return 'Failed';
+    }
     else if(diffDays === 0){
         return 'Due Today'
     }
