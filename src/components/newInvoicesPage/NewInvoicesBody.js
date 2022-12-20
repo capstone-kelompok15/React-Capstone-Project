@@ -269,7 +269,7 @@ const NewInvoicesBody = () => {
                                                 Swal.fire({
                                                     icon: 'error',
                                                     title: 'Oops...',
-                                                    text: `Please input date atleast after today's date`,
+                                                    text: `Please input date at least after today's date`,
                                                     confirmButtonColor: '#173468',
                                                 })
                                                 return;
