@@ -128,7 +128,7 @@ const PaymentDetail = () => {
                                             <td className="table-data">{data.product}</td>
                                             <td className="table-data text-center">{data.quantity}</td>
                                             <td className="table-data text-center">{data.price === 0 ? 'Free' : formatRupiah(data.price)}</td>
-                                            <td className="table-data text-center">{data.total_price === 0 ? 'Free' : formatRupiah(data.total_price)}</td>
+                                            <td className="table-data text-center">{data.total_price === 0 ? 'Free' : formatRupiah(data.price * data.quantity)}</td>
                                         </tr>
                                     )}
                                 </tbody>
