@@ -6,7 +6,7 @@ import mailIcon from '../../assets/svg/mailIcon.svg';
 import { getDetailData } from "../../redux/reducers/invoiceDetailSlice";
 import { getInvoiceStatus } from "../../redux/reducers/invoicesSlice";
 import formatRupiah from "../../utils/formatRupiah";
-import getClassNameByStatus from "../../utils/getClassNameByStatus";
+import getClassNameByStatus from "../../utils/getClassNameByStatus"; 
 import getDateDifferences from "../../utils/getDateDifferences";
 
 const InvoiceDetail = () => {

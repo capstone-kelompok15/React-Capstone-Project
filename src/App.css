@@ -4,7 +4,7 @@
 
 /* navbar */
 
-html{
+html {
   overflow-x: hidden;
 }
 
@@ -39,8 +39,9 @@ html{
 .button-primary {
   font-weight: 600;
   font-size: 16px;
-  width: 131px;
+  width: 161px;
   height: 48px;
+  border: none;
   background: #173468;
   color: #fff;
   border-radius: 6px;
@@ -87,6 +88,10 @@ html{
   height: 51px;
   left: 150px;
   top: 627px;
+  border: none;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
   background: #173468;
   color: #fff;
   border: none;
@@ -95,10 +100,10 @@ html{
 
 .my-image1 {
   position: relative;
-  width: 460px;
-  height: 340px;
-  left: -110px;
-  top: 30px;
+  width: 540px;
+  height: 430px;
+  left: -140px;
+  top: 20px;
 }
 
 .box1 {
@@ -250,6 +255,26 @@ html{
 .download {
   margin-top: 80px;
   margin-left: 15px;
+}
+
+.button-download {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+  width: 234px;
+  height: 51px;
+  left: 739px;
+  top: 3987px;
+  background: #173468;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 18px;
+  border: none;
+  line-height: 27px;
+  letter-spacing: 0.01em;
+  color: #ffffff;
 }
 
 /* testimoni */
@@ -790,22 +815,23 @@ html{
 
 
 .password-icon{
+.password-icon {
   position: absolute;
   right: 10px;
   margin-top: -31px;
   cursor: pointer;
 }
 
-.error-message{
-  color: #D62D33;
+.error-message {
+  color: #d62d33;
 }
 
 /* register */
-.register-form{
+.register-form {
   width: 400px;
 }
 
-.register-add-bank-container{
+.register-add-bank-container {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -814,7 +840,7 @@ html{
   gap: 10px;
   width: 400px;
   height: 50px;
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid #999999;
   border-radius: 6px;
   font-weight: 500;
@@ -823,7 +849,7 @@ html{
   cursor: pointer;
 }
 
-.add-bank-modal-container{
+.add-bank-modal-container {
   position: absolute;
   left: 0;
   right: 0;
@@ -843,20 +869,20 @@ html{
   border-radius: 6px;
 }
 
-.add-bank-modal-title{
+.add-bank-modal-title {
   font-weight: 600;
   font-size: 16px;
   color: #404040;
 }
 
 /* invoice */
-.invoice-title{
+.invoice-title {
   font-weight: 600;
   font-size: 24px;
   color: #173468;
 }
 
-.new-invoice-button{
+.new-invoice-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -873,43 +899,43 @@ html{
   transition: 100ms;
 }
 
-.new-invoice-button:hover{
+.new-invoice-button:hover {
   transform: scale(1.01);
 }
 
-.add-line-container{
+.add-line-container {
   cursor: pointer;
   font-weight: 600;
   font-size: 12px;
   color: #404040;
 }
 
-.filter-invoice{
+.filter-invoice {
   cursor: pointer;
 }
 
-.invoice-card-title{
+.invoice-card-title {
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   color: #404040;
 }
 
-.invoice-card-subtitle{
-  font-family: 'Poppins';
+.invoice-card-subtitle {
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   color: #173468;
 }
 
-.invoice-card-price{
+.invoice-card-price {
   font-weight: 600;
   font-size: 14px;
   color: #404040;
 }
 
-.invoice-card-status{
+.invoice-card-status {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -921,34 +947,38 @@ html{
   font-size: 12px;
 }
 
-.invoice-status-paid{
-  background-color: #D9F2E4;
+.invoice-status-paid {
+  background-color: #d9f2e4;
   color: #329059;
 }
 
-.invoice-status-unpaid{
-  background-color: #FDE3CE;
-  color: #F57D15;
+.invoice-status-unpaid {
+  background-color: #fde3ce;
+  color: #f57d15;
 }
 
-.invoice-status-overdue{
-  background-color: #F7D4D5;
-  color: #D62D33;
+.invoice-status-overdue {
+  background-color: #f7d4d5;
+  color: #d62d33;
 }
 
-.invoice-card{
+.invoice-card {
   cursor: pointer;
 }
 
-.invoice-card:hover{
-  background-color: #EAF0FA;
+.invoice-card:hover {
+  background-color: #eaf0fa;
 }
 
-.selected{
-  background-color: #EAF0FA;
+.selected {
+  background-color: #eaf0fa;
 }
 
-::-webkit-scrollbar{
+.page {
+  position: relative;
+}
+
+::-webkit-scrollbar {
   position: absolute;
   width: 6px;
 }
@@ -958,13 +988,13 @@ html{
   border-radius: 6px;
 }
 
-.invoice-card-payment-status{
+.invoice-card-payment-status {
   font-weight: 500;
   font-size: 14px;
   color: #173468;
 }
 
-.no-selected-list-text{
+.no-selected-list-text {
   padding-top: 30px;
   width: 305px;
   font-weight: 600;
@@ -973,19 +1003,19 @@ html{
   color: #404040;
 }
 
-.invoice-detail-payment-type{
+.invoice-detail-payment-type {
   font-weight: 600;
   font-size: 16px;
   color: #173468;
 }
 
-.invoice-detail-id-text{
+.invoice-detail-id-text {
   font-weight: 600;
   font-size: 24px;
   color: #173468;
 }
 
-.invoice-check-recepient-button{
+.invoice-check-recepient-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1001,7 +1031,7 @@ html{
   cursor: pointer;
 }
 
-.invoice-detail-button{
+.invoice-detail-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1018,18 +1048,18 @@ html{
   transition: 0.1s;
 }
 
-.invoice-detail-button:hover{
+.invoice-detail-button:hover {
   transform: scale(1.05);
 }
 
-.invoice-detail-costumer-id-text{
+.invoice-detail-costumer-id-text {
   padding: 15px 0px;
   font-weight: 500;
   font-size: 16px;
-  color: #1915B7;
+  color: #1915b7;
 }
 
-.inovice-detail-status{
+.inovice-detail-status {
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -1062,7 +1092,7 @@ html{
   text-align: center;
 }
 
-.invoice-detail-send-button{
+.invoice-detail-send-button {
   height: 32px;
   width: 166px;
   background-color: #173468;
@@ -1076,16 +1106,16 @@ html{
   font-size: 14px;
   line-height: 21px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   transition: 0.1s;
 }
 
-.invoice-detail-send-button:hover{
+.invoice-detail-send-button:hover {
   transform: scale(1.05);
 }
 
-.invoice-detail-underlined-container{
+.invoice-detail-underlined-container {
   padding: 0px 10px;
   display: flex;
   justify-content: space-between;
@@ -1095,22 +1125,22 @@ html{
   border-bottom: 0.850722px solid #404040;
 }
 
-.invoice-payment-reject-button{
+.invoice-payment-reject-button {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   height: 32px;
   width: 160px;
-  background-color: #951D20;
+  background-color: #951d20;
   border-radius: 6px;
   font-weight: 600;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
 
-.invoice-payment-confirm-button{
+.invoice-payment-confirm-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1121,53 +1151,53 @@ html{
   border-radius: 6px;
   font-weight: 600;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
 
-.main-text{
+.main-text {
   font-style: normal;
   font-weight: 700;
   font-size: 10px;
   color: #404040;
 }
 
-.sub-text{
+.sub-text {
   font-weight: 500;
   font-size: 10px;
   color: #404040;
 }
 
-.sub-text2{
+.sub-text2 {
   font-weight: 600;
   font-size: 10px;
   color: #404040;
 }
 
-.invoice-detail-main-title{
+.invoice-detail-main-title {
   font-weight: 700;
   font-size: 34px;
   color: #404040;
 }
 
-.table-head-text{
+.table-head-text {
   font-weight: 600;
   font-size: 10px;
   line-height: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-.table-body-text{
+.table-body-text {
   font-weight: 600;
   font-size: 10px;
   color: #404040;
 }
 
-.table-data{
+.table-data {
   border-bottom: 0.850722px solid #404040;
 }
 
-.invoice-detail-total-container{
+.invoice-detail-total-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1176,11 +1206,11 @@ html{
   background-color: #173468;
   font-weight: 600;
   font-size: 10.2087px;
-  color: #EAF0FA;
+  color: #eaf0fa;
   padding: 0px 8px;
 }
 
-.modal-test{
+.modal-test {
   display: flex;
   z-index: 2;
   height: 100vh;
@@ -1192,7 +1222,7 @@ html{
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.filter-modal-container{
+.filter-modal-container {
   position: absolute;
   left: 0;
   right: 0;
@@ -1212,7 +1242,7 @@ html{
   border-radius: 6px;
 }
 
-.rejection-modal-container{
+.rejection-modal-container {
   position: absolute;
   left: 0;
   right: 0;
@@ -1232,36 +1262,36 @@ html{
   border-radius: 6px;
 }
 
-.invoice-modal-filter-text{
+.invoice-modal-filter-text {
   font-weight: 600;
   font-size: 24px;
   color: #404040;
 }
 
-.invoice-modal-reset-text-button{
+.invoice-modal-reset-text-button {
   font-weight: 600;
   font-size: 16px;
   color: #999999;
   cursor: pointer;
 }
 
-.invoice-modal-reset-text-button:hover{
+.invoice-modal-reset-text-button:hover {
   color: #b3b0b0;
-} 
-
-.invoice-modal-border{
-  border: 1px solid #CDCDCD;
-  width: 100%;
-  margin: 16px 0px
 }
 
-.invoice-modal-label-text{
+.invoice-modal-border {
+  border: 1px solid #cdcdcd;
+  width: 100%;
+  margin: 16px 0px;
+}
+
+.invoice-modal-label-text {
   font-weight: 400;
   font-size: 16px;
   color: #404040;
 }
 
-.modal-filter-submit-button{
+.modal-filter-submit-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1271,11 +1301,11 @@ html{
   border-radius: 6px;
   font-weight: 600;
   font-size: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
 
-.no-invoices-text{
+.no-invoices-text {
   max-width: 300px;
   margin: 0px 20px;
   font-weight: 600;
@@ -1285,7 +1315,7 @@ html{
 }
 
 /* create invoice page */
-.create-invoice-button{
+.create-invoice-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1296,21 +1326,21 @@ html{
   background-color: #173468;
   font-weight: 600;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   transition: 0.1s;
 }
 
-.create-invoice-button:hover{
+.create-invoice-button:hover {
   transform: scale(1.05);
 }
 
-.table-trash-icon{
+.table-trash-icon {
   width: 15px;
   border: none;
 }
 
-.user-suggestion-container{
+.user-suggestion-container {
   overflow: auto;
   position: absolute;
   height: auto;
@@ -1325,28 +1355,28 @@ html{
   border-radius: 0px 0px 4px 4px;
 }
 
-.user-suggestion-card{
+.user-suggestion-card {
   padding: 10px;
   cursor: pointer;
 }
 
-.user-suggestion-card:hover{
-  background-color: #EAF0FA;
+.user-suggestion-card:hover {
+  background-color: #eaf0fa;
 }
 
-.user-suggestion-card div.email-text{
+.user-suggestion-card div.email-text {
   font-weight: 500;
   font-size: 10px;
   color: #404040;
 }
 
-.user-suggestion-card div.name-text{
+.user-suggestion-card div.name-text {
   font-weight: 500;
   font-size: 10px;
   color: #999999;
 }
 
-.disabled-input:disabled{
+.disabled-input:disabled {
   background-color: white;
   color: #000000;
 }
