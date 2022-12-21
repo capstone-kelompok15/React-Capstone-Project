@@ -1304,12 +1304,18 @@ html {
 }
 
 .no-invoices-text {
-  max-width: 300px;
+  height: 300px;
+  width: 300px;
   margin: 0px 20px;
   font-weight: 600;
   font-size: 20px;
   text-align: center;
   color: #404040;
+}
+
+.displayRecent {
+  position: relative;
+  left: 100px;
 }
 
 /* create invoice page */
@@ -1384,6 +1390,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 
 /* verified page */
 

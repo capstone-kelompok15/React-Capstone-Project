@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getFilteredData, getFilterStatus, getInvoicesData } from "../../redux/reducers/invoicesSlice";
 import { getDetailData } from "../../redux/reducers/invoiceDetailSlice";
-import NoInvoices from "../invoicePage/NoInvoices";
+import RecentNoInvoices from "../recentInvoicePage/RecentNoInvoices";
 
 const RecentInvoicePageBody = () => {
     const data = useSelector(getInvoicesData);
@@ -28,7 +28,7 @@ const RecentInvoicePageBody = () => {
     <>
         <Row className='page m-0'>
                 <Col md={6} className='p-0'>
-                        {invoicesData.length === 0 ? <NoInvoices/> : 
+                        {invoicesData.length === 0 ? <RecentNoInvoices/> : 
                         <Container fluid className="invoice-cards-container2 p-0" style={{width:'calc(68vh)', height: 'calc(100vh - 210px)', overflow:'auto'}}>
                             {invoicesData.map((data, i) => <InvoiceCard key={i} invoiceData={data} selected={data.id === detailData?.id}/>)}
                         </Container>
