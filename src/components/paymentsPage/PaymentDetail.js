@@ -13,9 +13,11 @@ import loadingRolling from '../../assets/svg/loadingRolling.svg';
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 import { getAllPayments } from "../../redux/reducers/paymentSlice";
+import { getMerhchantDataValue } from "../../redux/reducers/merchantSlice";
 
 const PaymentDetail = () => {
     const dispatch = useDispatch();
+    const merchantData = useSelector(getMerhchantDataValue);
     const acceptPaymentStatus = useSelector(getAcceptStatus);
     const paymentDetailData = useSelector(getPaymentsDetailData);
     const paymentClassname = paymentGetClassnameByStatus(paymentDetailData.payment_status_name);
@@ -84,8 +86,8 @@ const PaymentDetail = () => {
                     <Container fluid style={{marginTop: '18px', backgroundColor: 'white', padding: '60px 27px'}}>
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="d-flex flex-column">
-                                <div className="invoice-detail-underlined-container main-text">Toko Sejahtera</div>
-                                <div className="invoice-detail-underlined-container main-text">Jalan Sumatra no 2</div>
+                                <div className="invoice-detail-underlined-container main-text">{merchantData.merchant_name}</div>
+                                <div className="invoice-detail-underlined-container main-text">{merchantData.merchant_address}</div>
                             </div>
                             <div className="invoice-detail-main-title">INVOICE</div>
                         </div>

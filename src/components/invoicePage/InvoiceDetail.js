@@ -5,6 +5,7 @@ import downloadLogo from '../../assets/svg/downloadLogo.svg';
 import mailIcon from '../../assets/svg/mailIcon.svg';
 import { getDetailData } from "../../redux/reducers/invoiceDetailSlice";
 import { getInvoiceStatus } from "../../redux/reducers/invoicesSlice";
+import { getMerhchantDataValue } from "../../redux/reducers/merchantSlice";
 import formatRupiah from "../../utils/formatRupiah";
 import getClassNameByStatus from "../../utils/getClassNameByStatus"; 
 import getDateDifferences from "../../utils/getDateDifferences";
@@ -12,6 +13,7 @@ import getDateDifferences from "../../utils/getDateDifferences";
 const InvoiceDetail = () => {
     const detailData = useSelector(getDetailData);
     const invoiceDetailStatus = useSelector(getInvoiceStatus);
+    const merchantData = useSelector(getMerhchantDataValue);
     const statusClassName = getClassNameByStatus(detailData.payment_status_name, detailData.due_at);
     const statusValue = getDateDifferences(detailData.payment_status_name, detailData.due_at);
     const allTotal = formatRupiah(detailData.total_price);
@@ -46,8 +48,8 @@ const InvoiceDetail = () => {
                         <Container fluid style={{marginTop: '18px', backgroundColor: 'white', padding: '60px 27px'}}>
                             <div className="d-flex justify-content-between align-items-center">
                                 <div className="d-flex flex-column">
-                                    <div className="invoice-detail-underlined-container main-text">Toko Sejahtera</div>
-                                    <div className="invoice-detail-underlined-container main-text">Jalan Sumatra no 2</div>
+                                    <div className="invoice-detail-underlined-container main-text">{merchantData.merchant_name}</div>
+                                    <div className="invoice-detail-underlined-container main-text">{merchantData.merchant_address}</div>
                                 </div>
                                 <div className="invoice-detail-main-title">INVOICE</div>
                             </div>

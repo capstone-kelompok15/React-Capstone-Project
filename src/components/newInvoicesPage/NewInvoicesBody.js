@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import loadingRolling from '../../assets/svg/loadingRolling.svg';
 import moment from "moment";
 import { getInvoices } from "../../redux/reducers/invoicesSlice";
+import { getMerhchantDataValue } from "../../redux/reducers/merchantSlice";
 
 const today = new Date();
 
@@ -40,6 +41,7 @@ const NewInvoicesBody = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const newInvoiceState = useSelector(getNewInvoiceState);
+    const merchantData = useSelector(getMerhchantDataValue);
     const [ showDropdown, setShowDropdown ] = useState(false);
     const [ formData, setFormData ] = useState(FORM_BASE_DATA)
     const [ startDate, setStartDate ] = useState(formData.due_at);
@@ -205,8 +207,8 @@ const NewInvoicesBody = () => {
                 <Container fluid style={{marginTop: '18px', backgroundColor: 'white', padding: '60px 27px', width: '620px'}}>
                     <div className="d-flex justify-content-between align-items-center">
                         <div className="d-flex flex-column">
-                            <div className="invoice-detail-underlined-container main-text">Toko Sejahtera</div>
-                            <div className="invoice-detail-underlined-container main-text">Jalan Sumatra no 2</div>
+                            <div className="invoice-detail-underlined-container main-text">{merchantData.merchant_name}</div>
+                            <div className="invoice-detail-underlined-container main-text">{merchantData.merchant_address}</div>
                         </div>
                         <div className="invoice-detail-main-title">INVOICE</div>
                     </div>
