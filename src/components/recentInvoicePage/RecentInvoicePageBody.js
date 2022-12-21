@@ -29,7 +29,7 @@ const RecentInvoicePageBody = () => {
         <Row className='page m-0'>
                 <Col md={6} className='p-0'>
                         {invoicesData.length === 0 ? <RecentNoInvoices/> : 
-                        <Container fluid className="invoice-cards-container2 p-0" style={{width:'calc(68vh)', height: 'calc(100vh - 210px)', overflow:'auto'}}>
+                        <Container fluid className="invoice-cards-container2 p-0" style={{width:'calc(68vh)', height: 'calc(115vh - 210px)', overflow:'auto'}}>
                             {invoicesData.map((data, i) => <InvoiceCard key={i} invoiceData={data} selected={data.id === detailData?.id}/>)}
                         </Container>
                         }
