@@ -35,7 +35,7 @@ const RecentInvoicePageBody = () => {
                         }
                 </Col>
             </Row>
-            
+    
     </>
   )
 }

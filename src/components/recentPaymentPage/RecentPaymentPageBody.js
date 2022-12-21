@@ -26,7 +26,7 @@ const RecentPaymentPageBody = () => {
             <Row className='m-0'>
                 <Col md={6} className='p-0'>
                         {currentPaymentsData.length === 0 ? <RecentNoPayment/> :
-                        <Container fluid className="invoice-cards-container p-0" style={{width:'calc(68vh)', height: 'calc(115vh - 210px)', overflow:'auto'}}>
+                        <Container fluid className="invoice-cards-container2 p-0" style={{width:'calc(68vh)', height: 'calc(115vh - 210px)', overflow:'auto'}}>
                             {currentPaymentsData.map((data, i) => <PaymentCard key={i} data={data} selected={data.id === paymentDetailData?.id}/>)}
                         </Container>
                         }

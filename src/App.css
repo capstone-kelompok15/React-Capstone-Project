@@ -1311,12 +1311,9 @@ html {
   font-size: 20px;
   text-align: center;
   color: #404040;
-} 
-
-.displayRecent {
-  position: relative;
-  left: 100px;
 }
+
+
 
 /* create invoice page */
 .create-invoice-button {
@@ -1389,6 +1386,21 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.displayRecent {
+  position: relative;
+  left: 15px;
+  background-color: #FFFFFF;
+  height: 550px;
+	width: 450px;
+}
+
+.invoice-cards-container2 {
+  position:absolute ;
+  background-color: #FFFFFF;
+  width: 100px;
+  height: 100px;
 }
 
 
