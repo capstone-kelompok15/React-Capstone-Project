@@ -23,10 +23,11 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(response => response, async (error) => {
     if(error.response.request.status === 401){
         try{
-            const response = await axiosInstance.post('/auth/admin/refresh', {refresh_token: localStorage.getItem('refrehToken')});
+            const response = await axiosInstance.post('/auth/merchant/refresh', {refresh_token: localStorage.getItem('refrehToken')});
             localStorage.setItem('token', response.data.data.access_token);
             return axiosInstance(error.config);
         } catch(e){
+            localStorage.clear();
             return Promise.reject(e);
         }
     }

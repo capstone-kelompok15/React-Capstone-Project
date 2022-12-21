@@ -1,5 +1,5 @@
 const CONST = {
-    BASE_URL: 'https://api.staging.my-invoice.me/api/v1',
+    BASE_URL: `${process.env.REACT_APP_BASE_URL}`,
 }
 
 export default CONST;

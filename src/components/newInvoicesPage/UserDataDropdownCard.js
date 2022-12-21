@@ -29,7 +29,7 @@ const UserDataDropdownCard = (props) => {
     const dispatch = useDispatch();
     const userDropdownData = useSelector(getUserDropdownData);
     const userDropDownStatus = useSelector(getUserDropdownStatus);
-    const [ userData, setUserData ] = useState(userDropdownData.filter((data) => data.email.toLowerCase().includes(currentEmail)));
+    const [ userData, setUserData ] = useState([]);
 
     useEffect(() => {
         if(userDropDownStatus.loading)return;
@@ -47,7 +47,9 @@ const UserDataDropdownCard = (props) => {
             })
             dispatch(clearUsersState());
         }
-        setUserData(() => userDropdownData.filter((data) => data.email.toLowerCase().includes(currentEmail.toLowerCase())));
+        if(userDropdownData !== null){
+            setUserData(() => userDropdownData.filter((data) => data.email.toLowerCase().includes(currentEmail.toLowerCase())));
+        }
     }, [currentEmail, userDropdownData, dispatch, userDropDownStatus])
 
     return(

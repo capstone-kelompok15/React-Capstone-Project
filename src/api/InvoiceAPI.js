@@ -6,15 +6,15 @@ const InvoiceAPI = {
         return response;
     },
     async verifyAccount(data){
-        const response = await axiosInstance.post('/auth/verification/admin', data);
+        const response = await axiosInstance.post('/auth/verification/merchant', data);
         return response;
     },
     async resendVerification(data){
-        const response = await axiosInstance.post('/auth/verification/admin/refresh', data);
+        const response = await axiosInstance.post('/auth/verification/merchant/refresh', data);
         return response;
     },
     async login(data){
-        const response = await axiosInstance.post('/auth/login/admin', data);
+        const response = await axiosInstance.post('/auth/login/merchant', data);
         return response;
     },
     async getInvoices(){
